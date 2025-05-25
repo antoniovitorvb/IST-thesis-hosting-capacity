@@ -95,14 +95,14 @@ for _, row in loads_df.iterrows():
     pa = qa = pb = qb = pc = qc = 0
     if (bus_id in bus_map) & (row['phases'] in {'A', 'B', 'C'}):
         if row['phases']=='A':
-            pa = row['kW'] / 1000
-            qa = row['kW']/1000 * np.tan(np.arccos(row['PF']))
+            pa = row['kW']
+            qa = row['kW'] * np.tan(np.arccos(row['PF']))
         elif row['phases']=='B':
-            pb = row['kW'] / 1000
-            qb = row['kW']/1000 * np.tan(np.arccos(row['PF']))
+            pb = row['kW']
+            qb = row['kW'] * np.tan(np.arccos(row['PF']))
         else: # row['phases']=='C'
-            pc = row['kW'] / 1000
-            qc = row['kW']/1000 * np.tan(np.arccos(row['PF']))
+            pc = row['kW']
+            qc = row['kW'] * np.tan(np.arccos(row['PF']))
         load = pp.create_asymmetric_load(
             net, bus=bus_map[bus_id],
             p_a_mw=pa, q_a_mvar=qa,
@@ -150,18 +150,13 @@ for _, line in full_line_df.iterrows():
 
 
 print(f'Network info:\n{net}')
-# print(pp.diagnostic(net))
+print(pp.diagnostic(net))
 
-# pp.pf.runpp_3ph.runpp_3ph(
-#     net, init='auto',
-#     max_iteration=10000,
-#     tolerance_mva=1e-6,
-#     v_debug=True
-# )
+
 pp.runpp_3ph(
     net, init='auto',
-    max_iteration=10000,
-    tolerance_mva=1e-6,
+    max_iteration=100,
+    tolerance_mva=1e-8,
     v_debug=True
 )
 # print(net.res_bus[["vm_pu"]].describe())        # Voltage profile
