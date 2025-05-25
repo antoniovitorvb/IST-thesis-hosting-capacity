@@ -25,7 +25,7 @@ trafo_dict = trafo_df.iloc[0].to_dict()
 s_sc_mva = np.sqrt(3) * source_dict['Voltage'] * source_dict['ISC3'] #MVA
 
 net = pp.create_empty_network()
-print(f'Net created {net}')
+# print(f'Net created {net}')
 
 bus_map = {}
 
@@ -35,8 +35,14 @@ lv_bus = pp.create_bus(net, name=trafo_dict[' bus2'], vn_kv=trafo_dict[' kV_sec'
 bus_map[trafo_dict[' bus1']] = hv_bus
 bus_map[trafo_dict[' bus2']] = lv_bus
 
-pp.create_ext_grid(net, bus=hv_bus, vm_pu=source_dict['pu'], s_sc_max_mva=s_sc_mva, rx_max=0.1)
-print(f'External grid created {net.ext_grid}')
+pp.create_ext_grid(
+    net, bus=hv_bus, vm_pu=source_dict['pu'],
+    s_sc_max_mva=s_sc_mva,
+    rx_max=0.1, rx_min=None,
+    max_p_mw=None, min_p_mw=None,
+    max_q_mvar=None, min_q_mvar=None, index=None,
+    r0x0_max=0.1, x0x_max=1.0
+)
 
 pp.create_transformer_from_parameters(
     net=net, hv_bus=hv_bus, lv_bus=lv_bus,
@@ -45,15 +51,27 @@ pp.create_transformer_from_parameters(
     vn_lv_kv=trafo_dict[' kV_sec'],
     vk_percent=trafo_dict[' %XHL'],
     vkr_percent=trafo_dict['% resistance'],
-    pfe_kw=0.0, i0_percent=0.0, shift_degree=0.0, 
+    pfe_kw=0.0, i0_percent=0.0, #shift_degree=0.0, 
     name=trafo_dict['Name']
 )
-print(f'Transformer created {net.trafo}')
+net.trafo["vector_group"] = 'Dyn'
+net.trafo["vk0_percent"] = net.trafo["vk_percent"]
+net.trafo["vkr0_percent"] = net.trafo["vkr_percent"]
+net.trafo["mag0_percent"] = 100
+net.trafo["mag0_rx"] = 0
+net.trafo["si0_hv_partial"] = 0.9
+# print(f'Transformer created {net.trafo}')
+
+pp.create_shunt(
+    net, bus=lv_bus,
+    q_mvar=-0.01, p_mw=0.0,
+    vn_kv=trafo_dict[' kV_sec'],
+    name="lv_shunt"
+)
 
 lines_df = pd.read_excel(os.path.join(data_dir, "Lines.xlsx"), skiprows=1)
 # lines_df['Length'] = lines_df['Length'] / 1000 # m to km
 # lines_df['Units'] = 'km'
-lines_df.head()
 
 lineCodes_df = pd.read_csv(os.path.join(data_dir, "LineCodes.csv"), skiprows=1, sep=';')
 
@@ -63,7 +81,7 @@ for id in all_bus_ids:
     if id not in bus_map.keys():
         bus = pp.create_bus(net, name=id, vn_kv=trafo_dict[' kV_sec'], type="b")
         bus_map[id] = bus
-print(f'{len(net.bus)} Buses created\n{net.bus.head()}')
+# print(f'{len(net.bus)} Buses created\n{net.bus.head()}')
 
 # Create Loads
 loads_df = pd.read_excel(os.path.join(data_dir, "Loads.xlsx"), skiprows=2)
@@ -93,7 +111,7 @@ for _, row in loads_df.iterrows():
             name=row['Name']
         )
         load_map[load] = row['Yearly']
-print(f'{len(net.asymmetric_load)} Asymmetric Loads created\n{net.asymmetric_load.head()}')
+# print(f'{len(net.asymmetric_load)} Asymmetric Loads created\n{net.asymmetric_load.head()}')
 
 StdLineCodes_df = pd.read_csv(os.path.join(data_dir, 'StandardLineCodes.csv'), sep=';')
 
@@ -115,28 +133,36 @@ y_pred_knn = knn.predict(x_test_scaled)
 lineCodes_df['max_i_ka'] = y_pred_knn
 
 full_line_df = lines_df.merge(lineCodes_df, left_on="LineCode", right_on="Name", how="left")
-full_line_df.head(10)
 
-net.line.drop(net.line.index, inplace=True)
 for _, line in full_line_df.iterrows():
     # print(line)
     pp.create_line_from_parameters(
         net, from_bus = bus_map[math.floor(line['Bus1'])],
         to_bus = bus_map[math.floor(line['Bus2'])],
         length_km = line['Length'],
-        r_ohm_per_km=line["R1"],
-        x_ohm_per_km=line["X1"],
-        c_nf_per_km=line["C1"],
+        r_ohm_per_km=line["R1"], x_ohm_per_km=line["X1"],
+        r0_ohm_per_km=line["R1"], x0_ohm_per_km=line["X1"],
+        c_nf_per_km=line["C1"], c0_nf_per_km=line["C1"],
         max_i_ka=line["max_i_ka"],
         name=line["Name_x"]
     )
-print(f'{len(net.line)} Lines created\n{net.line.head()}')
+# print(f'{len(net.line)} Lines created\n{net.line.head()}')
 
 
 print(f'Network info:\n{net}')
-print(pp.diagnostic(net))
+# print(pp.diagnostic(net))
 
-# pp.runpp(net, init='auto', max_iteration=10000, tolerance_mva=1e-6, calculate_voltage_angles=True)
-
+# pp.pf.runpp_3ph.runpp_3ph(
+#     net, init='auto',
+#     max_iteration=10000,
+#     tolerance_mva=1e-6,
+#     v_debug=True
+# )
+pp.runpp_3ph(
+    net, init='auto',
+    max_iteration=10000,
+    tolerance_mva=1e-6,
+    v_debug=True
+)
 # print(net.res_bus[["vm_pu"]].describe())        # Voltage profile
 # print(net.res_line[["loading_percent"]].max())  # Worst-case line loading
