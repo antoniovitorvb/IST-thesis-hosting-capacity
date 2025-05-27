@@ -4,51 +4,10 @@ import pandapower as pp
 import numpy as np
 
 from pandapower.file_io import from_json, to_json
+from create_basic_network import debug_result
 from itertools import combinations as comb
 
 data_dir = os.path.join(os.path.dirname(__file__),'Modified_116_LV_CSV')
-
-def export_results(file_path, net, init='auto', max_iteration=100, tolerance_mva=1e-8):
-    """
-    Export all result DataFrames (attributes of net starting with 'res_') to an Excel file.
-    
-    Parameters:
-    - file_path: str, path to the Excel file to save the results.
-    - net: object containing result DataFrames as attributes starting with 'res_'.
-    """
-
-    try:
-        pp.runpp_3ph(
-            net, init=init,
-            max_iteration=max_iteration,
-            tolerance_mva=tolerance_mva,
-            calc_voltage_angles=True,
-            v_debug=True
-        )
-    except Exception as e:
-        return e  # or raise e if you want the exception to propagate
-
-    with pd.ExcelWriter(file_path) as writer:
-        for attr in dir(net):
-            if attr.startswith("res_"):
-                df = getattr(net, attr)
-                if isinstance(df, pd.DataFrame) and not df.empty:
-                    sheet_name = attr[:31]  # Excel sheet names must be <= 31 characters
-                    df.to_excel(writer, sheet_name=sheet_name)
-    return True
-
-def debug_result(net, init='auto', max_iteration=100, tolerance_mva=1e-8):
-    try:
-        pp.runpp_3ph(
-            net, init=init,
-            max_iteration=max_iteration,
-            tolerance_mva=tolerance_mva,
-            calc_voltage_angles=True,
-            v_debug=True
-        )
-    except Exception as e:
-        return False
-    return True
 
 net = from_json(os.path.join(data_dir, "no_load_network.json"))
 sample_net = from_json(os.path.join(data_dir, "no_load_network.json"))

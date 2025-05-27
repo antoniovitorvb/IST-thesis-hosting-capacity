@@ -2,52 +2,12 @@ import os, math
 import pandas as pd
 import pandapower as pp
 import numpy as np
+import matplotlib.pyplot as plt
 
 from pandapower.file_io import from_json, to_json
+from create_basic_network import debug_result
 
 data_dir = os.path.join(os.path.dirname(__file__),'Modified_116_LV_CSV')
-
-def export_results(file_path, net, init='auto', max_iteration=100, tolerance_mva=1e-8):
-    """
-    Export all result DataFrames (attributes of net starting with 'res_') to an Excel file.
-    
-    Parameters:
-    - file_path: str, path to the Excel file to save the results.
-    - net: object containing result DataFrames as attributes starting with 'res_'.
-    """
-
-    try:
-        pp.runpp_3ph(
-            net, init=init,
-            max_iteration=max_iteration,
-            tolerance_mva=tolerance_mva,
-            calc_voltage_angles=True,
-            v_debug=True
-        )
-    except Exception as e:
-        return e  # or raise e if you want the exception to propagate
-
-    with pd.ExcelWriter(file_path) as writer:
-        for attr in dir(net):
-            if attr.startswith("res_"):
-                df = getattr(net, attr)
-                if isinstance(df, pd.DataFrame) and not df.empty:
-                    sheet_name = attr[:31]  # Excel sheet names must be <= 31 characters
-                    df.to_excel(writer, sheet_name=sheet_name)
-    return True
-
-def debug_result(net, init='auto', max_iteration=100, tolerance_mva=1e-8):
-    try:
-        pp.runpp_3ph(
-            net, init=init,
-            max_iteration=max_iteration,
-            tolerance_mva=tolerance_mva,
-            calc_voltage_angles=True,
-            v_debug=True
-        )
-    except Exception as e:
-        return False
-    return True
 
 net = from_json(os.path.join(data_dir, "no_load_network.json"))
 
@@ -97,13 +57,29 @@ while success:
         print(f"\nMax P = {net.asymmetric_load.p_a_mw[0]*1000:.2f} kW")
         success = False
 
-import matplotlib.pyplot as plt
 plt.figure(figsize=(10, 6))
+
+plt.fill_between(vm_pu['p_a_mw']*1000,
+                 y1=vm_pu['vm_a_pu'].max(), y2=0.95,
+                #  where=vm_pu['vm_a_pu'] < 0.95, 
+                 interpolate=True, color='green', alpha=0.1)
+plt.fill_between(vm_pu['p_a_mw']*1000,
+                 y1=0.95, y2=0.9,
+                #  where=vm_pu['vm_a_pu'] < 0.95, 
+                 interpolate=True, color='red', alpha=0.1)
+plt.fill_between(vm_pu['p_a_mw']*1000,
+                 y1=0.9, y2=vm_pu['vm_a_pu'].min(),
+                #  where=vm_pu['vm_a_pu'] < 0.95, 
+                 interpolate=True, color='darkred', alpha=0.2)
+plt.hlines(y=0.95, xmin=vm_pu['p_a_mw'].min()*1000,
+           xmax=vm_pu['p_a_mw'].max()*1000, color='red', linestyle='--', label='Limit 0.95 pu')
+plt.hlines(y=0.9, xmin=vm_pu['p_a_mw'].min()*1000,
+           xmax=vm_pu['p_a_mw'].max()*1000, color='darkred', linestyle='--', label='Limit 0.90 pu')
 
 plt.plot(vm_pu['p_a_mw']*1000, vm_pu['vm_a_pu'], label='Phase A', marker='o')
 # plt.title('Load (kW) X Voltage Magnitude (pu)')
 plt.xlabel('Load (kW)')
 plt.ylabel('Voltage Magnitude (pu)')
+plt.legend()
 
-print('Saving plot...')
 plt.savefig(os.path.join('images', 'farthest_load_X_voltage.png'))
