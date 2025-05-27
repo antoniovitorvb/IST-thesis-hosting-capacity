@@ -77,7 +77,7 @@ pp.create_asymmetric_load(
 )
 print(net)
 
-# to_json(net, os.path.join(data_dir, "farthest_load_network.json"))
+to_json(net, os.path.join(data_dir, "farthest_load_network.json"))
 
 inc = 5e-5
 success = True
