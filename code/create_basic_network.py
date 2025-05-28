@@ -5,7 +5,7 @@ import numpy as np
 
 from pandapower.file_io import from_json, to_json
 
-data_dir = 'Modified_116_LV_CSV'
+data_dir = os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV')
 
 def export_results(file_path, net, init='auto', max_iteration=100, tolerance_mva=1e-8):
     """
@@ -119,3 +119,6 @@ pp.create_shunt(
     vn_kv=trafo_dict[' kV_sec'],
     name="trafo_lv_shunt"
 )
+
+os.mkdir('json_networks') if not os.path.exists('json_networks') else None
+to_json(net, os.path.join('json_networks', "no_load_network.json"))

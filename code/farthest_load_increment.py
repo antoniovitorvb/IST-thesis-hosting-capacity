@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from pandapower.file_io import from_json, to_json
 from create_basic_network import debug_result
 
-data_dir = os.path.join(os.path.dirname(__file__),'Modified_116_LV_CSV')
+data_dir = os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV')
 
 net = from_json(os.path.join(data_dir, "no_load_network.json"))
 
@@ -37,7 +37,7 @@ pp.create_asymmetric_load(
 )
 print(net)
 
-to_json(net, os.path.join(data_dir, "farthest_load_network.json"))
+to_json(net, os.path.join('json_networks', "farthest_load_network.json"))
 
 inc = 5e-5
 success = True
@@ -76,8 +76,8 @@ plt.hlines(y=0.95, xmin=vm_pu['p_a_mw'].min()*1000,
 plt.hlines(y=0.9, xmin=vm_pu['p_a_mw'].min()*1000,
            xmax=vm_pu['p_a_mw'].max()*1000, color='darkred', linestyle='--', label='Limit 0.90 pu')
 
-plt.plot(vm_pu['p_a_mw']*1000, vm_pu['vm_a_pu'], label='Phase A', marker='o')
-# plt.title('Load (kW) X Voltage Magnitude (pu)')
+plt.plot(vm_pu['p_a_mw']*1000, vm_pu['vm_a_pu'], label='Va (pu)', marker='o')
+# plt.title('Voltage Deviation with Increasing Load from Farthest Bus')
 plt.xlabel('Load (kW)')
 plt.ylabel('Voltage Magnitude (pu)')
 plt.legend()

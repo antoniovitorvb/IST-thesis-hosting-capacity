@@ -7,7 +7,7 @@ from pandapower.file_io import from_json, to_json
 from create_basic_network import debug_result
 from itertools import combinations as comb
 
-data_dir = os.path.join(os.path.dirname(__file__),'Modified_116_LV_CSV')
+data_dir = os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV')
 
 net = from_json(os.path.join(data_dir, "no_load_network.json"))
 sample_net = from_json(os.path.join(data_dir, "no_load_network.json"))
@@ -77,4 +77,4 @@ for b in batch:
             break
 
 print(net)
-to_json(net, os.path.join(data_dir, f"{max_batch}_loads_network.json"))
+to_json(net, os.path.join('json_networks', f"{max_batch}_loads_network.json"))
