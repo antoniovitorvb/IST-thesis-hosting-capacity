@@ -4,6 +4,7 @@ import pandapower as pp
 import numpy as np
 
 from pandapower.file_io import from_json, to_json
+from max_i_pred import max_i_pred
 
 data_dir = os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV')
 
@@ -54,6 +55,7 @@ def hc_violation(net, mod='det'):
     elif mod == 'sto': vm_max, vm_min = [1.10, 0.9]
     else: raise ValueError("Invalid mode. Use 'det' or 'stoch'.")
     # pp.runpp(net)
+    
     return any([
         net.res_trafo_3ph.loading_percent.max() > 100, # 110
         net.res_line_3ph.loading_a_percent.max() > 100, # 110
@@ -97,6 +99,7 @@ pp.create_ext_grid(
     # max_q_mvar=None, min_q_mvar=None, index=None,
     r0x0_max=0.1, x0x_max=1.0
 )
+print(f"\nCreated External Grid!\n")
 
 pp.create_transformer_from_parameters(
     net=net, hv_bus=hv_bus, lv_bus=lv_bus,
@@ -112,6 +115,7 @@ pp.create_transformer_from_parameters(
     pfe_kw=0.0, i0_percent=0.0, shift_degree=30, 
     name=trafo_dict['Name'], vector_group='Dyn',
 )
+print(f"\nCreated Transformer!\n")
 
 pp.create_shunt(
     net, bus=lv_bus,
@@ -119,6 +123,44 @@ pp.create_shunt(
     vn_kv=trafo_dict[' kV_sec'],
     name="trafo_lv_shunt"
 )
+print(f"\nCreated Shunt!\n")
+
+lines_df = pd.read_excel(os.path.join(data_dir, "Lines.xlsx"), skiprows=1)
+lines_df['Length'] = lines_df['Length'] / 1000 # m to km
+lines_df['Units'] = 'km'
+
+all_bus_ids = np.unique(lines_df[['Bus1', 'Bus2']].values.ravel('K'))
+for id in all_bus_ids:
+    id = math.floor(id)
+    if id not in bus_map.keys():
+        bus = pp.create_bus(net, name=id, vn_kv=trafo_dict[' kV_sec'], type="b")
+        bus_map[id] = bus
+print(f"\nCreated {len(net.bus)} Buses!\n")
+
+lineCodes_df = pd.read_csv(os.path.join(data_dir, "LineCodes.csv"), skiprows=1, sep=';')
+
+lineCodes_df['max_i_ka'] = max_i_pred(lineCodes_df)
+
+full_line_df = lines_df.merge(lineCodes_df, left_on="LineCode", right_on="Name", how="left")
+
+for _, line in full_line_df.iterrows():
+    # print(line)
+
+    if (line['C0'] == 0): line['C0'] = 200 # nF/km
+    if (line['C1'] == 0): line['C1'] = 200 # nF/km
+    
+    pp.create_line_from_parameters(
+        net, from_bus = bus_map[math.floor(line['Bus1'])],
+        to_bus = bus_map[math.floor(line['Bus2'])],
+        length_km = line['Length'],
+        r_ohm_per_km=line["R1"], r0_ohm_per_km=line["R1"] * 2,
+        x_ohm_per_km=line["X1"], x0_ohm_per_km=line["X0"],
+        c_nf_per_km=line["C1"], c0_nf_per_km=line["C0"],
+        max_i_ka=line["max_i_ka"],
+        name=line["Name_x"], type='cs',
+    )
+print(f"\nCreated {len(net.line)} Lines!\n")
 
 os.mkdir('json_networks') if not os.path.exists('json_networks') else None
+print(net)
 to_json(net, os.path.join('json_networks', "no_load_network.json"))

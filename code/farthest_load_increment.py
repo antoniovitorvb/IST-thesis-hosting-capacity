@@ -8,8 +8,9 @@ from pandapower.file_io import from_json, to_json
 from create_basic_network import debug_result
 
 data_dir = os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV')
+json_dir = os.path.join(os.path.dirname(__file__), 'json_networks')
 
-net = from_json(os.path.join(data_dir, "no_load_network.json"))
+net = from_json(os.path.join(json_dir, "no_load_network.json"))
 
 if debug_result(net, init='auto', max_iteration=100, tolerance_mva=1e-8): print("Debugging successful")
 
@@ -35,9 +36,10 @@ pp.create_asymmetric_load(
     p_c_mw=pc / 1000, q_c_mvar=qc / 1000,
     name=farthest_load['Name']
 )
-print(net)
+print(f"\nCreated one {farthest_load['kW']} kW load at bus {math.floor(farthest_load['Bus'])} at phase {farthest_load['phases']}:\n")
 
-to_json(net, os.path.join('json_networks', "farthest_load_network.json"))
+print("\nSaving network with farthest load to JSON...\n")
+to_json(net, os.path.join(json_dir, "farthest_load_network.json"))
 
 inc = 5e-5
 success = True

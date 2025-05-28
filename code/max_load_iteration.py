@@ -8,9 +8,10 @@ from create_basic_network import debug_result
 from itertools import combinations as comb
 
 data_dir = os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV')
+json_dir = os.path.join(os.path.dirname(__file__), 'json_networks')
 
-net = from_json(os.path.join(data_dir, "no_load_network.json"))
-sample_net = from_json(os.path.join(data_dir, "no_load_network.json"))
+net = from_json(os.path.join(json_dir, "no_load_network.json"))
+sample_net = from_json(os.path.join(json_dir, "no_load_network.json"))
 loads_df = pd.read_excel(os.path.join(data_dir, "Loads.xlsx"), skiprows=2)
 
 if debug_result(net, init='auto', max_iteration=100, tolerance_mva=1e-8): print("Debugging successful")
