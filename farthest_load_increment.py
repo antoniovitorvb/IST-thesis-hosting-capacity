@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from pandapower.file_io import from_json, to_json
-from create_basic_network import debug_result
+from create_basic_network import debug_result, hc_violation
 
 data_dir = os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV')
 json_dir = os.path.join(os.path.dirname(__file__), 'json_networks')

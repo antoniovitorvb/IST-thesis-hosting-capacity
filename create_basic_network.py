@@ -4,6 +4,7 @@ import pandapower as pp
 import numpy as np
 
 from pandapower.file_io import from_json, to_json
+import pandapower.control as ppc
 from max_i_pred import max_i_pred
 
 data_dir = os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV')
@@ -26,7 +27,8 @@ def export_results(file_path, net, init='auto', max_iteration=100, tolerance_mva
             v_debug=True
         )
     except Exception as e:
-        return e  # or raise e if you want the exception to propagate
+        print(e)
+        return False
 
     with pd.ExcelWriter(file_path) as writer:
         for attr in dir(net):
@@ -47,27 +49,43 @@ def debug_result(net, init='auto', max_iteration=100, tolerance_mva=1e-8):
             v_debug=True
         )
     except Exception as e:
+        # print(e)
         return False
-    return not net.res_bus_3ph.loc[:, ['vm_a_pu', 'vm_b_pu', 'vm_c_pu']].isnull().any().any()
+    return not net.res_bus_3ph.loc[:, ['vm_a_pu', 'vm_b_pu', 'vm_c_pu', 'p_a_mw', 'p_b_mw', 'p_c_mw']].isnull().any().any()
 
-def hc_violation(net, mod='det'):
+def hc_violation(net, mod='det', init='auto', max_iteration=100, tolerance_mva=1e-8):
     if mod == 'det': vm_max, vm_min = [1.05, 0.95]
     elif mod == 'sto': vm_max, vm_min = [1.10, 0.9]
     else: raise ValueError("Invalid mode. Use 'det' or 'stoch'.")
-    # pp.runpp(net)
     
-    return any([
-        net.res_trafo_3ph.loading_percent.max() > 100, # 110
-        net.res_line_3ph.loading_a_percent.max() > 100, # 110
-        net.res_line_3ph.loading_b_percent.max() > 100,
-        net.res_line_3ph.loading_c_percent.max() > 100,
-        net.res_bus_3ph.vm_a_pu.max() >= vm_max,
-        net.res_bus_3ph.vm_b_pu.max() >= vm_max,
-        net.res_bus_3ph.vm_c_pu.max() >= vm_max,
-        net.res_bus_3ph.vm_a_pu.min() <= vm_min,
-        net.res_bus_3ph.vm_b_pu.min() <= vm_min,
-        net.res_bus_3ph.vm_c_pu.min() <= vm_min
-    ])
+    try:
+        pp.runpp_3ph(
+            net, init=init,
+            max_iteration=max_iteration,
+            tolerance_mva=tolerance_mva,
+            calc_voltage_angles=True,
+            v_debug=True
+        )
+    except Exception as e:
+        print(e)
+        return True
+    
+    if net.res_bus_3ph.loc[:, ['vm_a_pu', 'vm_b_pu', 'vm_c_pu', 'p_a_mw', 'p_b_mw', 'p_c_mw']].isnull().any().any():
+        is_violated = True
+    else:
+        is_violated = any([
+            net.res_trafo_3ph.loading_percent.max() > 100, # 110
+            net.res_line_3ph.loading_a_percent.max() > 100, # 110
+            net.res_line_3ph.loading_b_percent.max() > 100,
+            net.res_line_3ph.loading_c_percent.max() > 100,
+            net.res_bus_3ph.vm_a_pu.max() >= vm_max,
+            net.res_bus_3ph.vm_b_pu.max() >= vm_max,
+            net.res_bus_3ph.vm_c_pu.max() >= vm_max,
+            net.res_bus_3ph.vm_a_pu.min() <= vm_min,
+            net.res_bus_3ph.vm_b_pu.min() <= vm_min,
+            net.res_bus_3ph.vm_c_pu.min() <= vm_min
+        ])
+    return is_violated
 
 # Source data
 source_df = pd.read_csv(os.path.join(data_dir,'Source.csv'), skiprows=1, sep='=')
@@ -99,7 +117,7 @@ pp.create_ext_grid(
     # max_q_mvar=None, min_q_mvar=None, index=None,
     r0x0_max=0.1, x0x_max=1.0
 )
-print(f"\nCreated External Grid!\n")
+print(f"\nCreated External Grid!")
 
 pp.create_transformer_from_parameters(
     net=net, hv_bus=hv_bus, lv_bus=lv_bus,
@@ -111,12 +129,25 @@ pp.create_transformer_from_parameters(
     vk0_percent=trafo_dict[' %XHL'],
     vkr0_percent=trafo_dict['% resistance'],
     mag0_percent=100, mag0_rx=0,
+    tap_po=0, tap_neutral=0,
+    tap_min=-2, tap_max=2,
+    tap_step_percent=2.5, tap_side='lv',
     si0_hv_partial=0.9,
     pfe_kw=0.0, i0_percent=0.0, shift_degree=30, 
     tap_phase_shifter=False,
     name=trafo_dict['Name'], vector_group='Dyn',
 )
-print(f"\nCreated Transformer!\n")
+print(f"Created Transformer!")
+
+ppc.DiscreteTapControl(
+    net, element='trafo',
+    element_index=int(net.trafo.index[net.trafo.name==trafo_dict['Name']][0]),
+    vm_lower_pu=0.90, vm_upper_pu=1.10,
+    vm_set_pu=1.0, side="lv",
+    tol=0.01, in_service=True,
+    trafotype="2W"
+)
+print(f"Created Transformer Controller!")
 
 pp.create_shunt(
     net, bus=lv_bus,
@@ -124,7 +155,7 @@ pp.create_shunt(
     vn_kv=trafo_dict[' kV_sec'],
     name="trafo_lv_shunt"
 )
-print(f"\nCreated Shunt!\n")
+print(f"Created Shunt!")
 
 lines_df = pd.read_excel(os.path.join(data_dir, "Lines.xlsx"), skiprows=1)
 lines_df['Length'] = lines_df['Length'] / 1000 # m to km
@@ -136,7 +167,7 @@ for id in all_bus_ids:
     if id not in bus_map.keys():
         bus = pp.create_bus(net, name=id, vn_kv=trafo_dict[' kV_sec'], type="b")
         bus_map[id] = bus
-print(f"\nCreated {len(net.bus)} Buses!\n")
+print(f"Created {len(net.bus)} Buses!")
 
 lineCodes_df = pd.read_csv(os.path.join(data_dir, "LineCodes.csv"), skiprows=1, sep=';')
 
@@ -147,8 +178,8 @@ full_line_df = lines_df.merge(lineCodes_df, left_on="LineCode", right_on="Name",
 for _, line in full_line_df.iterrows():
     # print(line)
 
-    if (line['C0'] == 0): line['C0'] = 200 # nF/km
-    if (line['C1'] == 0): line['C1'] = 200 # nF/km
+    # if (line['C0'] == 0): line['C0'] = 200 # nF/km
+    # if (line['C1'] == 0): line['C1'] = 200 # nF/km
     
     pp.create_line_from_parameters(
         net, from_bus = bus_map[math.floor(line['Bus1'])],
@@ -160,7 +191,7 @@ for _, line in full_line_df.iterrows():
         max_i_ka=line["max_i_ka"],
         name=line["Name_x"], type='cs',
     )
-print(f"\nCreated {len(net.line)} Lines!\n")
+print(f"Created {len(net.line)} Lines!")
 
 if debug_result(net, init='auto'): print("\nDebugging successful!")
 

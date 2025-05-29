@@ -53,9 +53,10 @@ for b in batch:
                 )
 
         if debug_result(sample_net, init='auto'):
-            print(f"{b} Batch power Flow Sucessful!\n")
+            print(f"{b} Batch power Flow Sucessful after {i} iterations!\n")
             max_batch = b
             break
+        if i == N-1: print(f"{b} Batch power Flow failed!\n")
 
 net.asymmetric_load.drop(net.asymmetric_load.index, inplace=True)
 for _, row in sample_loads.iterrows():
