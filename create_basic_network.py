@@ -9,7 +9,7 @@ from max_i_pred import max_i_pred
 
 data_dir = os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV')
 
-def export_results(file_path, net, init='auto', max_iteration=100, tolerance_mva=1e-8):
+def export_results(file_path, net, init='auto', max_iteration=100, tolerance_mva=1e-8, run_control=True):
     """
     Export all result DataFrames (attributes of net starting with 'res_') to an Excel file.
     
@@ -24,6 +24,7 @@ def export_results(file_path, net, init='auto', max_iteration=100, tolerance_mva
             max_iteration=max_iteration,
             tolerance_mva=tolerance_mva,
             calc_voltage_angles=True,
+            run_control=run_control,
             v_debug=True
         )
     except Exception as e:
@@ -39,13 +40,14 @@ def export_results(file_path, net, init='auto', max_iteration=100, tolerance_mva
                     df.to_excel(writer, sheet_name=sheet_name)
     return True
 
-def debug_result(net, init='auto', max_iteration=100, tolerance_mva=1e-8):
+def debug_result(net, init='auto', max_iteration=100, tolerance_mva=1e-8, run_control=True):
     try:
         pp.runpp_3ph(
             net, init=init,
             max_iteration=max_iteration,
             tolerance_mva=tolerance_mva,
             calc_voltage_angles=True,
+            run_control=run_control,
             v_debug=True
         )
     except Exception as e:
@@ -53,7 +55,7 @@ def debug_result(net, init='auto', max_iteration=100, tolerance_mva=1e-8):
         return False
     return not net.res_bus_3ph.loc[:, ['vm_a_pu', 'vm_b_pu', 'vm_c_pu', 'p_a_mw', 'p_b_mw', 'p_c_mw']].isnull().any().any()
 
-def hc_violation(net, mod='det', init='auto', max_iteration=100, tolerance_mva=1e-8):
+def hc_violation(net, mod='det', init='auto', max_iteration=100, tolerance_mva=1e-8, run_control=True):
     if mod == 'det': vm_max, vm_min = [1.05, 0.95]
     elif mod == 'sto': vm_max, vm_min = [1.10, 0.9]
     else: raise ValueError("Invalid mode. Use 'det' or 'stoch'.")
@@ -64,6 +66,7 @@ def hc_violation(net, mod='det', init='auto', max_iteration=100, tolerance_mva=1
             max_iteration=max_iteration,
             tolerance_mva=tolerance_mva,
             calc_voltage_angles=True,
+            run_control=run_control,
             v_debug=True
         )
     except Exception as e:

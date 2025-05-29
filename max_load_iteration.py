@@ -15,15 +15,15 @@ loads_df = pd.read_excel(os.path.join(data_dir, "Loads.xlsx"), skiprows=2)
 
 if debug_result(net, init='auto', max_iteration=100, tolerance_mva=1e-8): print("Debugging successful")
 
-N = 1000
-batch = range(48, len(loads_df)+1)
+# batch = range(53, len(loads_df)+1)
+batch = range(49, 53)
 max_batch = 0
 
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
 for b in batch:
-    N = min(math.comb(len(loads_df), b), 1000)
+    N = min(math.comb(len(loads_df), b), 500)
     print(f"Processing batch {b}")
 
     for i in range(N):
@@ -58,28 +58,28 @@ for b in batch:
             break
         if i == N-1: print(f"{b} Batch power Flow failed!\n")
 
-net.asymmetric_load.drop(net.asymmetric_load.index, inplace=True)
-for _, row in sample_loads.iterrows():
-    # print(_, '->', row)
-    bus_id = math.floor(row['Bus'])
-    pa = qa = pb = qb = pc = qc = 0
-    if row['phases'] in {'A', 'B', 'C'}:
-        if row['phases']=='A':
-            pa = row['kW']
-            qa = row['kW'] * np.tan(np.arccos(row['PF']))
-        elif row['phases']=='B':
-            pb = row['kW']
-            qb = row['kW'] * np.tan(np.arccos(row['PF']))
-        else: # row['phases']=='C'
-            pc = row['kW']
-            qc = row['kW'] * np.tan(np.arccos(row['PF']))
-        load = pp.create_asymmetric_load(
-            net, bus=net.bus.index[net.bus.name==bus_id][0],
-            p_a_mw=pa / 1000, q_a_mvar=qa / 1000,
-            p_b_mw=pb / 1000, q_b_mvar=qb / 1000,
-            p_c_mw=pc / 1000, q_c_mvar=qc / 1000,
-            name=row['Name']
-        )
+if max_batch > 0:
+    for _, row in sample_loads.iterrows():
+        # print(_, '->', row)
+        bus_id = math.floor(row['Bus'])
+        pa = qa = pb = qb = pc = qc = 0
+        if row['phases'] in {'A', 'B', 'C'}:
+            if row['phases']=='A':
+                pa = row['kW']
+                qa = row['kW'] * np.tan(np.arccos(row['PF']))
+            elif row['phases']=='B':
+                pb = row['kW']
+                qb = row['kW'] * np.tan(np.arccos(row['PF']))
+            else: # row['phases']=='C'
+                pc = row['kW']
+                qc = row['kW'] * np.tan(np.arccos(row['PF']))
+            load = pp.create_asymmetric_load(
+                net, bus=net.bus.index[net.bus.name==bus_id][0],
+                p_a_mw=pa / 1000, q_a_mvar=qa / 1000,
+                p_b_mw=pb / 1000, q_b_mvar=qb / 1000,
+                p_c_mw=pc / 1000, q_c_mvar=qc / 1000,
+                name=row['Name']
+            )
 
 print(net)
 to_json(net, os.path.join('json_networks', f"{max_batch}_loads_network.json"))

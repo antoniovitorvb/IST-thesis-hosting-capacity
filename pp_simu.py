@@ -32,7 +32,8 @@ def add_pv_with_voltvar(net, bus, p_kw, phase='A', kvar_margin=0.1):
     else:
         raise ValueError("Phase must be 'A', 'B', or 'C'.")
 
-    load_idx = pp.create_asymmetric_load(net, bus=bus, name="PV_inverter", **load_args)
+    load_idx = pp.create_asymmetric_load(
+        net, bus=bus, name="PV_inverter", **load_args)
 
     # Define Volt-VAR characteristic (simplified IEEE 1547-2018)
     voltage_points = [0.92, 0.97, 1.03, 1.08]
