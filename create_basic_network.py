@@ -154,7 +154,7 @@ for _, line in full_line_df.iterrows():
         net, from_bus = bus_map[math.floor(line['Bus1'])],
         to_bus = bus_map[math.floor(line['Bus2'])],
         length_km = line['Length'],
-        r_ohm_per_km=line["R1"], r0_ohm_per_km=line["R1"] * 2,
+        r_ohm_per_km=line["R1"], r0_ohm_per_km=line["R0"], # line["R1"] * 2
         x_ohm_per_km=line["X1"], x0_ohm_per_km=line["X0"],
         c_nf_per_km=line["C1"], c0_nf_per_km=line["C0"],
         max_i_ka=line["max_i_ka"],
