@@ -113,6 +113,7 @@ pp.create_transformer_from_parameters(
     mag0_percent=100, mag0_rx=0,
     si0_hv_partial=0.9,
     pfe_kw=0.0, i0_percent=0.0, shift_degree=30, 
+    tap_phase_shifter=False,
     name=trafo_dict['Name'], vector_group='Dyn',
 )
 print(f"\nCreated Transformer!\n")
