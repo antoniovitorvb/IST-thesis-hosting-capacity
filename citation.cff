@@ -1,0 +1,12 @@
+cff-version: 1.0.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Villas Boas
+    given-names: Antonio Vitor
+    orcid: https://orcid.org/0009-0003-3398-6830
+title: "IST Msc. Thesis - Hosting Capacity Spatial Mapping Models to Support Decision Making"
+version: 1.0.0
+identifiers:
+  - type: doi
+    value: None
+date-released: 2025-05-29
