@@ -57,15 +57,21 @@
     "sgen": {
       "_module": "pandas.core.frame",
       "_class": "DataFrame",
-      "_object": "{\"columns\":[\"name\",\"bus\",\"p_mw\",\"q_mvar\",\"sn_mva\",\"scaling\",\"in_service\",\"type\",\"current_source\"],\"index\":[],\"data\":[]}",
+      "_object": "{\"columns\":[\"name\",\"bus\",\"p_mw\",\"q_mvar\",\"min_q_mvar\",\"max_q_mvar\",\"sn_mva\",\"scaling\",\"controllable\",\"id_q_capability_curve_characteristic\",\"reactive_capability_curve\",\"curve_style\",\"in_service\",\"type\",\"current_source\"],\"index\":[],\"data\":[]}",
       "orient": "split",
       "dtype": {
         "name": "object",
         "bus": "int64",
         "p_mw": "float64",
         "q_mvar": "float64",
+        "min_q_mvar": "float64",
+        "max_q_mvar": "float64",
         "sn_mva": "float64",
         "scaling": "float64",
+        "controllable": "bool",
+        "id_q_capability_curve_characteristic": "uint32",
+        "reactive_capability_curve": "bool",
+        "curve_style": "object",
         "in_service": "bool",
         "type": "object",
         "current_source": "bool"
@@ -165,7 +171,7 @@
     "gen": {
       "_module": "pandas.core.frame",
       "_class": "DataFrame",
-      "_object": "{\"columns\":[\"name\",\"bus\",\"p_mw\",\"vm_pu\",\"sn_mva\",\"min_q_mvar\",\"max_q_mvar\",\"scaling\",\"slack\",\"in_service\",\"slack_weight\",\"type\"],\"index\":[],\"data\":[]}",
+      "_object": "{\"columns\":[\"name\",\"bus\",\"p_mw\",\"vm_pu\",\"sn_mva\",\"min_q_mvar\",\"max_q_mvar\",\"scaling\",\"slack\",\"controllable\",\"id_q_capability_curve_characteristic\",\"reactive_capability_curve\",\"curve_style\",\"in_service\",\"slack_weight\",\"type\"],\"index\":[],\"data\":[]}",
       "orient": "split",
       "dtype": {
         "name": "object",
@@ -177,6 +183,10 @@
         "max_q_mvar": "float64",
         "scaling": "float64",
         "slack": "bool",
+        "controllable": "bool",
+        "id_q_capability_curve_characteristic": "uint32",
+        "reactive_capability_curve": "bool",
+        "curve_style": "object",
         "in_service": "bool",
         "slack_weight": "float64",
         "type": "object"
@@ -287,7 +297,7 @@
     "ext_grid": {
       "_module": "pandas.core.frame",
       "_class": "DataFrame",
-      "_object": "{\"columns\":[\"name\",\"bus\",\"vm_pu\",\"va_degree\",\"slack_weight\",\"in_service\",\"x0x_max\",\"r0x0_max\",\"s_sc_max_mva\",\"rx_max\"],\"index\":[0],\"data\":[[null,0,1.05,0.0,1.0,true,1.0,0.1,57.157676649772952,0.1]]}",
+      "_object": "{\"columns\":[\"name\",\"bus\",\"vm_pu\",\"va_degree\",\"slack_weight\",\"in_service\",\"controllable\",\"x0x_max\",\"r0x0_max\",\"s_sc_max_mva\",\"rx_max\"],\"index\":[0],\"data\":[[null,0,1.05,0.0,1.0,true,false,1.0,0.1,57.157676649772952,0.1]]}",
       "orient": "split",
       "dtype": {
         "name": "object",
@@ -296,6 +306,7 @@
         "va_degree": "float64",
         "slack_weight": "float64",
         "in_service": "bool",
+        "controllable": "bool",
         "x0x_max": "float64",
         "r0x0_max": "float64",
         "s_sc_max_mva": "float64",
@@ -625,7 +636,7 @@
       "is_multiindex": false,
       "is_multicolumn": false
     },
-    "version": "3.0.0",
+    "version": "3.1.1",
     "format_version": "3.0.0",
     "converged": true,
     "OPF_converged": false,

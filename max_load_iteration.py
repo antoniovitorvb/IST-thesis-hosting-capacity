@@ -16,8 +16,7 @@ loads_df = pd.read_excel(os.path.join(data_dir, "Loads.xlsx"), skiprows=2)
 if debug_result(net, init='auto', max_iteration=100, tolerance_mva=1e-8): print("Debugging successful")
 
 N = 1000
-# batch = range(45, len(loads_df)+1)
-batch = range(44, 46)
+batch = range(48, len(loads_df)+1)
 max_batch = 0
 
 import warnings
