@@ -48,7 +48,7 @@ def debug_result(net, init='auto', max_iteration=100, tolerance_mva=1e-8):
         )
     except Exception as e:
         return False
-    return True
+    return not net.res_bus_3ph.loc[:, ['vm_a_pu', 'vm_b_pu', 'vm_c_pu']].isnull().any().any()
 
 def hc_violation(net, mod='det'):
     if mod == 'det': vm_max, vm_min = [1.05, 0.95]
@@ -160,6 +160,8 @@ for _, line in full_line_df.iterrows():
         name=line["Name_x"], type='cs',
     )
 print(f"\nCreated {len(net.line)} Lines!\n")
+
+if debug_result(net, init='auto'): print("\nDebugging successful!")
 
 os.mkdir('json_networks') if not os.path.exists('json_networks') else None
 print(net)

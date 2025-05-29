@@ -12,7 +12,7 @@ json_dir = os.path.join(os.path.dirname(__file__), 'json_networks')
 
 net = from_json(os.path.join(json_dir, "no_load_network.json"))
 
-if debug_result(net, init='auto', max_iteration=100, tolerance_mva=1e-8): print("Debugging successful")
+if debug_result(net, init='auto'): print("Debugging successful")
 
 loads_df = pd.read_excel(os.path.join(data_dir, "Loads.xlsx"), skiprows=2)
 
