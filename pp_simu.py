@@ -116,8 +116,9 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=True):
 
                     pp.runpp_3ph(net_copy, max_iteration=100, tolerance_mva=1e-6)
 
-                    if cbn.hc_violation(net_copy, mod='det'):
-                        print(f'HC violation at bus {bus_idx}, phase {p.upper()} with {total_kw} kW')
+                    is_violated, violation = cbn.hc_violation(net_copy, mod='det')
+                    if is_violated:
+                        print(f'{violation} violation at bus {bus_idx}, phase {p.upper()} with {total_kw} kW')
                         # break
                     else:
                         hc_kw = total_kw

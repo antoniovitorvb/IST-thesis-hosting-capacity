@@ -70,26 +70,23 @@ def hc_violation(net, mod='det', init='auto', max_iteration=100, tolerance_mva=1
             run_control=run_control,
             v_debug=True
         )
-    except Exception as e:
-        print(e)
-        return True
+    except Exception:
+        raise Exception
     
     if net.res_bus_3ph.loc[:, ['vm_a_pu', 'vm_b_pu', 'vm_c_pu', 'p_a_mw', 'p_b_mw', 'p_c_mw']].isnull().any().any():
-        is_violated = True
+        return (True, "NaN values on res_bus_3ph")
     else:
-        is_violated = any([
-            net.res_trafo_3ph.loading_percent.max() > 100, # 110
-            net.res_line_3ph.loading_a_percent.max() > 100, # 110
-            net.res_line_3ph.loading_b_percent.max() > 100,
-            net.res_line_3ph.loading_c_percent.max() > 100,
-            net.res_bus_3ph.vm_a_pu.max() >= vm_max,
-            net.res_bus_3ph.vm_b_pu.max() >= vm_max,
-            net.res_bus_3ph.vm_c_pu.max() >= vm_max,
-            net.res_bus_3ph.vm_a_pu.min() <= vm_min,
-            net.res_bus_3ph.vm_b_pu.min() <= vm_min,
-            net.res_bus_3ph.vm_c_pu.min() <= vm_min
-        ])
-    return is_violated
+        if net.res_trafo_3ph.loading_percent.max() > 100: return (True, "Transformer Overloading")
+        elif any([net.res_line_3ph.loading_a_percent.max() > 100,
+                  net.res_line_3ph.loading_b_percent.max() > 100,
+                  net.res_line_3ph.loading_c_percent.max() > 100]): return (True, "Line Overloading")
+        elif any([net.res_bus_3ph.vm_a_pu.max() >= vm_max,
+                  net.res_bus_3ph.vm_b_pu.max() >= vm_max,
+                  net.res_bus_3ph.vm_c_pu.max() >= vm_max]): return (True, "Overvoltage")
+        elif any([net.res_bus_3ph.vm_a_pu.min() <= vm_min,
+                  net.res_bus_3ph.vm_b_pu.min() <= vm_min,
+                  net.res_bus_3ph.vm_c_pu.min() <= vm_min]): return (True, "Undervoltage")
+        else: return (False, None)
 
 def create_data_source(data_dir, **kwargs):
     """
