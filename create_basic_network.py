@@ -90,6 +90,50 @@ def hc_violation(net, mod='det', init='auto', max_iteration=100, tolerance_mva=1
         ])
     return is_violated
 
+def create_data_source(data_dir, **kwargs):
+    """
+    Loads and processes profile data based on loads and shapes from Excel/CSV files.
+
+    Parameters:
+    - network: Placeholder for a network object (not used in current function).
+    - kwargs: Dictionary of file directories. Must include:
+        - 'data_dir': Directory containing 'Loads.xlsx' and 'LoadShapes.csv'
+        - 'profile_dir': Directory containing the individual profile CSV files
+
+    Returns:
+    - profile_df (pd.DataFrame): DataFrame with timeseries profile data
+    """
+
+    profile_dir = kwargs.get('profile_dir')
+
+    if not data_dir or not profile_dir:
+        raise ValueError("Missing data directory path(s)")
+
+    # Read Excel and CSV files
+    loads_df = pd.read_excel(os.path.join(data_dir, "Loads.xlsx"), skiprows=2)
+    loadShape_df = pd.read_csv(os.path.join(data_dir, 'LoadShapes.csv'), skiprows=1, sep=';')
+
+    # Merge the dataframes
+    merged_load = loads_df.merge(loadShape_df, left_on="Yearly", right_on="Name", how="left")
+
+    # Load individual time series profiles
+    ts_data = {}
+    for _, row in merged_load.iterrows():
+        # print(row["File"])
+        file_path = os.path.join(profile_dir, row["File"])
+        try:
+            profile = pd.read_csv(file_path)
+            ts_data[row["Name_x"]] = profile["mult"].values * 1e-3 # or .to_numpy()
+        except:
+            profile = pd.read_csv(file_path, sep=';')
+            ts_data[row["Name_x"]] = profile["mult"].values * 1e-3 # or .to_numpy()
+
+    # Create DataFrame and save it
+    profile_df = pd.DataFrame(ts_data)
+    profile_df.to_csv(os.path.join(data_dir, 'profile_datasource.csv'), index=False)
+
+    return profile_df
+
 # Source data
 source_df = pd.read_csv(os.path.join(data_dir,'Source.csv'), skiprows=1, sep='=')
 source_dict = {i:float(row.iloc[0].split()[0]) for i, row in source_df.iterrows()}
