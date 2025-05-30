@@ -65,7 +65,7 @@ def addEV_det(net, bus, phase, kw=7.0, ctrl=False):
     ev_idx = pp.create_asymmetric_load(
         net, bus=bus,
         **p_dict, **q_dict,
-        name=f"EV{ev_count}_{bus}{phase.upper}"
+        name=f"EV{ev_count}_{bus}{phase.upper()}"
     )
 
     # Optional: constant control (if needed for advanced simulations)
@@ -79,7 +79,7 @@ def addEV_det(net, bus, phase, kw=7.0, ctrl=False):
 
     return ev_idx
 
-def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=True):
+def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
     """
     Increases DERs until a violation occurs at any bus.
 
@@ -94,11 +94,17 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=True):
     Returns:
     - total_kw: total DER injection before first violation
     """
+    elements = []
+    if pv: elements.append('PV')
+    if ev: elements.append('EV')
+
     phases = ['A', 'B', 'C']
-    hc_results =pd.DataFrame(index=net.bus.index)
+    hc_results = pd.DataFrame(index=net.bus.index)
     hc_results['bus_name'] = net.bus['name'].values
-    for phase in phases:
-        hc_results[phase.upper()] = 0.0
+
+    for element in elements:
+        for phase in phases:
+            hc_results[f"{element}_{phase}"] = 0.0
 
     for bus_idx in net.bus.index[2:]:
         for p in phases:
@@ -108,7 +114,7 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=True):
             #     hc_results[(bus, p)] = 0.0
             #     continue
 
-            total_kw = hc_kw = 0.0
+            total_kw = hc_pv = hc_ev = 0.0
             while total_kw <= max_kw:
                 try:
                     if pv: addPV_det(net_copy, bus_idx, p, kw=add_kw)
@@ -116,19 +122,20 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=True):
 
                     pp.runpp_3ph(net_copy, max_iteration=100, tolerance_mva=1e-6)
 
-                    if cbn.hc_violation(net_copy, mod='det'):
-                        print(f'HC violation at bus {bus_idx}, phase {p.upper()} with {total_kw} kW')
+                    is_violated, violation = cbn.hc_violation(net_copy, mod='det')
+                    if is_violated:
+                        print(f'{violation} violation at bus {bus_idx}, phase {p.upper()} with {total_kw} kW')
                         # break
                     else:
-                        hc_kw = total_kw
+                       hc_pv += total_kw if pv else 0
+                       hc_ev += total_kw if ev else 0
 
-                    total_kw += add_kw
                 except Exception as e:
                     print(f"Stopped at bus {bus_idx}, phase {p.upper()} with {total_kw} kW due to error: {e}")
                     # break
                 finally:
                     total_kw += add_kw
-            
-            hc_results.at[bus_idx, p.upper()] = hc_kw
+            hc_results.at[bus_idx, f"PV_{p.upper()}"] = hc_pv
+            hc_results.at[bus_idx, f"EV_{p.upper()}"] = hc_ev
 
     return hc_results
