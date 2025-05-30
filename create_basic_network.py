@@ -148,7 +148,8 @@ ppc.DiscreteTapControl(
     vm_lower_pu=0.90, vm_upper_pu=1.10,
     vm_set_pu=1.0, side="lv",
     tol=0.01, in_service=True,
-    trafotype="2W"
+    read_from_element="res_bus_3ph",
+    vm_column="vm_a_pu"
 )
 print(f"Created Transformer Controller!")
 
