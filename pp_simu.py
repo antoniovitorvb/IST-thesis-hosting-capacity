@@ -41,7 +41,7 @@ def addPV_det(net, bus, phase, kw=1.0, ctrl=False):
         # Create the DERController
         ppc.DERController(
             net=net,
-            element=f"CTRL_{net.asymmetric_sgen.at[sgen_idx, 'name']}",
+            element=f"asymmetric_sgen",
             element_index=sgen_idx,
             phase=phase,
             v_pu=v_points,
@@ -80,7 +80,7 @@ def addEV_det(net, bus, phase, kw=7.0, ctrl=False):
     if ctrl:
         ppc.ConstControl(
             net, element_index=ev_idx,
-            element=f"CTRL_{net.asymmetric_load.at[ev_idx, 'name']}",
+            element=f"asymmetric_load",
             variable=f"p_{phase.lower()}_mw"
         )
 
