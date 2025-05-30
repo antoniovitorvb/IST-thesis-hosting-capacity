@@ -13,7 +13,7 @@ from pandapower.timeseries import OutputWriter
 data_dir = os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV')
 json_dir = os.path.join(os.path.dirname(__file__), 'json_networks')
 
-ds = cbn.create_data_source(data_dir, profile_dir=os.path.join(data_dir, 'Load Profiles'), ds_index=True)
+ds = cbn.create_data_source(data_dir, profile_dir=os.path.join(data_dir, 'Load Profiles'), ds_index=True)[1]
 print(f"Created {ds} {ds.df.shape}")
 
 net = from_json(os.path.join(json_dir, "no_load_network.json"))

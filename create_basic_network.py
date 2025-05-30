@@ -129,15 +129,21 @@ def create_data_source(data_dir, **kwargs):
             try:
                 profile = pd.read_csv(file_path)
                 ts_data[row["Name_x"]] = profile["mult"].values * 1e-3 # or .to_numpy()
+                ts_data[row["Name_x"]+'_Q'] = profile["mult"].values * 1e-3 * np.tan(
+                    np.arccos(float(row['PF']))
+                )
             except:
                 profile = pd.read_csv(file_path, sep=';')
                 ts_data[row["Name_x"]] = profile["mult"].values * 1e-3 # or .to_numpy()
+                ts_data[row["Name_x"]+'_Q'] = profile["mult"].values * 1e-3 * np.tan(
+                    np.arccos(float(row['PF']))
+                )
 
         # Create DataFrame and save it
         profile_df = pd.DataFrame(ts_data, index=profile.time if ds_index else None)
         profile_df.to_csv(os.path.join(data_dir, 'profile_datasource.csv'), index=True)
 
-    return DFData(profile_df)
+    return profile_df, DFData(profile_df)
 
 # Source data
 source_df = pd.read_csv(os.path.join(data_dir,'Source.csv'), skiprows=1, sep='=')
