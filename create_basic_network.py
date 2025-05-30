@@ -4,6 +4,7 @@ import pandapower as pp
 import numpy as np
 
 from pandapower.file_io import from_json, to_json
+from pandapower.timeseries.data_sources.frame_data import DFData
 import pandapower.control as ppc
 from max_i_pred import max_i_pred
 
@@ -129,10 +130,10 @@ def create_data_source(data_dir, **kwargs):
             ts_data[row["Name_x"]] = profile["mult"].values * 1e-3 # or .to_numpy()
 
     # Create DataFrame and save it
-    profile_df = pd.DataFrame(ts_data)
-    profile_df.to_csv(os.path.join(data_dir, 'profile_datasource.csv'), index=False)
+    profile_df = pd.DataFrame(ts_data, index=profile.time)
+    profile_df.to_csv(os.path.join(data_dir, 'profile_datasource.csv'), index=True)
 
-    return profile_df
+    return DFData(profile_df)
 
 # Source data
 source_df = pd.read_csv(os.path.join(data_dir,'Source.csv'), skiprows=1, sep='=')
@@ -189,11 +190,12 @@ print(f"Created Transformer!")
 ppc.DiscreteTapControl(
     net, element='trafo',
     element_index=int(net.trafo.index[net.trafo.name==trafo_dict['Name']][0]),
+    profile_name=f"CTRL_{trafo_dict['Name']}",
     vm_lower_pu=0.90, vm_upper_pu=1.10,
     vm_set_pu=1.0, side="lv",
     tol=0.01, in_service=True,
-    read_from_element="res_bus_3ph",
-    vm_column="vm_a_pu"
+    # read_from_element="res_bus_3ph",
+    # vm_column="vm_a_pu"
 )
 print(f"Created Transformer Controller!")
 

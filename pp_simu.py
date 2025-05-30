@@ -33,20 +33,12 @@ def addPV_det(net, bus, phase, kw=1.0, ctrl=False):
     )
 
     if ctrl:
-        # Define a simple Volt-VAR control curve (from IEEE 1547)
-        v_points = [0.92, 0.98, 1.02, 1.08]
-        q_points = [0.44, 0.0, 0.0, -0.44]
-
-
-        # Create the DERController
+        pq_area = ppc.controller.DERController.PQVAreas.PQArea4105(variant=1)
         ppc.DERController(
-            net=net,
-            element=f"asymmetric_sgen",
+            net=net, element='sgen',
             element_index=sgen_idx,
-            phase=phase,
-            v_pu=v_points,
-            q_mvar=q_points,
-            in_service=True
+            pqv_area=pq_area,
+            p_profile=f"CTRL_PV{sgen_idx}_{phase.upper()}"
         )
 
     return sgen_idx
@@ -81,6 +73,7 @@ def addEV_det(net, bus, phase, kw=7.0, ctrl=False):
         ppc.ConstControl(
             net, element_index=ev_idx,
             element=f"asymmetric_load",
+            profile_name=f"CTRL_EV{ev_idx}_p_{phase.lower()}_mw",
             variable=f"p_{phase.lower()}_mw"
         )
 
@@ -115,7 +108,7 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=True):
             #     hc_results[(bus, p)] = 0.0
             #     continue
 
-            total_kw = hc_kW = 0.0
+            total_kw = hc_kw = 0.0
             while total_kw <= max_kw:
                 try:
                     if pv: addPV_det(net_copy, bus_idx, p, kw=add_kw)
@@ -127,7 +120,7 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=True):
                         print(f'HC violation at bus {bus_idx}, phase {p.upper()} with {total_kw} kW')
                         # break
                     else:
-                        hc_kW = total_kw
+                        hc_kw = total_kw
 
                     total_kw += add_kw
                 except Exception as e:
@@ -136,6 +129,6 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=True):
                 finally:
                     total_kw += add_kw
             
-            hc_results.at[bus_idx, p.upper()] = hc_kW
+            hc_results.at[bus_idx, p.upper()] = hc_kw
 
     return hc_results
