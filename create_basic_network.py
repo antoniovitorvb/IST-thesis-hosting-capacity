@@ -106,32 +106,36 @@ def create_data_source(data_dir, **kwargs):
     """
 
     profile_dir = kwargs.get('profile_dir')
+    ds_index = kwargs.get('ds_index')
+    ds_index = False if ds_index is None else ds_index
 
     if not data_dir or not profile_dir:
         raise ValueError("Missing data directory path(s)")
+    if os.path.exists(os.path.join(data_dir, 'profile_datasource.csv')):
+        profile_df = pd.read_csv(os.path.join(data_dir, 'profile_datasource.csv'), index_col=0)
+    else:
+        # Read Excel and CSV files
+        loads_df = pd.read_excel(os.path.join(data_dir, "Loads.xlsx"), skiprows=2)
+        loadShape_df = pd.read_csv(os.path.join(data_dir, 'LoadShapes.csv'), skiprows=1, sep=';')
 
-    # Read Excel and CSV files
-    loads_df = pd.read_excel(os.path.join(data_dir, "Loads.xlsx"), skiprows=2)
-    loadShape_df = pd.read_csv(os.path.join(data_dir, 'LoadShapes.csv'), skiprows=1, sep=';')
+        # Merge the dataframes
+        merged_load = loads_df.merge(loadShape_df, left_on="Yearly", right_on="Name", how="left")
 
-    # Merge the dataframes
-    merged_load = loads_df.merge(loadShape_df, left_on="Yearly", right_on="Name", how="left")
+        # Load individual time series profiles
+        ts_data = {}
+        for _, row in merged_load.iterrows():
+            # print(row["File"])
+            file_path = os.path.join(profile_dir, row["File"])
+            try:
+                profile = pd.read_csv(file_path)
+                ts_data[row["Name_x"]] = profile["mult"].values * 1e-3 # or .to_numpy()
+            except:
+                profile = pd.read_csv(file_path, sep=';')
+                ts_data[row["Name_x"]] = profile["mult"].values * 1e-3 # or .to_numpy()
 
-    # Load individual time series profiles
-    ts_data = {}
-    for _, row in merged_load.iterrows():
-        # print(row["File"])
-        file_path = os.path.join(profile_dir, row["File"])
-        try:
-            profile = pd.read_csv(file_path)
-            ts_data[row["Name_x"]] = profile["mult"].values * 1e-3 # or .to_numpy()
-        except:
-            profile = pd.read_csv(file_path, sep=';')
-            ts_data[row["Name_x"]] = profile["mult"].values * 1e-3 # or .to_numpy()
-
-    # Create DataFrame and save it
-    profile_df = pd.DataFrame(ts_data, index=profile.time)
-    profile_df.to_csv(os.path.join(data_dir, 'profile_datasource.csv'), index=True)
+        # Create DataFrame and save it
+        profile_df = pd.DataFrame(ts_data, index=profile.time if ds_index else None)
+        profile_df.to_csv(os.path.join(data_dir, 'profile_datasource.csv'), index=True)
 
     return DFData(profile_df)
 
@@ -187,18 +191,6 @@ pp.create_transformer_from_parameters(
 )
 print(f"Created Transformer!")
 
-ppc.DiscreteTapControl(
-    net, element='trafo',
-    element_index=int(net.trafo.index[net.trafo.name==trafo_dict['Name']][0]),
-    profile_name=f"CTRL_{trafo_dict['Name']}",
-    vm_lower_pu=0.90, vm_upper_pu=1.10,
-    vm_set_pu=1.0, side="lv",
-    tol=0.01, in_service=True,
-    # read_from_element="res_bus_3ph",
-    # vm_column="vm_a_pu"
-)
-print(f"Created Transformer Controller!")
-
 pp.create_shunt(
     net, bus=lv_bus,
     q_mvar=-0.01, p_mw=10e-3,
@@ -244,6 +236,20 @@ for _, line in full_line_df.iterrows():
 print(f"Created {len(net.line)} Lines!")
 
 if debug_result(net, init='auto'): print("\nDebugging successful!")
+
+pp.runpp_3ph(net, init='auto', max_iteration=100, tolerance_mva=1e-5, calc_voltage_angles=True, v_debug=True)
+
+# ppc.DiscreteTapControl(
+#     net, element='trafo',
+#     element_index=int(net.trafo.index[net.trafo.name==trafo_dict['Name']][0]),
+#     profile_name=trafo_dict['Name'],
+#     vm_lower_pu=0.90, vm_upper_pu=1.10,
+#     vm_set_pu=1.0, side="lv",
+#     tol=0.01, in_service=True,
+#     # read_from_element="res_bus_3ph",
+#     # vm_column="vm_a_pu"
+# )
+# print(f"Created Transformer Controller!")
 
 os.mkdir('json_networks') if not os.path.exists('json_networks') else None
 print(net)
