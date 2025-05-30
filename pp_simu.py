@@ -1,52 +1,141 @@
-import pandapower.control as ctrl
+import pandapower.control as ppc
 import pandapower as pp
-import pandapower.control.characteristic as characteristic
+import create_basic_network as cbn
+import numpy as np
+import pandas as pd
+from copy import deepcopy
 
-def add_pv_with_voltvar(net, bus, p_kw, phase='A', kvar_margin=0.1):
+def addPV_det(net, bus, phase, kw=1.0, ctrl=False):
     """
-    Adds a PV unit with Volt-VAR control to a pandapower net.
+    Adds an asymmetric PV system to the network with a DERController for Volt-VAR control.
+    
+    Parameters:
+    - net: pandapower network
+    - bus: int, the bus index
+    - phase: str, one of 'a', 'b', 'c'
+    - kw: float, power injected in kW (default 1.0)
+    """
+    p_mw = kw / 1000  # Convert to MW
+
+    # Phase-specific power injection
+    p_dict = {'p_a_mw': 0.0, 'p_b_mw': 0.0, 'p_c_mw': 0.0}
+    q_dict = {'q_a_mw': 0.0, 'q_b_mw': 0.0, 'q_c_mw': 0.0}
+    
+    if phase.lower() in ['a', 'b', 'c']: p_dict[f"p_{phase.lower()}_mw"] = p_mw
+    else: raise ValueError("Phase must be 'A', 'B', or 'C'.")
+
+    # Add the asymmetric PV generator
+    pv_count = len(net.asymmetric_sgen) + 1
+    sgen_idx = pp.create_asymmetric_sgen(
+        net, bus=bus,
+        **p_dict, **q_dict,
+        name=f"PV{pv_count}_{bus}{phase.upper()}"
+    )
+
+    if ctrl:
+        # Define a simple Volt-VAR control curve (from IEEE 1547)
+        v_points = [0.92, 0.98, 1.02, 1.08]
+        q_points = [0.44, 0.0, 0.0, -0.44]
+
+
+        # Create the DERController
+        ppc.DERController(
+            net=net,
+            element=f"CTRL_{net.asymmetric_sgen.at[sgen_idx, 'name']}",
+            element_index=sgen_idx,
+            phase=phase,
+            v_pu=v_points,
+            q_mvar=q_points,
+            in_service=True
+        )
+
+    return sgen_idx
+
+def addEV_det(net, bus, phase, kw=7.0, ctrl=False):
+    """
+    Adds an asymmetric load representing an EV charger to the network on a specific phase.
 
     Parameters:
-        net (pandapowerNet): The network
-        bus (int): Bus index where PV is connected
-        p_kw (float): Real power in kW
-        phase (str): Phase to connect ('A', 'B', 'C')
-        kvar_margin (float): Percentage of p_kw reserved for reactive power (e.g., 0.1 = 10%)
+        net (pandapowerNet): The pandapower network.
+        bus_idx (int): Index of the bus where the EV charger is connected.
+        phase (str): One of 'a', 'b', or 'c'.
+        kw (float): Real power in kW (default is 1.0 kW).
     """
+    p_mw = kw / 1000  # Convert to MW
 
-    # Convert to MW
-    p_mw = p_kw / 1000
-    q_max = p_mw * kvar_margin
+    # Phase-specific power injection
+    p_dict = {'p_a_mw': 0.0, 'p_b_mw': 0.0, 'p_c_mw': 0.0}
+    q_dict = {'q_a_mw': 0.0, 'q_b_mw': 0.0, 'q_c_mw': 0.0}
+    
+    if phase.lower() in ['a', 'b', 'c']: p_dict[f"p_{phase.lower()}_mw"] = p_mw
+    else: raise ValueError("Phase must be 'A', 'B', or 'C'.")
+    ev_count = net.asymmetric_load['name'].str.contains('EV').sum()
+    ev_idx = pp.create_asymmetric_load(
+        net, bus=bus,
+        **p_dict, **q_dict,
+        name=f"EV{ev_count}_{bus}{phase.upper}"
+    )
 
-    # Add PV generator as negative load
-    load_args = dict(p_mw=0, q_mvar=0)
-    if phase == 'A':
-        load_args['p_a_mw'] = -p_mw
-        load_args['q_a_mvar'] = 0.0
-    elif phase == 'B':
-        load_args['p_b_mw'] = -p_mw
-        load_args['q_b_mvar'] = 0.0
-    elif phase == 'C':
-        load_args['p_c_mw'] = -p_mw
-        load_args['q_c_mvar'] = 0.0
-    else:
-        raise ValueError("Phase must be 'A', 'B', or 'C'.")
+    # Optional: constant control (if needed for advanced simulations)
+    if ctrl:
+        ppc.ConstControl(
+            net, element_index=ev_idx,
+            element=f"CTRL_{net.asymmetric_load.at[ev_idx, 'name']}",
+            variable=f"p_{phase.lower()}_mw"
+        )
 
-    load_idx = pp.create_asymmetric_load(
-        net, bus=bus, name="PV_inverter", **load_args)
+    return ev_idx
 
-    # Define Volt-VAR characteristic (simplified IEEE 1547-2018)
-    voltage_points = [0.92, 0.97, 1.03, 1.08]
-    q_points = [ q_max, 0.0, 0.0, -q_max]
-    voltvar_curve = characteristic.Characteristic(voltage_points, q_points, characteristic_name="voltvar")
+def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=True):
+    """
+    Increases DERs until a violation occurs at any bus.
 
-    # Attach control to the inverter
-    if phase == 'A':
-        ctrl.ConstControl(net, element='asymmetric_load', variable='q_a_mvar', element_index=[load_idx],
-                          data_source=ctrl.CharacteristicControl, profiles={"vm_pu": voltvar_curve}, profile_name="vm_pu")
-    elif phase == 'B':
-        ctrl.ConstControl(net, element='asymmetric_load', variable='q_b_mvar', element_index=[load_idx],
-                          data_source=ctrl.CharacteristicControl, profiles={"vm_pu": voltvar_curve}, profile_name="vm_pu")
-    elif phase == 'C':
-        ctrl.ConstControl(net, element='asymmetric_load', variable='q_c_mvar', element_index=[load_idx],
-                          data_source=ctrl.CharacteristicControl, profiles={"vm_pu": voltvar_curve}, profile_name="vm_pu")
+    Parameters:
+    - net: pandapower network
+    - buses: list of int, bus indices to install DERs
+    - phase: str, 'a', 'b', or 'c'
+    - step_kw: float, step size in kW
+    - max_kw: float, max per-device injection
+    - device: 'pv' or 'ev'
+
+    Returns:
+    - total_kw: total DER injection before first violation
+    """
+    phases = ['A', 'B', 'C']
+    hc_results =pd.DataFrame(index=net.bus.index)
+    hc_results['bus_name'] = net.bus['name'].values
+    for phase in phases:
+        hc_results[phase.upper()] = 0.0
+
+    for bus_idx in net.bus.index[2:]:
+        for p in phases:
+            net_copy = deepcopy(net)
+
+            # if cbn.hc_violation(net_copy, mod='det'):
+            #     hc_results[(bus, p)] = 0.0
+            #     continue
+
+            total_kw = hc_kW = 0.0
+            while total_kw <= max_kw:
+                try:
+                    if pv: addPV_det(net_copy, bus_idx, p, kw=add_kw)
+                    if ev: addEV_det(net_copy, bus_idx, p, kw=add_kw)
+
+                    pp.runpp_3ph(net_copy, max_iteration=100, tolerance_mva=1e-6)
+
+                    if cbn.hc_violation(net_copy, mod='det'):
+                        print(f'HC violation at bus {bus_idx}, phase {p.upper()} with {total_kw} kW')
+                        # break
+                    else:
+                        hc_kW = total_kw
+
+                    total_kw += add_kw
+                except Exception as e:
+                    print(f"Stopped at bus {bus_idx}, phase {p.upper()} with {total_kw} kW due to error: {e}")
+                    # break
+                finally:
+                    total_kw += add_kw
+            
+            hc_results.at[bus_idx, p.upper()] = hc_kW
+
+    return hc_results

@@ -58,7 +58,7 @@ def debug_result(net, init='auto', max_iteration=100, tolerance_mva=1e-8, run_co
 def hc_violation(net, mod='det', init='auto', max_iteration=100, tolerance_mva=1e-8, run_control=True):
     if mod == 'det': vm_max, vm_min = [1.05, 0.95]
     elif mod == 'sto': vm_max, vm_min = [1.10, 0.9]
-    else: raise ValueError("Invalid mode. Use 'det' or 'stoch'.")
+    else: raise ValueError("Invalid mode. Use 'det' or 'sto'.")
     
     try:
         pp.runpp_3ph(
