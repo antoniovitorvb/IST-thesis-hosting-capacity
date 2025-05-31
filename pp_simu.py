@@ -167,7 +167,7 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=False, **kwargs):
                     if is_violated:
                         print(f'{violation} violation at bus {bus_idx}, phase {p.upper()} with {total_kw} kW')
                         summary_results.loc[len(summary_results)] = {
-                            'scenario': f"{''.join(elements)}_bus_{bus_idx}_phase_{p}_iter_{i}",
+                            'scenario': f"{''.join(elements)}_bus_{bus_idx}_{p.upper()}",
                             'bus_idx': bus_idx,
                             'installed_kW': total_kw,
                             'violation': violation
@@ -178,9 +178,9 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=False, **kwargs):
                        hc_ev += total_kw if ev else 0
 
                 except Exception as err:
-                    print(f"Stopped at bus {bus_idx}, phase {p.upper()} with {total_kw} kW due to error: {e}")
+                    print(f"Stopped at bus {bus_idx}, phase {p.upper()} with {total_kw} kW due to error: {err}")
                     summary_results.loc[len(summary_results)] = {
-                        'scenario': f"{''.join(elements)}_bus_{bus_idx}_phase_{p}_iter_{i}",
+                        'scenario': f"{''.join(elements)}_bus_{bus_idx}_{p.upper()}",
                         'bus_idx': bus_idx,
                         'installed_kW': total_kw,
                         'violation': str(err)
