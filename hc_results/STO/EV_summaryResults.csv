@@ -1,0 +1,5 @@
+,scenario,bus_idx,installed_kW,violation
+0,EV_bus_2_iter_0,2,0.0,
+1,EV_bus_2_iter_1,2,0.0,
+2,EV_bus_3_iter_0,3,0.0,
+3,EV_bus_3_iter_1,3,0.0,

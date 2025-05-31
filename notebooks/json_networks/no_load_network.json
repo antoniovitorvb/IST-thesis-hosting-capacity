@@ -297,7 +297,7 @@
     "ext_grid": {
       "_module": "pandas.core.frame",
       "_class": "DataFrame",
-      "_object": "{\"columns\":[\"name\",\"bus\",\"vm_pu\",\"va_degree\",\"slack_weight\",\"in_service\",\"controllable\",\"x0x_max\",\"r0x0_max\",\"s_sc_max_mva\",\"rx_max\"],\"index\":[0],\"data\":[[null,0,1.05,0.0,1.0,true,false,1.0,0.1,57.157676649772952,0.1]]}",
+      "_object": "{\"columns\":[\"name\",\"bus\",\"vm_pu\",\"va_degree\",\"slack_weight\",\"in_service\",\"controllable\",\"roxo_min\",\"x0x_min\",\"x0x_max\",\"r0x0_max\",\"s_sc_max_mva\",\"rx_min\",\"rx_max\"],\"index\":[0],\"data\":[[null,0,1.05,0.0,1.0,true,false,0.1,1.0,1.0,0.1,57.157676649772952,0.1,0.1]]}",
       "orient": "split",
       "dtype": {
         "name": "object",
@@ -307,9 +307,12 @@
         "slack_weight": "float64",
         "in_service": "bool",
         "controllable": "bool",
+        "roxo_min": "float64",
+        "x0x_min": "float64",
         "x0x_max": "float64",
         "r0x0_max": "float64",
         "s_sc_max_mva": "float64",
+        "rx_min": "float64",
         "rx_max": "float64"
       },
       "is_multiindex": false,

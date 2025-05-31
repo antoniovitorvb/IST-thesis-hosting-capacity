@@ -18,7 +18,6 @@ def export_results(file_path, net, init='auto', max_iteration=100, tolerance_mva
     - file_path: str, path to the Excel file to save the results.
     - net: object containing result DataFrames as attributes starting with 'res_'.
     """
-
     try:
         pp.runpp_3ph(
             net, init=init,
@@ -29,8 +28,7 @@ def export_results(file_path, net, init='auto', max_iteration=100, tolerance_mva
             v_debug=True
         )
     except Exception as e:
-        print(e)
-        return False
+        raise RuntimeError(f"Power Flow did not converge after {max_iteration} iterations!")
 
     with pd.ExcelWriter(file_path) as writer:
         for attr in dir(net):
@@ -52,41 +50,91 @@ def debug_result(net, init='auto', max_iteration=100, tolerance_mva=1e-8, run_co
             v_debug=True
         )
     except Exception as e:
-        # print(e)
+        # raise RuntimeError(f"Power Flow did not converge after {max_iteration} iterations!")
         return False
     return not net.res_bus_3ph.loc[:, ['vm_a_pu', 'vm_b_pu', 'vm_c_pu', 'p_a_mw', 'p_b_mw', 'p_c_mw']].isnull().any().any()
 
-def hc_violation(net, mod='det', init='auto', max_iteration=100, tolerance_mva=1e-8, run_control=True):
-    if mod == 'det': vm_max, vm_min = [1.05, 0.95]
-    elif mod == 'sto': vm_max, vm_min = [1.10, 0.9]
+def hc_violation(net, mod='det', **kwargs):
+    """
+    Evaluate network violations for deterministic or stochastic hosting capacity.
+
+    Parameters:
+    - net: pandapower network
+    - mod: 'det' (deterministic) or 'sto' (stochastic)
+    - init, max_iteration, tolerance_mva, run_control: runpp_3ph parameters
+    - kwargs: can include precomputed results (e.g., OutputWriter output)
+
+    Returns:
+    - (bool, str): Tuple indicating if a violation occurred and its type
+    """
+    if mod == 'det':
+        vm_max, vm_min = [1.05, 0.95]
+
+        # Get or set default solver parameters
+        init = kwargs.get('init', 'auto')
+        max_iteration = kwargs.get('max_iteration', 100)
+        tolerance_mva = kwargs.get('tolerance_mva', 1e-8)
+        run_control = kwargs.get('run_control', True)
+        
+        try:
+            pp.runpp_3ph(
+                net, init=init,
+                max_iteration=max_iteration,
+                tolerance_mva=tolerance_mva,
+                run_control=run_control,
+                calc_voltage_angles=True,
+                v_debug=True
+            )
+        except Exception:
+            raise RuntimeError(f"Power Flow did not converge after {max_iteration} iterations!")
+        
+        finally:
+            res_bus_max = net.res_bus_3ph[['vm_a_pu', 'vm_b_pu', 'vm_c_pu']].max()
+            res_bus_min = net.res_bus_3ph[['vm_a_pu', 'vm_b_pu', 'vm_c_pu']].min()
+            res_line_max = net.res_line_3ph[['loading_a_percent', 'loading_b_percent', 'loading_c_percent']].max()
+            res_trafo_max = net.res_trafo_3ph['loading_percent'].max()
+
+    elif mod == 'sto': 
+        vm_max, vm_min = [1.10, 0.9]
+        ow = kwargs.get('output_writer_data')
+        if ow is None:
+            raise ValueError("Missing OutputWriter data in stochastic mode.")
+        
+        try:
+            res_bus_max = pd.Series([
+                ow['res_bus_3ph.vm_a_pu'].max().max(),
+                ow['res_bus_3ph.vm_b_pu'].max().max(),
+                ow['res_bus_3ph.vm_c_pu'].max().max()
+            ])
+            res_bus_min = pd.Series([
+                ow['res_bus_3ph.vm_a_pu'].min().min(),
+                ow['res_bus_3ph.vm_b_pu'].min().min(),
+                ow['res_bus_3ph.vm_c_pu'].min().min()
+            ])
+            res_line_max = pd.Series([
+                ow['res_line_3ph.loading_a_percent'].max().max(),
+                ow['res_line_3ph.loading_b_percent'].max().max(),
+                ow['res_line_3ph.loading_c_percent'].max().max()
+            ])
+            res_trafo_max = ow['res_trafo_3ph.loading_percent'].max().max()
+        except KeyError:
+            raise ValueError("Incomplete OutputWriter data.")
+
+        if res_bus_max is None or res_line_max is None or res_trafo_max is None:
+            raise ValueError("Incomplete OutputWriter data.")
+
     else: raise ValueError("Invalid mode. Use 'det' or 'sto'.")
+
     
-    try:
-        pp.runpp_3ph(
-            net, init=init,
-            max_iteration=max_iteration,
-            tolerance_mva=tolerance_mva,
-            calc_voltage_angles=True,
-            run_control=run_control,
-            v_debug=True
-        )
-    except Exception:
-        raise Exception
-    
-    if net.res_bus_3ph.loc[:, ['vm_a_pu', 'vm_b_pu', 'vm_c_pu', 'p_a_mw', 'p_b_mw', 'p_c_mw']].isnull().any().any():
-        return (True, "NaN values on res_bus_3ph")
-    else:
-        if net.res_trafo_3ph.loading_percent.max() > 100: return (True, "Transformer Overloading")
-        elif any([net.res_line_3ph.loading_a_percent.max() > 100,
-                  net.res_line_3ph.loading_b_percent.max() > 100,
-                  net.res_line_3ph.loading_c_percent.max() > 100]): return (True, "Line Overloading")
-        elif any([net.res_bus_3ph.vm_a_pu.max() >= vm_max,
-                  net.res_bus_3ph.vm_b_pu.max() >= vm_max,
-                  net.res_bus_3ph.vm_c_pu.max() >= vm_max]): return (True, "Overvoltage")
-        elif any([net.res_bus_3ph.vm_a_pu.min() <= vm_min,
-                  net.res_bus_3ph.vm_b_pu.min() <= vm_min,
-                  net.res_bus_3ph.vm_c_pu.min() <= vm_min]): return (True, "Undervoltage")
-        else: return (False, None)
+    if any(res_bus_max.isna()) or any(res_bus_min.isna()) or any(res_line_max.isna()) or pd.isna(res_trafo_max):
+        return True, "NaN values in results"
+
+    # Violation checks
+    if res_trafo_max > 100: return True, "Transformer Overloading"
+    elif (res_line_max > 100).any(): return True, "Line Overloading"
+    elif (res_bus_max > vm_max).any(): return True, "Overvoltage"
+    elif (res_bus_min < vm_min).any(): return True, "Undervoltage"
+    else: return False, None
 
 def create_data_source(data_dir, **kwargs):
     """
@@ -101,21 +149,17 @@ def create_data_source(data_dir, **kwargs):
     Returns:
     - profile_df (pd.DataFrame): DataFrame with timeseries profile data
     """
+    profile_dir = kwargs.get('profile_dir', os.path.join(data_dir, 'Load profiles'))
+    ds_index = kwargs.get('ds_index', False)
 
-    profile_dir = kwargs.get('profile_dir')
-    ds_index = kwargs.get('ds_index')
-    ds_index = False if ds_index is None else ds_index
-
-    if not data_dir or not profile_dir:
-        raise ValueError("Missing data directory path(s)")
     if os.path.exists(os.path.join(data_dir, 'profile_datasource.csv')):
         profile_df = pd.read_csv(os.path.join(data_dir, 'profile_datasource.csv'), index_col=0)
+        return profile_df, DFData(profile_df)
     else:
         # Read Excel and CSV files
         loads_df = pd.read_excel(os.path.join(data_dir, "Loads.xlsx"), skiprows=2)
         loadShape_df = pd.read_csv(os.path.join(data_dir, 'LoadShapes.csv'), skiprows=1, sep=';')
 
-        # Merge the dataframes
         merged_load = loads_df.merge(loadShape_df, left_on="Yearly", right_on="Name", how="left")
 
         # Load individual time series profiles
@@ -167,10 +211,11 @@ bus_map[trafo_dict[' bus2']] = lv_bus
 pp.create_ext_grid(
     net, bus=hv_bus, vm_pu=source_dict['pu'],
     s_sc_max_mva=s_sc_mva,
-    rx_max=0.1, rx_min=None,
+    rx_max=0.1, rx_min=0.1,
     # max_p_mw=None, min_p_mw=None,
     # max_q_mvar=None, min_q_mvar=None, index=None,
-    r0x0_max=0.1, x0x_max=1.0
+    r0x0_max=0.1, x0x_max=1.0,
+    roxo_min=0.1, x0x_min=1.0
 )
 print(f"\nCreated External Grid!")
 

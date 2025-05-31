@@ -1,0 +1,5 @@
+,scenario,bus_idx,installed_kW,violation
+0,PV_bus_2_iter_0,2,0.0,'DataFrame' object has no attribute 'output'
+1,PV_bus_2_iter_1,2,0.0,'DataFrame' object has no attribute 'output'
+2,PV_bus_3_iter_0,3,0.0,'DataFrame' object has no attribute 'output'
+3,PV_bus_3_iter_1,3,0.0,'DataFrame' object has no attribute 'output'
