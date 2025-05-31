@@ -235,7 +235,7 @@ def generate_ev_profile(ds, ev_max_kw=7.0, **kwargs):
         return profile["mult"].values * ev_max_kw * 1e-3
 
 
-def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
+def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0, max_kw=30.0, pv=True, ev=False, **kwargs):
     """
     Run Monte Carlo simulations to assess probabilistic hosting capacity.
 
@@ -265,10 +265,12 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
     hc_results['bus_name'] = net.bus['name'].values
     summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
 
+    bus_indexes = kwargs.get('bus_indexes', net.bus.index[2:])
+
     for element in elements:
         hc_results[f"{element}_total"] = 0.0
 
-    for bus_idx in net.bus.index[2:]:
+    for bus_idx in bus_indexes:
         for i in range(max_iteration):
             print(f"Bus {bus_idx} - ite {i}")
             net_copy = deepcopy(net)
