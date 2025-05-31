@@ -171,33 +171,33 @@ def create_load_controllers(net, ds, **kwargs):
 
     ppc.ConstControl(
         net, element='asymmetric_load', variable='p_a_mw',
-        element_index=loads[loads['phases']=='A'].index, data_source=ds, 
-        profile_name=loads[loads['phases']=='A'].Name
+        element_index=net.asymmetric_load[net.asymmetric_load.name.isin(loads[loads['phases'] == 'A'].Name)].index,
+        data_source=ds, profile_name=loads[loads['phases']=='A'].Name
     )
-    pp.ConstControl(
+    ppc.ConstControl(
         net, element='asymmetric_load', variable='q_a_mvar',
-        element_index=loads[loads['phases']=='A'].index, data_source=ds,
-        profile_name=loads[loads['phases']=='A'].Name+'_Q'
+        element_index=net.asymmetric_load[net.asymmetric_load.name.isin(loads[loads['phases'] == 'A'].Name)].index,
+        data_source=ds, profile_name=loads[loads['phases']=='A'].Name+'_Q'
     )
-    pp.ConstControl(
+    ppc.ConstControl(
         net, element='asymmetric_load', variable='p_b_mw',
-        element_index=loads[loads['phases']=='B'].index, data_source=ds,
-        profile_name=loads[loads['phases']=='B'].Name
+        element_index=net.asymmetric_load[net.asymmetric_load.name.isin(loads[loads['phases'] == 'B'].Name)].index,
+        data_source=ds, profile_name=loads[loads['phases']=='B'].Name
     )
-    pp.ConstControl(
+    ppc.ConstControl(
         net, element='asymmetric_load', variable='q_b_mvar',
-        element_index=loads[loads['phases']=='B'].index, data_source=ds,
+        element_index=net.asymmetric_load[net.asymmetric_load.name.isin(loads[loads['phases'] == 'B'].Name)].index, data_source=ds,
         profile_name=loads[loads['phases']=='B'].Name+'_Q'
     )
-    pp.ConstControl(
+    ppc.ConstControl(
         net, element='asymmetric_load', variable='p_c_mw',
-        element_index=loads[loads['phases']=='C'].index, data_source=ds,
-        profile_name=loads[loads['phases']=='C'].Name
+        element_index=net.asymmetric_load[net.asymmetric_load.name.isin(loads[loads['phases'] == 'C'].Name)].index, 
+        data_source=ds, profile_name=loads[loads['phases']=='C'].Name
     )
-    pp.ConstControl(
+    ppc.ConstControl(
         net, element='asymmetric_load', variable='q_c_mvar',
-        element_index=loads[loads['phases']=='C'].index, data_source=ds,
-        profile_name=loads[loads['phases']=='C'].Name+'_Q'
+        element_index=net.asymmetric_load[net.asymmetric_load.name.isin(loads[loads['phases'] == 'C'].Name)].index, 
+        data_source=ds, profile_name=loads[loads['phases']=='C'].Name+'_Q'
     )
     return net
 
@@ -233,7 +233,7 @@ def generate_ev_profile(ds, ev_max_kw=7.0, **kwargs):
         return profile["mult"].values * ev_max_kw * 1e-3
 
 
-def hc_montecarlo(net, data_source, iteration=1000, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
+def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
     """
     Run Monte Carlo simulations to assess probabilistic hosting capacity.
 
@@ -266,12 +266,12 @@ def hc_montecarlo(net, data_source, iteration=1000, add_kw=1.0, max_kw=30.0, pv=
     for element in elements:
         hc_results[f"{element}_total"] = 0.0
 
-    for bus_idx in net.bus.index[2:10]:
-        for i in range(iteration):
+    for bus_idx in net.bus.index[2:6]:
+        for i in range(max_iteration):
             net_copy = deepcopy(net)
             create_load_controllers(net_copy, data_source)
+            
             total_kw = 0.0
-
             while total_kw <= max_kw:
                 try:
                     phase = choice(phases)
@@ -285,7 +285,7 @@ def hc_montecarlo(net, data_source, iteration=1000, add_kw=1.0, max_kw=30.0, pv=
                         addEV(net_copy, bus_idx, phase, kw=rand_kw, ctrl=True, data_source=data_source)
 
                     # Set up OutputWriter
-                    ow = OutputWriter(net_copy, time_steps, output_path="./results", output_file_type=".p")
+                    ow = OutputWriter(net_copy, time_steps, output_path=output_path, output_file_type=".csv")
                     ow.log_variable('res_bus_3ph', 'vm_a_pu')
                     ow.log_variable('res_bus_3ph', 'vm_b_pu')
                     ow.log_variable('res_bus_3ph', 'vm_c_pu')
@@ -294,11 +294,11 @@ def hc_montecarlo(net, data_source, iteration=1000, add_kw=1.0, max_kw=30.0, pv=
                     ow.log_variable('res_line_3ph', 'loading_c_percent')
                     ow.log_variable('res_trafo_3ph', 'loading_percent')
 
-                    run_timeseries(net_copy, time_steps=time_steps)
+                    run_timeseries(net_copy, time_steps=time_steps, run_control=True, continue_on_divergence=False)
 
                     violated, violation_type = cbn.hc_violation(net_copy, mod='sto')
                     if violated:
-                        summary_results.loc[len(summary_results)] = {
+                        summary_results.iloc[len(summary_results)] = {
                             'scenario': f"{''.join(elements)}_bus_{bus_idx}_iter_{i}",
                             'bus_idx': bus_idx,
                             'installed_kW': total_kw,
@@ -310,7 +310,7 @@ def hc_montecarlo(net, data_source, iteration=1000, add_kw=1.0, max_kw=30.0, pv=
 
                 except Exception as err:
                     summary_results.loc[len(summary_results)] = {
-                        'scenario': f"bus_{bus_idx}_iter_{i}",
+                        'scenario': f"{''.join(elements)}_bus_{bus_idx}_iter_{i}",
                         'bus_idx': bus_idx,
                         'installed_kW': total_kw,
                         'violation': str(err)
@@ -318,6 +318,7 @@ def hc_montecarlo(net, data_source, iteration=1000, add_kw=1.0, max_kw=30.0, pv=
                     break
 
             for element in elements:
-                hc_results.at[bus_idx, f"{element}_total"] += total_kw / iteration
-
+                hc_results.at[bus_idx, f"{element}_total"] += total_kw / max_iteration
+    summary_results.to_csv(os.path.join(output_path, f"{''.join(elements)}_summaryResults.csv"))
+    hc_results.to_csv(os.path.join(output_path, f"{''.join(elements)}_HCResults.csv"))
     return hc_results, summary_results
