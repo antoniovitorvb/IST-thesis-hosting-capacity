@@ -140,7 +140,7 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=False, **kwargs):
     
 
     hc_indices = kwargs.get('hc_indices', net.bus.index[2:])
-    # bus_indices = net.bus[net.bus.name.isin(hc_indices)].index
+    bus_indices = net.bus[net.bus.name.isin(hc_indices)].index
     # line_bus_indices = net.line[net.line.to_bus.isin(hc_indices)].index
 
     for element in elements:
