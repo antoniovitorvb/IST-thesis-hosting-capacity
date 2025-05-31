@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from copy import deepcopy
 
-def addPV_det(net, bus, phase, kw=1.0, ctrl=False):
+def addPV(net, bus, phase, kw=1.0, ctrl=False):
     """
     Adds an asymmetric PV system to the network with a DERController for Volt-VAR control.
     
@@ -43,7 +43,7 @@ def addPV_det(net, bus, phase, kw=1.0, ctrl=False):
 
     return sgen_idx
 
-def addEV_det(net, bus, phase, kw=7.0, ctrl=False):
+def addEV(net, bus, phase, kw=7.0, ctrl=False):
     """
     Adds an asymmetric load representing an EV charger to the network on a specific phase.
 
@@ -117,8 +117,8 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
             total_kw = hc_pv = hc_ev = 0.0
             while total_kw <= max_kw:
                 try:
-                    if pv: addPV_det(net_copy, bus_idx, p, kw=add_kw)
-                    if ev: addEV_det(net_copy, bus_idx, p, kw=add_kw)
+                    if pv: addPV(net_copy, bus_idx, p, kw=add_kw)
+                    if ev: addEV(net_copy, bus_idx, p, kw=add_kw)
 
                     pp.runpp_3ph(net_copy, max_iteration=100, tolerance_mva=1e-6)
 
@@ -139,3 +139,73 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
             hc_results.at[bus_idx, f"EV_{p.upper()}"] = hc_ev
 
     return hc_results
+
+def create_load_controllers(net, ds, loads):
+    ppc.ConstControl(
+        net, element='asymmetric_load', variable='p_a_mw',
+        element_index=loads[loads['phases']=='A'].index, data_source=ds, 
+        profile_name=loads[loads['phases']=='A'].Yearly
+    )
+    pp.ConstControl(
+        net, element='asymmetric_load', variable='q_a_mvar',
+        element_index=loads[loads['phases']=='A'].index, data_source=ds,
+        profile_name=loads[loads['phases']=='A'].Yearly+'_Q'
+    )
+    pp.ConstControl(
+        net, element='asymmetric_load', variable='p_b_mw',
+        element_index=loads[loads['phases']=='B'].index, data_source=ds,
+        profile_name=loads[loads['phases']=='B'].Yearly
+    )
+    pp.ConstControl(
+        net, element='asymmetric_load', variable='q_b_mvar',
+        element_index=loads[loads['phases']=='B'].index, data_source=ds,
+        profile_name=loads[loads['phases']=='B'].Yearly+'_Q'
+    )
+    pp.ConstControl(
+        net, element='asymmetric_load', variable='p_c_mw',
+        element_index=loads[loads['phases']=='C'].index, data_source=ds,
+        profile_name=loads[loads['phases']=='C'].Yearly
+    )
+    pp.ConstControl(
+        net, element='asymmetric_load', variable='q_c_mvar',
+        element_index=loads[loads['phases']=='C'].index, data_source=ds,
+        profile_name=loads[loads['phases']=='C'].Yearly+'_Q'
+    )
+    return net
+
+def hc_stochastic(net, iteration=1000, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
+    """
+    Run Monte Carlo simulations to assess probabilistic hosting capacity.
+
+    Parameters:
+    - net: pandapower network object
+    - n_iter: number of Monte Carlo scenarios
+    - profile_df: DataFrame of time-series profiles (P and Q)
+    - time_steps: number of time steps in the profile (e.g., 1440 for 1-min data)
+    - pv: include PV systems
+    - ev: include EV chargers
+    
+    Returns:
+    - violation_log: DataFrame with frequencies of each violation type per bus
+    """
+    from random import choice, uniform
+
+    elements = []
+    if pv: elements.append('PV')
+    if ev: elements.append('EV')
+
+    phases = ['A', 'B', 'C']
+    hc_results = pd.DataFrame(index=net.bus.index)
+    hc_results['bus_name'] = net.bus['name'].values
+
+    for element in elements:
+        for phase in phases:
+            hc_results[f"{element}_{phase}"] = 0.0
+    
+    for bus_idx in net.bus.index[2:]:
+        for i in range(iteration):
+            net_copy = deepcopy(net)
+            """"
+            Monte-carlo simulations per bus to estimate Hosting Capacity
+            """
+            continue

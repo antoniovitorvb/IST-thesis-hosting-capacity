@@ -101,21 +101,19 @@ def create_data_source(data_dir, **kwargs):
     Returns:
     - profile_df (pd.DataFrame): DataFrame with timeseries profile data
     """
-
     profile_dir = kwargs.get('profile_dir')
+    profile_dir = os.path.join(data_dir, 'Load profiles') if profile_dir is None else profile_dir
     ds_index = kwargs.get('ds_index')
     ds_index = False if ds_index is None else ds_index
 
-    if not data_dir or not profile_dir:
-        raise ValueError("Missing data directory path(s)")
     if os.path.exists(os.path.join(data_dir, 'profile_datasource.csv')):
         profile_df = pd.read_csv(os.path.join(data_dir, 'profile_datasource.csv'), index_col=0)
+        return profile_df, DFData(profile_df)
     else:
         # Read Excel and CSV files
         loads_df = pd.read_excel(os.path.join(data_dir, "Loads.xlsx"), skiprows=2)
         loadShape_df = pd.read_csv(os.path.join(data_dir, 'LoadShapes.csv'), skiprows=1, sep=';')
 
-        # Merge the dataframes
         merged_load = loads_df.merge(loadShape_df, left_on="Yearly", right_on="Name", how="left")
 
         # Load individual time series profiles
