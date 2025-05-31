@@ -272,7 +272,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
     for element in elements:
         hc_results[f"{element}_total"] = 0.0
 
-    for bus_idx in indices:
+    for bus_idx in bus_indices:
         for i in range(max_iteration):
             # print(f"Bus {bus_idx} - ite {i}")
             net_copy = deepcopy(net)
