@@ -264,6 +264,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
     hc_results = pd.DataFrame(index=net.bus.index)
     hc_results['bus_name'] = net.bus['name'].values
     summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
+    temp_summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
 
     indices = kwargs.get('ow_index', net.bus.index[2:])
     bus_indices = net.bus[net.bus.name.isin(indices)].index
@@ -273,6 +274,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
         hc_results[f"{element}_total"] = 0.0
 
     for i in range(max_iteration):
+        print(f"Progess: {i} / {max_iteration}")
         for bus_idx in bus_indices:
             # print(f"Bus {bus_idx} - ite {i}")
             net_copy = deepcopy(net)
@@ -335,7 +337,13 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                     }
                     break
                 finally:
-                    summary_results.to_csv(os.path.join(output_path, f"{''.join(elements)}_summaryResults_{i}.csv"))
+                    temp_summary_results.loc[len(summary_results)] = {
+                        'scenario': f"{''.join(elements)}_bus_{bus_idx}_iter_{i}",
+                        'bus_idx': bus_idx,
+                        'installed_kW': rand_kw,
+                        'violation': violation_type
+                    }
+                    temp_summary_results.to_csv(os.path.join(output_path, f"{''.join(elements)}_summaryResults_{i}.csv"))
 
             for element in elements:
                 hc_results.at[bus_idx, f"{element}_total"] += total_kw / max_iteration

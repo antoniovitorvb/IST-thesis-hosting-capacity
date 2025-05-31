@@ -1,0 +1,5 @@
+,scenario,bus_idx,installed_kW,violation
+1,PV_bus_5_iter_0,5,4.648673421127295,NaN values in results
+2,PV_bus_7_iter_0,7,3.198244402205663,NaN values in results
+3,PV_bus_10_iter_0,10,2.7723313326382635,NaN values in results
+4,PV_bus_11_iter_0,11,4.052708306591509,NaN values in results
