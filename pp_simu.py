@@ -312,7 +312,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                     violated, violation_type = cbn.hc_violation(net_copy, mod='sto')
                     if violated:
                         print(f"Violation: {violation_type}")
-                        summary_results.iloc[len(summary_results)] = {
+                        summary_results.loc[len(summary_results)] = {
                             'scenario': f"{''.join(elements)}_bus_{bus_idx}_iter_{i}",
                             'bus_idx': bus_idx,
                             'installed_kW': total_kw,

@@ -1,21 +1,5 @@
 ,scenario,bus_idx,installed_kW,violation
-0,PV_bus_2_iter_0,2,0.0,iloc cannot enlarge its target object
-1,PV_bus_2_iter_1,2,0.0,iloc cannot enlarge its target object
-2,PV_bus_2_iter_2,2,0.0,iloc cannot enlarge its target object
-3,PV_bus_2_iter_3,2,0.0,iloc cannot enlarge its target object
-4,PV_bus_2_iter_4,2,0.0,iloc cannot enlarge its target object
-5,PV_bus_2_iter_5,2,0.0,iloc cannot enlarge its target object
-6,PV_bus_2_iter_6,2,0.0,iloc cannot enlarge its target object
-7,PV_bus_2_iter_7,2,0.0,iloc cannot enlarge its target object
-8,PV_bus_2_iter_8,2,0.0,iloc cannot enlarge its target object
-9,PV_bus_2_iter_9,2,0.0,iloc cannot enlarge its target object
-10,PV_bus_3_iter_0,3,0.0,iloc cannot enlarge its target object
-11,PV_bus_3_iter_1,3,0.0,iloc cannot enlarge its target object
-12,PV_bus_3_iter_2,3,0.0,iloc cannot enlarge its target object
-13,PV_bus_3_iter_3,3,0.0,iloc cannot enlarge its target object
-14,PV_bus_3_iter_4,3,0.0,iloc cannot enlarge its target object
-15,PV_bus_3_iter_5,3,0.0,iloc cannot enlarge its target object
-16,PV_bus_3_iter_6,3,0.0,iloc cannot enlarge its target object
-17,PV_bus_3_iter_7,3,0.0,iloc cannot enlarge its target object
-18,PV_bus_3_iter_8,3,0.0,iloc cannot enlarge its target object
-19,PV_bus_3_iter_9,3,0.0,iloc cannot enlarge its target object
+0,PV_bus_2_iter_0,2,0.0,NaN values on res_bus_3ph
+1,PV_bus_2_iter_1,2,0.0,NaN values on res_bus_3ph
+2,PV_bus_3_iter_0,3,0.0,NaN values on res_bus_3ph
+3,PV_bus_3_iter_1,3,0.0,NaN values on res_bus_3ph
