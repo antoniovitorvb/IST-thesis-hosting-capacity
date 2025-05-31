@@ -1,3 +1,4 @@
+import os
 import pandapower.control as ppc
 import pandapower as pp
 import create_basic_network as cbn
@@ -5,7 +6,7 @@ import numpy as np
 import pandas as pd
 from copy import deepcopy
 
-def addPV(net, bus, phase, kw=1.0, ctrl=False):
+def addPV(net, bus, phase, kw=1.0, ctrl=False, **kwargs):
     """
     Adds an asymmetric PV system to the network with a DERController for Volt-VAR control.
     
@@ -33,17 +34,23 @@ def addPV(net, bus, phase, kw=1.0, ctrl=False):
     )
 
     if ctrl:
+        ds = kwargs.get('data_source')
+        if ds is None: raise "[MissingDFData] Please provide 'data_source'"
+
+        profile_name = f"CTRL_PV{sgen_idx}_{phase.upper()}"
+        ds.df[profile_name] = generate_pv_profile(ds, pv_max_kw=kw)
+
         pq_area = ppc.controller.DERController.PQVAreas.PQArea4105(variant=1)
         ppc.DERController(
             net=net, element='sgen',
             element_index=sgen_idx,
-            pqv_area=pq_area,
-            p_profile=f"CTRL_PV{sgen_idx}_{phase.upper()}"
+            pqv_area=pq_area, data_source=ds,
+            p_profile=profile_name
         )
 
     return sgen_idx
 
-def addEV(net, bus, phase, kw=7.0, ctrl=False):
+def addEV(net, bus, phase, kw=7.0, ctrl=False, **kwargs):
     """
     Adds an asymmetric load representing an EV charger to the network on a specific phase.
 
@@ -70,15 +77,24 @@ def addEV(net, bus, phase, kw=7.0, ctrl=False):
 
     # Optional: constant control (if needed for advanced simulations)
     if ctrl:
+        ds = kwargs.get('data_source')
+        if ds is None: raise 'MissingDFData'
+
+        profile_name = f"CTRL_EV{ev_idx}_p_{phase.lower()}_mw"
+        ds.df[profile_name] = generate_pv_profile(ds, ev_max_kw=kw)
+
         ppc.ConstControl(
             net, element_index=ev_idx,
-            element=f"asymmetric_load",
-            profile_name=f"CTRL_EV{ev_idx}_p_{phase.lower()}_mw",
+            element="asymmetric_load",
+            profile_name=profile_name, data_source=ds,
             variable=f"p_{phase.lower()}_mw"
         )
 
     return ev_idx
 
+# ===================================================================
+# DETERMINISTIC MODULE
+# ===================================================================
 def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
     """
     Increases DERs until a violation occurs at any bus.
@@ -140,6 +156,11 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
 
     return hc_results
 
+
+
+# ===================================================================
+# STOCHASTIC MODULE
+# ===================================================================
 def create_load_controllers(net, ds, loads):
     ppc.ConstControl(
         net, element='asymmetric_load', variable='p_a_mw',
@@ -172,6 +193,38 @@ def create_load_controllers(net, ds, loads):
         profile_name=loads[loads['phases']=='C'].Yearly+'_Q'
     )
     return net
+
+def generate_pv_profile(ds, pv_max_kw=0.5):
+    minutes = len(ds.df)
+    t = np.arange(0, minutes)
+
+    # Cosine-based profile peaking at noon and bounded by daylight hours
+    pv_base = 0.9 * pv_max_kw * np.cos(np.pi * 2 * t / 1440 + np.pi)
+    pv_base = np.clip(pv_base, 0, None)
+
+    noise = np.random.normal(0, 0.5, size=minutes)
+    pv_noise = pd.Series(pv_base) * (1 + pd.Series(noise).rolling(15, center=True).mean().fillna(0))
+    pv_profile = np.clip(pv_noise, 0, pv_max_kw) * 1e-3  # convert to MW
+
+    return pv_profile
+
+def generate_ev_profile(ds, ev_max_kw=7.0, **kwargs):
+    minutes = len(ds.df)
+    pick_profile = int(np.random.choice(range(56,101)))
+
+    profile_dir = kwargs.get('profile_dir')
+    profile_dir = os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV', 'Load profiles') if profile_dir is None else profile_dir
+
+    file_path = os.path.join(profile_dir, f"Load_profile_{pick_profile}.csv")
+    try:
+        profile = pd.read_csv(file_path)
+
+    except:
+        profile = pd.read_csv(file_path, sep=';')
+
+    finally:
+        return profile["mult"].values * ev_max_kw * 1e-3
+
 
 def hc_stochastic(net, iteration=1000, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
     """
