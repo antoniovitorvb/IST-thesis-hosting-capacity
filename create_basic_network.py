@@ -165,10 +165,11 @@ bus_map[trafo_dict[' bus2']] = lv_bus
 pp.create_ext_grid(
     net, bus=hv_bus, vm_pu=source_dict['pu'],
     s_sc_max_mva=s_sc_mva,
-    rx_max=0.1, rx_min=None,
+    rx_max=0.1, rx_min=0.1,
     # max_p_mw=None, min_p_mw=None,
     # max_q_mvar=None, min_q_mvar=None, index=None,
-    r0x0_max=0.1, x0x_max=1.0
+    r0x0_max=0.1, x0x_max=1.0,
+    roxo_min=0.1, x0x_min=1.0
 )
 print(f"\nCreated External Grid!")
 
