@@ -32,7 +32,7 @@ def addPV(net, bus, phase, kw=1.0, ctrl=False, **kwargs):
         **p_dict, **q_dict,
         name=f"PV{pv_count}_{bus}{phase.upper()}"
     )
-    print(f"{len(net.asymmetric_sgen)} PV Gen created so far...")
+    # print(f"{len(net.asymmetric_sgen)} PV Gen created so far...")
 
     if ctrl:
         ds = kwargs.get('data_source')
@@ -47,7 +47,7 @@ def addPV(net, bus, phase, kw=1.0, ctrl=False, **kwargs):
             profile_name=profile_name,
             variable=f"p_{phase.lower()}_mw"
         )
-        print(f"Created {profile_name}!")
+        # print(f"Created {profile_name}!")
 
         # pq_area = ppc.controller.DERController.PQVAreas.PQArea4105(variant=1)
         # ppc.DERController(
@@ -84,7 +84,7 @@ def addEV(net, bus, phase, kw=7.0, ctrl=False, **kwargs):
         **p_dict, **q_dict,
         name=f"EV{ev_count}_{bus}{phase.upper()}"
     )
-    print(f"{net.asymmetric_load['name'].str.contains('EV').sum()} EVs created so far...")
+    # print(f"{net.asymmetric_load['name'].str.contains('EV').sum()} EVs created so far...")
 
     # Optional: constant control (if needed for advanced simulations)
     if ctrl:
@@ -100,7 +100,7 @@ def addEV(net, bus, phase, kw=7.0, ctrl=False, **kwargs):
             profile_name=profile_name, data_source=ds,
             variable=f"p_{phase.lower()}_mw"
         )
-        print(f"Created {profile_name}!")
+        # print(f"Created {profile_name}!")
 
     return ev_idx
 
@@ -183,13 +183,13 @@ def create_load_controllers(net, ds, **kwargs):
     # Ensure load names are strings and match exactly
     loads['Name'] = loads['Name'].astype(str)
     net.asymmetric_load['name'] = net.asymmetric_load['name'].astype(str)
-    print('Creating Controllers')
+    # print('Creating Controllers')
     # Filter loads by phase
     for phase in ['A', 'B', 'C']:
         
         phase_loads = loads[loads['phases'] == phase]
         matching = net.asymmetric_load[net.asymmetric_load['name'].isin(phase_loads['Name'])]
-        print(f"Phase {phase}: {' '.join([str(i) for i in matching.index])}")
+        # print(f"Phase {phase}: {' '.join([str(i) for i in matching.index])}")
         # Assign control for each power type
         ppc.ConstControl(
             net, element='asymmetric_load', variable=f'p_{phase.lower()}_mw',
@@ -203,7 +203,7 @@ def create_load_controllers(net, ds, **kwargs):
     return net
 
 def generate_pv_profile(ds, pv_max_kw=0.5):
-    print(f"Creating a PV Gen with {pv_max_kw} kW")
+    # print(f"Creating a PV Gen with {pv_max_kw} kW")
     minutes = len(ds.df)
     t = np.arange(0, minutes)
 
@@ -231,7 +231,7 @@ def generate_ev_profile(ds, ev_max_kw=7.0, **kwargs):
         profile = pd.read_csv(file_path, sep=';')
 
     finally:
-        print(f"Profile shape: {profile.shape} from Load_profile_{pick_profile}")
+        # print(f"Profile shape: {profile.shape} from Load_profile_{pick_profile}")
         return profile["mult"].values * ev_max_kw * 1e-3
 
 
@@ -272,7 +272,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
 
     for bus_idx in bus_indexes:
         for i in range(max_iteration):
-            print(f"Bus {bus_idx} - ite {i}")
+            # print(f"Bus {bus_idx} - ite {i}")
             net_copy = deepcopy(net)
             create_load_controllers(net_copy, data_source)
             
@@ -293,7 +293,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
 
                 try:
                     # Set up OutputWriter
-                    print("Set up OutputWriter...")
+                    # print("Set up OutputWriter...")
                     ow = OutputWriter(net_copy, time_steps, output_path=output_path, output_file_type=".csv")
                     ow.log_variable('res_bus_3ph', 'vm_a_pu')
                     ow.log_variable('res_bus_3ph', 'vm_b_pu')
@@ -321,7 +321,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                         break
                     else:
                         total_kw += rand_kw
-                        print(f"Bus {bus_idx} - ite {i} Deu bom! Total: {total_kw} kW")
+                        # print(f"Bus {bus_idx} - ite {i} Deu bom! Total: {total_kw} kW")
 
                 except Exception as err:
                     print(err)
