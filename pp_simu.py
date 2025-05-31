@@ -36,7 +36,7 @@ def addPV(net, bus, phase, kw=1.0, ctrl=False, **kwargs):
 
     if ctrl:
         ds = kwargs.get('data_source')
-        if ds is None: raise "[MissingDFData] Please provide 'data_source'"
+        if ds is None: raise Exception("[MissingDFData] Please provide 'data_source'")
 
         profile_name = f"CTRL_PV{sgen_idx}_{phase.upper()}"
         ds.df[profile_name] = generate_pv_profile(ds, pv_max_kw=kw)
@@ -89,7 +89,7 @@ def addEV(net, bus, phase, kw=7.0, ctrl=False, **kwargs):
     # Optional: constant control (if needed for advanced simulations)
     if ctrl:
         ds = kwargs.get('data_source')
-        if ds is None: raise 'MissingDFData'
+        if ds is None: raise Exception("[MissingDFData] Please provide 'data_source'")
 
         profile_name = f"CTRL_EV{ev_idx}_p_{phase.lower()}_mw"
         ds.df[profile_name] = generate_ev_profile(ds, ev_max_kw=kw)
@@ -177,8 +177,7 @@ def create_load_controllers(net, ds, **kwargs):
     """
     Assumes that ds.df contains columns named after Loads.xlsx['Name'] and their '_Q' suffix for reactive profiles.
     """
-    data_dir = kwargs.get('data_dir')
-    data_dir = kwargs.get('data_dir') if data_dir is not None else os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV')
+    data_dir = kwargs.get('data_dir', os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV'))
     loads = pd.read_excel(os.path.join(data_dir, "Loads.xlsx"), skiprows=2)
 
     # Ensure load names are strings and match exactly
@@ -222,8 +221,7 @@ def generate_ev_profile(ds, ev_max_kw=7.0, **kwargs):
     minutes = len(ds.df)
     pick_profile = int(np.random.choice(range(56,101)))
 
-    profile_dir = kwargs.get('profile_dir')
-    profile_dir = os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV', 'Load profiles') if profile_dir is None else profile_dir
+    profile_dir = kwargs.get('profile_dir', os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV', 'Load profiles'))
 
     file_path = os.path.join(profile_dir, f"Load_profile_{pick_profile}.csv")
     try:
@@ -270,7 +268,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
     for element in elements:
         hc_results[f"{element}_total"] = 0.0
 
-    for bus_idx in net.bus.index[2:4]:
+    for bus_idx in net.bus.index[2:]:
         for i in range(max_iteration):
             print(f"Bus {bus_idx} - ite {i}")
             net_copy = deepcopy(net)
@@ -307,9 +305,9 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                     ow.remove_log_variable('res_line', 'loading_percent')
 
                     print(f"Bus {bus_idx}-ite {i} Running Time Series")
-                    run_timeseries(net_copy, time_steps=time_steps, run_control=True, continue_on_divergence=False)
+                    run_timeseries(net_copy, time_steps=time_steps, run=pp.runpp_3ph, run_control=True, continue_on_divergence=True)
 
-                    violated, violation_type = cbn.hc_violation(net_copy, mod='sto')
+                    violated, violation_type = cbn.hc_violation(net_copy, mod='sto', output_writer_data=ow.output)
                     if violated:
                         print(f"Violation: {violation_type}")
                         summary_results.loc[len(summary_results)] = {
