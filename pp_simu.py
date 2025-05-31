@@ -298,8 +298,8 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
     for element in elements:
         hc_results[f"{element}_total"] = 0.0
 
-    for bus_idx in indices:
-        for i in range(max_iteration):
+    for i in range(max_iteration):
+        for bus_idx in indices:
             # print(f"Bus {bus_idx} - ite {i}")
             net_copy = deepcopy(net)
             create_load_controllers(net_copy, data_source)
@@ -360,6 +360,8 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                         'violation': str(err)
                     }
                     break
+                finally:
+                    summary_results.to_csv(os.path.join(output_path, f"{''.join(elements)}_summaryResults_{i}.csv"))
 
             for element in elements:
                 hc_results.at[bus_idx, f"{element}_total"] += total_kw / max_iteration
