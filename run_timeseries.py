@@ -10,6 +10,9 @@ from pandapower.file_io import from_json, to_json
 from pandapower.timeseries import run_timeseries
 from pandapower.timeseries import OutputWriter
 
+import create_basic_network as cbn
+import pp_simu
+
 data_dir = os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV')
 json_dir = os.path.join(os.path.dirname(__file__), 'json_networks')
 

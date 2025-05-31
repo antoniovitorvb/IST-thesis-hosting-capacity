@@ -161,36 +161,43 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
 # ===================================================================
 # STOCHASTIC MODULE
 # ===================================================================
-def create_load_controllers(net, ds, loads):
+def create_load_controllers(net, ds, **kwargs):
+    """
+    Assumes that ds.df contains columns named after Loads.xlsx['Name'] and their '_Q' suffix for reactive profiles.
+    """
+    data_dir = kwargs.get('data_dir')
+    data_dir = kwargs.get('data_dir') if data_dir is not None else os.path.join(os.path.dirname(__file__), 'Modified_116_LV_CSV')
+    loads = pd.read_excel(os.path.join(data_dir, "Loads.xlsx"), skiprows=2)
+
     ppc.ConstControl(
         net, element='asymmetric_load', variable='p_a_mw',
         element_index=loads[loads['phases']=='A'].index, data_source=ds, 
-        profile_name=loads[loads['phases']=='A'].Yearly
+        profile_name=loads[loads['phases']=='A'].Name
     )
     pp.ConstControl(
         net, element='asymmetric_load', variable='q_a_mvar',
         element_index=loads[loads['phases']=='A'].index, data_source=ds,
-        profile_name=loads[loads['phases']=='A'].Yearly+'_Q'
+        profile_name=loads[loads['phases']=='A'].Name+'_Q'
     )
     pp.ConstControl(
         net, element='asymmetric_load', variable='p_b_mw',
         element_index=loads[loads['phases']=='B'].index, data_source=ds,
-        profile_name=loads[loads['phases']=='B'].Yearly
+        profile_name=loads[loads['phases']=='B'].Name
     )
     pp.ConstControl(
         net, element='asymmetric_load', variable='q_b_mvar',
         element_index=loads[loads['phases']=='B'].index, data_source=ds,
-        profile_name=loads[loads['phases']=='B'].Yearly+'_Q'
+        profile_name=loads[loads['phases']=='B'].Name+'_Q'
     )
     pp.ConstControl(
         net, element='asymmetric_load', variable='p_c_mw',
         element_index=loads[loads['phases']=='C'].index, data_source=ds,
-        profile_name=loads[loads['phases']=='C'].Yearly
+        profile_name=loads[loads['phases']=='C'].Name
     )
     pp.ConstControl(
         net, element='asymmetric_load', variable='q_c_mvar',
         element_index=loads[loads['phases']=='C'].index, data_source=ds,
-        profile_name=loads[loads['phases']=='C'].Yearly+'_Q'
+        profile_name=loads[loads['phases']=='C'].Name+'_Q'
     )
     return net
 
@@ -226,22 +233,26 @@ def generate_ev_profile(ds, ev_max_kw=7.0, **kwargs):
         return profile["mult"].values * ev_max_kw * 1e-3
 
 
-def hc_stochastic(net, iteration=1000, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
+def hc_montecarlo(net, data_source, iteration=1000, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
     """
     Run Monte Carlo simulations to assess probabilistic hosting capacity.
 
     Parameters:
     - net: pandapower network object
-    - n_iter: number of Monte Carlo scenarios
-    - profile_df: DataFrame of time-series profiles (P and Q)
-    - time_steps: number of time steps in the profile (e.g., 1440 for 1-min data)
+    - data_source: DFData object with time-series profiles
+    - time_steps: list or index of time steps for QSTS (e.g., ds.df.index)
+    - iteration: number of Monte Carlo scenarios
+    - add_kw: step size in kW for each DER addition
+    - max_kw: maximum DER capacity per bus/phase
     - pv: include PV systems
     - ev: include EV chargers
-    
+
     Returns:
-    - violation_log: DataFrame with frequencies of each violation type per bus
+    - hc_results: DataFrame with estimated hosting capacity per bus
+    - summary_results: DataFrame logging violations per scenario
     """
     from random import choice, uniform
+    from pandapower.timeseries import run_timeseries, OutputWriter
 
     elements = []
     if pv: elements.append('PV')
@@ -250,15 +261,63 @@ def hc_stochastic(net, iteration=1000, add_kw=1.0, max_kw=30.0, pv=True, ev=Fals
     phases = ['A', 'B', 'C']
     hc_results = pd.DataFrame(index=net.bus.index)
     hc_results['bus_name'] = net.bus['name'].values
+    summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
 
     for element in elements:
-        for phase in phases:
-            hc_results[f"{element}_{phase}"] = 0.0
-    
-    for bus_idx in net.bus.index[2:]:
+        hc_results[f"{element}_total"] = 0.0
+
+    for bus_idx in net.bus.index[2:10]:
         for i in range(iteration):
             net_copy = deepcopy(net)
-            """"
-            Monte-carlo simulations per bus to estimate Hosting Capacity
-            """
-            continue
+            create_load_controllers(net_copy, data_source)
+            total_kw = 0.0
+
+            while total_kw <= max_kw:
+                try:
+                    phase = choice(phases)
+                    der_type = choice(elements)
+                    rand_kw = uniform(add_kw, add_kw * 5)
+                    time_steps = data_source.df.index
+
+                    if der_type == 'PV':
+                        addPV(net_copy, bus_idx, phase, kw=rand_kw, ctrl=True, data_source=data_source)
+                    elif der_type == 'EV':
+                        addEV(net_copy, bus_idx, phase, kw=rand_kw, ctrl=True, data_source=data_source)
+
+                    # Set up OutputWriter
+                    ow = OutputWriter(net_copy, time_steps, output_path="./results", output_file_type=".p")
+                    ow.log_variable('res_bus_3ph', 'vm_a_pu')
+                    ow.log_variable('res_bus_3ph', 'vm_b_pu')
+                    ow.log_variable('res_bus_3ph', 'vm_c_pu')
+                    ow.log_variable('res_line_3ph', 'loading_a_percent')
+                    ow.log_variable('res_line_3ph', 'loading_b_percent')
+                    ow.log_variable('res_line_3ph', 'loading_c_percent')
+                    ow.log_variable('res_trafo_3ph', 'loading_percent')
+
+                    run_timeseries(net_copy, time_steps=time_steps)
+
+                    violated, violation_type = cbn.hc_violation(net_copy, mod='sto')
+                    if violated:
+                        summary_results.loc[len(summary_results)] = {
+                            'scenario': f"{''.join(elements)}_bus_{bus_idx}_iter_{i}",
+                            'bus_idx': bus_idx,
+                            'installed_kW': total_kw,
+                            'violation': violation_type
+                        }
+                        break
+                    else:
+                        total_kw += rand_kw
+
+                except Exception as err:
+                    summary_results.loc[len(summary_results)] = {
+                        'scenario': f"bus_{bus_idx}_iter_{i}",
+                        'bus_idx': bus_idx,
+                        'installed_kW': total_kw,
+                        'violation': str(err)
+                    }
+                    break
+
+            for element in elements:
+                hc_results.at[bus_idx, f"{element}_total"] += total_kw / iteration
+
+    return hc_results, summary_results
