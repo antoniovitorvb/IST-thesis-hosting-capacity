@@ -266,6 +266,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
     summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
 
     bus_indexes = kwargs.get('bus_indexes', net.bus.index[2:])
+    line_bus_indices = net.line[net.line.to_bus.isin(bus_indexes)].index
 
     for element in elements:
         hc_results[f"{element}_total"] = 0.0
@@ -298,15 +299,15 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                     ow.log_variable('res_bus_3ph', 'vm_a_pu', index=bus_indexes)
                     ow.log_variable('res_bus_3ph', 'vm_b_pu', index=bus_indexes)
                     ow.log_variable('res_bus_3ph', 'vm_c_pu', index=bus_indexes)
-                    ow.log_variable('res_line_3ph', 'loading_a_percent', index=bus_indexes)
-                    ow.log_variable('res_line_3ph', 'loading_b_percent', index=bus_indexes)
-                    ow.log_variable('res_line_3ph', 'loading_c_percent', index=bus_indexes)
-                    ow.log_variable('res_trafo_3ph', 'loading_percent', index=bus_indexes)
+                    ow.log_variable('res_line_3ph', 'loading_a_percent', index=line_bus_indices)
+                    ow.log_variable('res_line_3ph', 'loading_b_percent', index=line_bus_indices)
+                    ow.log_variable('res_line_3ph', 'loading_c_percent', index=line_bus_indices)
+                    ow.log_variable('res_trafo_3ph', 'loading_percent', index=net.trafo.index)
 
                     ow.remove_log_variable('res_bus', 'vm_pu')
                     ow.remove_log_variable('res_line', 'loading_percent')
 
-                    print(f"Bus {bus_idx}-ite {i} Running Time Series")
+                    print(f"\n\n\n\n\nBus {bus_idx}-ite {i} Running Time Series\n")
                     run_timeseries(net_copy, time_steps=time_steps, run=pp.runpp_3ph, run_control=True, continue_on_divergence=True)
 
                     violated, violation_type = cbn.hc_violation(net_copy, mod='sto', output_writer_data=ow.output)
