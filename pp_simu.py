@@ -265,13 +265,14 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
     hc_results['bus_name'] = net.bus['name'].values
     summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
 
-    bus_indexes = kwargs.get('bus_indexes', net.bus.index[2:])
-    line_bus_indices = net.line[net.line.to_bus.isin(bus_indexes)].index
+    indices = kwargs.get('ow_index', net.bus.index[2:])
+    bus_indices = net.bus[net.bus.name.isin(indices)].index
+    line_bus_indices = net.line[net.line.to_bus.isin(indices)].index
 
     for element in elements:
         hc_results[f"{element}_total"] = 0.0
 
-    for bus_idx in bus_indexes:
+    for bus_idx in indices:
         for i in range(max_iteration):
             # print(f"Bus {bus_idx} - ite {i}")
             net_copy = deepcopy(net)
@@ -296,9 +297,9 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                     # Set up OutputWriter
                     # print("Set up OutputWriter...")
                     ow = OutputWriter(net_copy, time_steps, output_path=output_path, output_file_type=".csv")
-                    ow.log_variable('res_bus_3ph', 'vm_a_pu', index=bus_indexes)
-                    ow.log_variable('res_bus_3ph', 'vm_b_pu', index=bus_indexes)
-                    ow.log_variable('res_bus_3ph', 'vm_c_pu', index=bus_indexes)
+                    ow.log_variable('res_bus_3ph', 'vm_a_pu', index=bus_indices)
+                    ow.log_variable('res_bus_3ph', 'vm_b_pu', index=bus_indices)
+                    ow.log_variable('res_bus_3ph', 'vm_c_pu', index=bus_indices)
                     ow.log_variable('res_line_3ph', 'loading_a_percent', index=line_bus_indices)
                     ow.log_variable('res_line_3ph', 'loading_b_percent', index=line_bus_indices)
                     ow.log_variable('res_line_3ph', 'loading_c_percent', index=line_bus_indices)
