@@ -132,7 +132,7 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
 
                 except Exception as e:
                     print(f"Stopped at bus {bus_idx}, phase {p.upper()} with {total_kw} kW due to error: {e}")
-                    # break
+                    break
                 finally:
                     total_kw += add_kw
             hc_results.at[bus_idx, f"PV_{p.upper()}"] = hc_pv
