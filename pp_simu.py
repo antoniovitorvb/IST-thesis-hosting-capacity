@@ -300,10 +300,10 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
     for element in elements:
         hc_results[f"{element}_total"] = 0.0
 
-    for i in range(max_iteration):
-        print(f"Progess: {i} / {max_iteration}")
-        for bus_idx in bus_indices:
-            # print(f"Bus {bus_idx} - ite {i}")
+    for bus_idx in bus_indices:
+        # print(f"Bus {bus_idx} - ite {i}")
+        for i in range(max_iteration):
+            print(f"\n\n\n\n\nProgress: {i} / {max_iteration}")
             net_copy = deepcopy(net)
             create_load_controllers(net_copy, data_source)
             
@@ -337,7 +337,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                     ow.remove_log_variable('res_bus', 'vm_pu')
                     ow.remove_log_variable('res_line', 'loading_percent')
 
-                    print(f"\n\n\n\n\nBus {bus_idx}-ite {i} Running Time Series\n")
+                    print(f"\nBus {bus_idx}-ite {i} Running Time Series\n")
                     run_timeseries(net_copy, time_steps=time_steps, run=pp.runpp_3ph, run_control=True, continue_on_divergence=True)
 
                     violated, violation_type = cbn.hc_violation(net_copy, mod='sto', output_writer_data=ow.output)
@@ -367,10 +367,11 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                     temp_summary_results.loc[len(temp_summary_results)] = {
                         'scenario': f"{''.join(elements)}_bus_{bus_idx}_iter_{i}",
                         'bus_idx': bus_idx,
+                        'phase': phase,
                         'installed_kW': rand_kw,
                         'violation': violation_type
                     }
-                    temp_summary_results.to_csv(os.path.join(output_path, f"{''.join(elements)}_summaryResults_{i}.csv"))
+                    temp_summary_results.to_csv(os.path.join(output_path, f"{''.join(elements)}_summaryResults_BUS{bus_idx}.csv"))
 
             for element in elements:
                 hc_results.at[bus_idx, f"{element}_total"] += total_kw / max_iteration

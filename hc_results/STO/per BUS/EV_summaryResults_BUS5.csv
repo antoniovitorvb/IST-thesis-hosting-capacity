@@ -1,0 +1,13 @@
+,scenario,bus_idx,installed_kW,violation
+0,EV_bus_5_iter_0,5,1.5283169198410893,Overvoltage
+1,EV_bus_5_iter_1,5,1.406916520175351,Overvoltage
+2,EV_bus_5_iter_2,5,4.283527801888837,Overvoltage
+3,EV_bus_5_iter_3,5,3.2775098026871143,Overvoltage
+4,EV_bus_5_iter_4,5,2.3441585739460318,Overvoltage
+5,EV_bus_5_iter_5,5,1.0333341322013365,Overvoltage
+6,EV_bus_5_iter_6,5,3.793635491226615,Overvoltage
+7,EV_bus_5_iter_7,5,3.74520158973846,Overvoltage
+8,EV_bus_5_iter_8,5,4.187086162339488,Overvoltage
+9,EV_bus_5_iter_9,5,3.6789939535971157,Overvoltage
+10,EV_bus_5_iter_10,5,4.156822951279812,Overvoltage
+11,EV_bus_5_iter_11,5,4.116606876325147,Overvoltage
