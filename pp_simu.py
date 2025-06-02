@@ -312,13 +312,15 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                 try:
                     phase = choice(phases)
                     der_type = choice(elements)
-                    rand_kw = uniform(add_kw, add_kw * 5)
+                    pv_rand_kw = ev_rand_kw = 0
                     time_steps = data_source.df.index
 
                     if der_type == 'PV':
-                        addPV(net_copy, bus_idx, phase, kw=rand_kw, ctrl=True, data_source=data_source)
+                        pv_rand_kw = uniform(add_kw, add_kw * 5)
+                        addPV(net_copy, bus_idx, phase, kw=pv_rand_kw, ctrl=True, data_source=data_source)
                     elif der_type == 'EV':
-                        addEV(net_copy, bus_idx, phase, kw=rand_kw, ctrl=True, data_source=data_source)
+                        ev_rand_kw = uniform(add_kw, add_kw * 5)
+                        addEV(net_copy, bus_idx, phase, kw=ev_rand_kw, ctrl=True, data_source=data_source)
                 except Exception as err:
                     print(err)
 
@@ -351,7 +353,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                         }
                         break
                     else:
-                        total_kw += rand_kw
+                        total_kw += pv_rand_kw + ev_rand_kw
                         # print(f"Bus {bus_idx} - ite {i} Deu bom! Total: {total_kw} kW")
 
                 except Exception as err:
@@ -364,6 +366,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                     }
                     break
                 finally:
+                    
                     temp_summary_results.loc[len(temp_summary_results)] = {
                         'scenario': f"{''.join(elements)}_bus_{bus_idx}_iter_{i}",
                         'bus_idx': bus_idx,
