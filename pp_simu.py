@@ -291,6 +291,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
     hc_results['bus_name'] = net.bus['name'].values
     summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
     temp_summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
+    temp_summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
 
     indices = kwargs.get('ow_index', net.bus.index[2:])
     bus_indices = net.bus[net.bus.name.isin(indices)].index
@@ -300,7 +301,8 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
         hc_results[f"{element}_total"] = 0.0
 
     for i in range(max_iteration):
-        for bus_idx in indices:
+        print(f"Progess: {i} / {max_iteration}")
+        for bus_idx in bus_indices:
             # print(f"Bus {bus_idx} - ite {i}")
             net_copy = deepcopy(net)
             create_load_controllers(net_copy, data_source)
@@ -362,7 +364,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                     }
                     break
                 finally:
-                    temp_summary_results.loc[len(summary_results)] = {
+                    temp_summary_results.loc[len(temp_summary_results)] = {
                         'scenario': f"{''.join(elements)}_bus_{bus_idx}_iter_{i}",
                         'bus_idx': bus_idx,
                         'installed_kW': rand_kw,
