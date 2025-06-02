@@ -107,7 +107,7 @@ def addEV(net, bus, phase, kw=7.0, ctrl=False, **kwargs):
 # ===================================================================
 # DETERMINISTIC MODULE
 # ===================================================================
-def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
+def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=False, **kwargs):
     """
     Increases DERs until a violation occurs at any bus.
 
@@ -126,15 +126,28 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
     if pv: elements.append('PV')
     if ev: elements.append('EV')
 
+    init = kwargs.get('init', 'auto')
+    max_iteration = kwargs.get('max_iteration', 100)
+    tolerance_mva = kwargs.get('tolerance_mva', 1e-8)
+    run_control = kwargs.get('run_control', True)
+
+    output_path = kwargs.get('output_path', os.path.join(os.path.dirname(__file__), 'hc_results', 'DET'))
+
     phases = ['A', 'B', 'C']
     hc_results = pd.DataFrame(index=net.bus.index)
     hc_results['bus_name'] = net.bus['name'].values
+    summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
+    
+
+    hc_indices = kwargs.get('hc_indices', net.bus.index[2:])
+    bus_indices = net.bus[net.bus.name.isin(hc_indices)].index
+    # line_bus_indices = net.line[net.line.to_bus.isin(hc_indices)].index
 
     for element in elements:
         for phase in phases:
-            hc_results[f"{element}_{phase}"] = 0.0
+            hc_results[f"{element}_{phase}_total"] = 0.0
 
-    for bus_idx in net.bus.index[2:]:
+    for bus_idx in hc_indices:
         for p in phases:
             net_copy = deepcopy(net)
 
@@ -148,25 +161,38 @@ def hc_deterministic(net, add_kw=1.0, max_kw=30.0, pv=True, ev=False):
                     if pv: addPV(net_copy, bus_idx, p, kw=add_kw)
                     if ev: addEV(net_copy, bus_idx, p, kw=add_kw)
 
-                    pp.runpp_3ph(net_copy, max_iteration=100, tolerance_mva=1e-6)
+                    pp.runpp_3ph(net_copy, init=init, max_iteration=max_iteration, tolerance_mva=tolerance_mva)
 
                     is_violated, violation = cbn.hc_violation(net_copy, mod='det')
                     if is_violated:
                         print(f'{violation} violation at bus {bus_idx}, phase {p.upper()} with {total_kw} kW')
+                        summary_results.loc[len(summary_results)] = {
+                            'scenario': f"{''.join(elements)}_bus_{bus_idx}_{p.upper()}",
+                            'bus_idx': bus_idx,
+                            'installed_kW': total_kw,
+                            'violation': violation
+                        }
                         # break
                     else:
                        hc_pv += total_kw if pv else 0
                        hc_ev += total_kw if ev else 0
 
-                except Exception as e:
-                    print(f"Stopped at bus {bus_idx}, phase {p.upper()} with {total_kw} kW due to error: {e}")
+                except Exception as err:
+                    print(f"Stopped at bus {bus_idx}, phase {p.upper()} with {total_kw} kW due to error: {err}")
+                    summary_results.loc[len(summary_results)] = {
+                        'scenario': f"{''.join(elements)}_bus_{bus_idx}_{p.upper()}",
+                        'bus_idx': bus_idx,
+                        'installed_kW': total_kw,
+                        'violation': str(err)
+                    }
                     break
                 finally:
                     total_kw += add_kw
             hc_results.at[bus_idx, f"PV_{p.upper()}"] = hc_pv
             hc_results.at[bus_idx, f"EV_{p.upper()}"] = hc_ev
-
-    return hc_results
+    summary_results.to_csv(os.path.join(output_path, f"{''.join(elements)}_summaryResults.csv"))
+    hc_results.to_csv(os.path.join(output_path, f"{''.join(elements)}_HCResults.csv"))
+    return hc_results, summary_results
 
 
 
@@ -265,6 +291,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
     hc_results['bus_name'] = net.bus['name'].values
     summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
     temp_summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
+    temp_summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
 
     indices = kwargs.get('ow_index', net.bus.index[2:])
     bus_indices = net.bus[net.bus.name.isin(indices)].index
@@ -337,7 +364,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                     }
                     break
                 finally:
-                    temp_summary_results.loc[len(summary_results)] = {
+                    temp_summary_results.loc[len(temp_summary_results)] = {
                         'scenario': f"{''.join(elements)}_bus_{bus_idx}_iter_{i}",
                         'bus_idx': bus_idx,
                         'installed_kW': rand_kw,

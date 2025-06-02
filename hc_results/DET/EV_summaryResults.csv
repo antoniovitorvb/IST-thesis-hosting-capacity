@@ -1,0 +1,2301 @@
+,scenario,bus_idx,installed_kW,violation
+0,EV_bus_2_A,2,0.0,Overvoltage
+1,EV_bus_2_A,2,0.5,Overvoltage
+2,EV_bus_2_A,2,1.0,Overvoltage
+3,EV_bus_2_A,2,1.5,Overvoltage
+4,EV_bus_2_A,2,2.0,Overvoltage
+5,EV_bus_2_A,2,2.5,Overvoltage
+6,EV_bus_2_A,2,3.0,Power Flow nr did not converge after 100 iterations!
+7,EV_bus_2_B,2,0.0,Overvoltage
+8,EV_bus_2_B,2,0.5,Overvoltage
+9,EV_bus_2_B,2,1.0,Overvoltage
+10,EV_bus_2_B,2,1.5,Power Flow nr did not converge after 100 iterations!
+11,EV_bus_2_C,2,0.0,Overvoltage
+12,EV_bus_2_C,2,0.5,Overvoltage
+13,EV_bus_2_C,2,1.0,Overvoltage
+14,EV_bus_2_C,2,1.5,Overvoltage
+15,EV_bus_2_C,2,2.0,Overvoltage
+16,EV_bus_2_C,2,2.5,Overvoltage
+17,EV_bus_2_C,2,3.0,Overvoltage
+18,EV_bus_2_C,2,3.5,Overvoltage
+19,EV_bus_2_C,2,4.0,Power Flow nr did not converge after 100 iterations!
+20,EV_bus_3_A,3,0.0,Overvoltage
+21,EV_bus_3_A,3,0.5,Overvoltage
+22,EV_bus_3_A,3,1.0,Overvoltage
+23,EV_bus_3_A,3,1.5,Overvoltage
+24,EV_bus_3_A,3,2.0,Overvoltage
+25,EV_bus_3_A,3,2.5,Overvoltage
+26,EV_bus_3_A,3,3.0,Power Flow nr did not converge after 100 iterations!
+27,EV_bus_3_B,3,0.0,Overvoltage
+28,EV_bus_3_B,3,0.5,Overvoltage
+29,EV_bus_3_B,3,1.0,Overvoltage
+30,EV_bus_3_B,3,1.5,Power Flow nr did not converge after 100 iterations!
+31,EV_bus_3_C,3,0.0,Overvoltage
+32,EV_bus_3_C,3,0.5,Overvoltage
+33,EV_bus_3_C,3,1.0,Overvoltage
+34,EV_bus_3_C,3,1.5,Overvoltage
+35,EV_bus_3_C,3,2.0,Overvoltage
+36,EV_bus_3_C,3,2.5,Overvoltage
+37,EV_bus_3_C,3,3.0,Overvoltage
+38,EV_bus_3_C,3,3.5,Overvoltage
+39,EV_bus_3_C,3,4.0,Power Flow nr did not converge after 100 iterations!
+40,EV_bus_4_A,4,0.0,Overvoltage
+41,EV_bus_4_A,4,0.5,Overvoltage
+42,EV_bus_4_A,4,1.0,Overvoltage
+43,EV_bus_4_A,4,1.5,Overvoltage
+44,EV_bus_4_A,4,2.0,Overvoltage
+45,EV_bus_4_A,4,2.5,Overvoltage
+46,EV_bus_4_A,4,3.0,Power Flow nr did not converge after 100 iterations!
+47,EV_bus_4_B,4,0.0,Overvoltage
+48,EV_bus_4_B,4,0.5,Overvoltage
+49,EV_bus_4_B,4,1.0,Overvoltage
+50,EV_bus_4_B,4,1.5,Power Flow nr did not converge after 100 iterations!
+51,EV_bus_4_C,4,0.0,Overvoltage
+52,EV_bus_4_C,4,0.5,Overvoltage
+53,EV_bus_4_C,4,1.0,Overvoltage
+54,EV_bus_4_C,4,1.5,Overvoltage
+55,EV_bus_4_C,4,2.0,Overvoltage
+56,EV_bus_4_C,4,2.5,Overvoltage
+57,EV_bus_4_C,4,3.0,Overvoltage
+58,EV_bus_4_C,4,3.5,Overvoltage
+59,EV_bus_4_C,4,4.0,Power Flow nr did not converge after 100 iterations!
+60,EV_bus_5_A,5,0.0,Overvoltage
+61,EV_bus_5_A,5,0.5,Overvoltage
+62,EV_bus_5_A,5,1.0,Overvoltage
+63,EV_bus_5_A,5,1.5,Overvoltage
+64,EV_bus_5_A,5,2.0,Overvoltage
+65,EV_bus_5_A,5,2.5,Overvoltage
+66,EV_bus_5_A,5,3.0,Power Flow nr did not converge after 100 iterations!
+67,EV_bus_5_B,5,0.0,Overvoltage
+68,EV_bus_5_B,5,0.5,Overvoltage
+69,EV_bus_5_B,5,1.0,Overvoltage
+70,EV_bus_5_B,5,1.5,Power Flow nr did not converge after 100 iterations!
+71,EV_bus_5_C,5,0.0,Overvoltage
+72,EV_bus_5_C,5,0.5,Overvoltage
+73,EV_bus_5_C,5,1.0,Overvoltage
+74,EV_bus_5_C,5,1.5,Overvoltage
+75,EV_bus_5_C,5,2.0,Overvoltage
+76,EV_bus_5_C,5,2.5,Overvoltage
+77,EV_bus_5_C,5,3.0,Overvoltage
+78,EV_bus_5_C,5,3.5,Overvoltage
+79,EV_bus_5_C,5,4.0,Power Flow nr did not converge after 100 iterations!
+80,EV_bus_6_A,6,0.0,Overvoltage
+81,EV_bus_6_A,6,0.5,Overvoltage
+82,EV_bus_6_A,6,1.0,Overvoltage
+83,EV_bus_6_A,6,1.5,Overvoltage
+84,EV_bus_6_A,6,2.0,Overvoltage
+85,EV_bus_6_A,6,2.5,Overvoltage
+86,EV_bus_6_A,6,3.0,Power Flow nr did not converge after 100 iterations!
+87,EV_bus_6_B,6,0.0,Overvoltage
+88,EV_bus_6_B,6,0.5,Overvoltage
+89,EV_bus_6_B,6,1.0,Overvoltage
+90,EV_bus_6_B,6,1.5,Power Flow nr did not converge after 100 iterations!
+91,EV_bus_6_C,6,0.0,Overvoltage
+92,EV_bus_6_C,6,0.5,Overvoltage
+93,EV_bus_6_C,6,1.0,Overvoltage
+94,EV_bus_6_C,6,1.5,Overvoltage
+95,EV_bus_6_C,6,2.0,Overvoltage
+96,EV_bus_6_C,6,2.5,Overvoltage
+97,EV_bus_6_C,6,3.0,Overvoltage
+98,EV_bus_6_C,6,3.5,Overvoltage
+99,EV_bus_6_C,6,4.0,Power Flow nr did not converge after 100 iterations!
+100,EV_bus_7_A,7,0.0,Overvoltage
+101,EV_bus_7_A,7,0.5,Overvoltage
+102,EV_bus_7_A,7,1.0,Overvoltage
+103,EV_bus_7_A,7,1.5,Overvoltage
+104,EV_bus_7_A,7,2.0,Overvoltage
+105,EV_bus_7_A,7,2.5,Overvoltage
+106,EV_bus_7_A,7,3.0,Power Flow nr did not converge after 100 iterations!
+107,EV_bus_7_B,7,0.0,Overvoltage
+108,EV_bus_7_B,7,0.5,Overvoltage
+109,EV_bus_7_B,7,1.0,Overvoltage
+110,EV_bus_7_B,7,1.5,Power Flow nr did not converge after 100 iterations!
+111,EV_bus_7_C,7,0.0,Overvoltage
+112,EV_bus_7_C,7,0.5,Overvoltage
+113,EV_bus_7_C,7,1.0,Overvoltage
+114,EV_bus_7_C,7,1.5,Overvoltage
+115,EV_bus_7_C,7,2.0,Overvoltage
+116,EV_bus_7_C,7,2.5,Overvoltage
+117,EV_bus_7_C,7,3.0,Overvoltage
+118,EV_bus_7_C,7,3.5,Overvoltage
+119,EV_bus_7_C,7,4.0,Power Flow nr did not converge after 100 iterations!
+120,EV_bus_8_A,8,0.0,Overvoltage
+121,EV_bus_8_A,8,0.5,Overvoltage
+122,EV_bus_8_A,8,1.0,Overvoltage
+123,EV_bus_8_A,8,1.5,Overvoltage
+124,EV_bus_8_A,8,2.0,Overvoltage
+125,EV_bus_8_A,8,2.5,Overvoltage
+126,EV_bus_8_A,8,3.0,Power Flow nr did not converge after 100 iterations!
+127,EV_bus_8_B,8,0.0,Overvoltage
+128,EV_bus_8_B,8,0.5,Overvoltage
+129,EV_bus_8_B,8,1.0,Overvoltage
+130,EV_bus_8_B,8,1.5,Power Flow nr did not converge after 100 iterations!
+131,EV_bus_8_C,8,0.0,Overvoltage
+132,EV_bus_8_C,8,0.5,Overvoltage
+133,EV_bus_8_C,8,1.0,Overvoltage
+134,EV_bus_8_C,8,1.5,Overvoltage
+135,EV_bus_8_C,8,2.0,Overvoltage
+136,EV_bus_8_C,8,2.5,Overvoltage
+137,EV_bus_8_C,8,3.0,Overvoltage
+138,EV_bus_8_C,8,3.5,Overvoltage
+139,EV_bus_8_C,8,4.0,Power Flow nr did not converge after 100 iterations!
+140,EV_bus_9_A,9,0.0,Overvoltage
+141,EV_bus_9_A,9,0.5,Overvoltage
+142,EV_bus_9_A,9,1.0,Overvoltage
+143,EV_bus_9_A,9,1.5,Overvoltage
+144,EV_bus_9_A,9,2.0,Overvoltage
+145,EV_bus_9_A,9,2.5,Overvoltage
+146,EV_bus_9_A,9,3.0,Power Flow nr did not converge after 100 iterations!
+147,EV_bus_9_B,9,0.0,Overvoltage
+148,EV_bus_9_B,9,0.5,Overvoltage
+149,EV_bus_9_B,9,1.0,Overvoltage
+150,EV_bus_9_B,9,1.5,Power Flow nr did not converge after 100 iterations!
+151,EV_bus_9_C,9,0.0,Overvoltage
+152,EV_bus_9_C,9,0.5,Overvoltage
+153,EV_bus_9_C,9,1.0,Overvoltage
+154,EV_bus_9_C,9,1.5,Overvoltage
+155,EV_bus_9_C,9,2.0,Overvoltage
+156,EV_bus_9_C,9,2.5,Overvoltage
+157,EV_bus_9_C,9,3.0,Overvoltage
+158,EV_bus_9_C,9,3.5,Overvoltage
+159,EV_bus_9_C,9,4.0,Power Flow nr did not converge after 100 iterations!
+160,EV_bus_10_A,10,0.0,Overvoltage
+161,EV_bus_10_A,10,0.5,Overvoltage
+162,EV_bus_10_A,10,1.0,Overvoltage
+163,EV_bus_10_A,10,1.5,Overvoltage
+164,EV_bus_10_A,10,2.0,Overvoltage
+165,EV_bus_10_A,10,2.5,Overvoltage
+166,EV_bus_10_A,10,3.0,Power Flow nr did not converge after 100 iterations!
+167,EV_bus_10_B,10,0.0,Overvoltage
+168,EV_bus_10_B,10,0.5,Overvoltage
+169,EV_bus_10_B,10,1.0,Overvoltage
+170,EV_bus_10_B,10,1.5,Power Flow nr did not converge after 100 iterations!
+171,EV_bus_10_C,10,0.0,Overvoltage
+172,EV_bus_10_C,10,0.5,Overvoltage
+173,EV_bus_10_C,10,1.0,Overvoltage
+174,EV_bus_10_C,10,1.5,Overvoltage
+175,EV_bus_10_C,10,2.0,Overvoltage
+176,EV_bus_10_C,10,2.5,Overvoltage
+177,EV_bus_10_C,10,3.0,Overvoltage
+178,EV_bus_10_C,10,3.5,Overvoltage
+179,EV_bus_10_C,10,4.0,Power Flow nr did not converge after 100 iterations!
+180,EV_bus_11_A,11,0.0,Overvoltage
+181,EV_bus_11_A,11,0.5,Overvoltage
+182,EV_bus_11_A,11,1.0,Overvoltage
+183,EV_bus_11_A,11,1.5,Overvoltage
+184,EV_bus_11_A,11,2.0,Overvoltage
+185,EV_bus_11_A,11,2.5,Overvoltage
+186,EV_bus_11_A,11,3.0,Power Flow nr did not converge after 100 iterations!
+187,EV_bus_11_B,11,0.0,Overvoltage
+188,EV_bus_11_B,11,0.5,Overvoltage
+189,EV_bus_11_B,11,1.0,Overvoltage
+190,EV_bus_11_B,11,1.5,Power Flow nr did not converge after 100 iterations!
+191,EV_bus_11_C,11,0.0,Overvoltage
+192,EV_bus_11_C,11,0.5,Overvoltage
+193,EV_bus_11_C,11,1.0,Overvoltage
+194,EV_bus_11_C,11,1.5,Overvoltage
+195,EV_bus_11_C,11,2.0,Overvoltage
+196,EV_bus_11_C,11,2.5,Overvoltage
+197,EV_bus_11_C,11,3.0,Overvoltage
+198,EV_bus_11_C,11,3.5,Overvoltage
+199,EV_bus_11_C,11,4.0,Power Flow nr did not converge after 100 iterations!
+200,EV_bus_12_A,12,0.0,Overvoltage
+201,EV_bus_12_A,12,0.5,Overvoltage
+202,EV_bus_12_A,12,1.0,Overvoltage
+203,EV_bus_12_A,12,1.5,Overvoltage
+204,EV_bus_12_A,12,2.0,Overvoltage
+205,EV_bus_12_A,12,2.5,Overvoltage
+206,EV_bus_12_A,12,3.0,Power Flow nr did not converge after 100 iterations!
+207,EV_bus_12_B,12,0.0,Overvoltage
+208,EV_bus_12_B,12,0.5,Overvoltage
+209,EV_bus_12_B,12,1.0,Overvoltage
+210,EV_bus_12_B,12,1.5,Power Flow nr did not converge after 100 iterations!
+211,EV_bus_12_C,12,0.0,Overvoltage
+212,EV_bus_12_C,12,0.5,Overvoltage
+213,EV_bus_12_C,12,1.0,Overvoltage
+214,EV_bus_12_C,12,1.5,Overvoltage
+215,EV_bus_12_C,12,2.0,Overvoltage
+216,EV_bus_12_C,12,2.5,Overvoltage
+217,EV_bus_12_C,12,3.0,Overvoltage
+218,EV_bus_12_C,12,3.5,Overvoltage
+219,EV_bus_12_C,12,4.0,Power Flow nr did not converge after 100 iterations!
+220,EV_bus_13_A,13,0.0,Overvoltage
+221,EV_bus_13_A,13,0.5,Overvoltage
+222,EV_bus_13_A,13,1.0,Overvoltage
+223,EV_bus_13_A,13,1.5,Overvoltage
+224,EV_bus_13_A,13,2.0,Overvoltage
+225,EV_bus_13_A,13,2.5,Overvoltage
+226,EV_bus_13_A,13,3.0,Power Flow nr did not converge after 100 iterations!
+227,EV_bus_13_B,13,0.0,Overvoltage
+228,EV_bus_13_B,13,0.5,Overvoltage
+229,EV_bus_13_B,13,1.0,Overvoltage
+230,EV_bus_13_B,13,1.5,Power Flow nr did not converge after 100 iterations!
+231,EV_bus_13_C,13,0.0,Overvoltage
+232,EV_bus_13_C,13,0.5,Overvoltage
+233,EV_bus_13_C,13,1.0,Overvoltage
+234,EV_bus_13_C,13,1.5,Overvoltage
+235,EV_bus_13_C,13,2.0,Overvoltage
+236,EV_bus_13_C,13,2.5,Overvoltage
+237,EV_bus_13_C,13,3.0,Overvoltage
+238,EV_bus_13_C,13,3.5,Overvoltage
+239,EV_bus_13_C,13,4.0,Power Flow nr did not converge after 100 iterations!
+240,EV_bus_14_A,14,0.0,Overvoltage
+241,EV_bus_14_A,14,0.5,Overvoltage
+242,EV_bus_14_A,14,1.0,Overvoltage
+243,EV_bus_14_A,14,1.5,Overvoltage
+244,EV_bus_14_A,14,2.0,Overvoltage
+245,EV_bus_14_A,14,2.5,Overvoltage
+246,EV_bus_14_A,14,3.0,Power Flow nr did not converge after 100 iterations!
+247,EV_bus_14_B,14,0.0,Overvoltage
+248,EV_bus_14_B,14,0.5,Overvoltage
+249,EV_bus_14_B,14,1.0,Overvoltage
+250,EV_bus_14_B,14,1.5,Power Flow nr did not converge after 100 iterations!
+251,EV_bus_14_C,14,0.0,Overvoltage
+252,EV_bus_14_C,14,0.5,Overvoltage
+253,EV_bus_14_C,14,1.0,Overvoltage
+254,EV_bus_14_C,14,1.5,Overvoltage
+255,EV_bus_14_C,14,2.0,Overvoltage
+256,EV_bus_14_C,14,2.5,Overvoltage
+257,EV_bus_14_C,14,3.0,Overvoltage
+258,EV_bus_14_C,14,3.5,Overvoltage
+259,EV_bus_14_C,14,4.0,Power Flow nr did not converge after 100 iterations!
+260,EV_bus_15_A,15,0.0,Overvoltage
+261,EV_bus_15_A,15,0.5,Overvoltage
+262,EV_bus_15_A,15,1.0,Overvoltage
+263,EV_bus_15_A,15,1.5,Overvoltage
+264,EV_bus_15_A,15,2.0,Overvoltage
+265,EV_bus_15_A,15,2.5,Overvoltage
+266,EV_bus_15_A,15,3.0,Power Flow nr did not converge after 100 iterations!
+267,EV_bus_15_B,15,0.0,Overvoltage
+268,EV_bus_15_B,15,0.5,Overvoltage
+269,EV_bus_15_B,15,1.0,Overvoltage
+270,EV_bus_15_B,15,1.5,Power Flow nr did not converge after 100 iterations!
+271,EV_bus_15_C,15,0.0,Overvoltage
+272,EV_bus_15_C,15,0.5,Overvoltage
+273,EV_bus_15_C,15,1.0,Overvoltage
+274,EV_bus_15_C,15,1.5,Overvoltage
+275,EV_bus_15_C,15,2.0,Overvoltage
+276,EV_bus_15_C,15,2.5,Overvoltage
+277,EV_bus_15_C,15,3.0,Overvoltage
+278,EV_bus_15_C,15,3.5,Overvoltage
+279,EV_bus_15_C,15,4.0,Power Flow nr did not converge after 100 iterations!
+280,EV_bus_16_A,16,0.0,Overvoltage
+281,EV_bus_16_A,16,0.5,Overvoltage
+282,EV_bus_16_A,16,1.0,Overvoltage
+283,EV_bus_16_A,16,1.5,Overvoltage
+284,EV_bus_16_A,16,2.0,Overvoltage
+285,EV_bus_16_A,16,2.5,Overvoltage
+286,EV_bus_16_A,16,3.0,Power Flow nr did not converge after 100 iterations!
+287,EV_bus_16_B,16,0.0,Overvoltage
+288,EV_bus_16_B,16,0.5,Overvoltage
+289,EV_bus_16_B,16,1.0,Overvoltage
+290,EV_bus_16_B,16,1.5,Power Flow nr did not converge after 100 iterations!
+291,EV_bus_16_C,16,0.0,Overvoltage
+292,EV_bus_16_C,16,0.5,Overvoltage
+293,EV_bus_16_C,16,1.0,Overvoltage
+294,EV_bus_16_C,16,1.5,Overvoltage
+295,EV_bus_16_C,16,2.0,Overvoltage
+296,EV_bus_16_C,16,2.5,Overvoltage
+297,EV_bus_16_C,16,3.0,Overvoltage
+298,EV_bus_16_C,16,3.5,Overvoltage
+299,EV_bus_16_C,16,4.0,Power Flow nr did not converge after 100 iterations!
+300,EV_bus_17_A,17,0.0,Overvoltage
+301,EV_bus_17_A,17,0.5,Overvoltage
+302,EV_bus_17_A,17,1.0,Overvoltage
+303,EV_bus_17_A,17,1.5,Overvoltage
+304,EV_bus_17_A,17,2.0,Overvoltage
+305,EV_bus_17_A,17,2.5,Overvoltage
+306,EV_bus_17_A,17,3.0,Power Flow nr did not converge after 100 iterations!
+307,EV_bus_17_B,17,0.0,Overvoltage
+308,EV_bus_17_B,17,0.5,Overvoltage
+309,EV_bus_17_B,17,1.0,Overvoltage
+310,EV_bus_17_B,17,1.5,Power Flow nr did not converge after 100 iterations!
+311,EV_bus_17_C,17,0.0,Overvoltage
+312,EV_bus_17_C,17,0.5,Overvoltage
+313,EV_bus_17_C,17,1.0,Overvoltage
+314,EV_bus_17_C,17,1.5,Overvoltage
+315,EV_bus_17_C,17,2.0,Overvoltage
+316,EV_bus_17_C,17,2.5,Overvoltage
+317,EV_bus_17_C,17,3.0,Overvoltage
+318,EV_bus_17_C,17,3.5,Overvoltage
+319,EV_bus_17_C,17,4.0,Power Flow nr did not converge after 100 iterations!
+320,EV_bus_18_A,18,0.0,Overvoltage
+321,EV_bus_18_A,18,0.5,Overvoltage
+322,EV_bus_18_A,18,1.0,Overvoltage
+323,EV_bus_18_A,18,1.5,Overvoltage
+324,EV_bus_18_A,18,2.0,Overvoltage
+325,EV_bus_18_A,18,2.5,Overvoltage
+326,EV_bus_18_A,18,3.0,Power Flow nr did not converge after 100 iterations!
+327,EV_bus_18_B,18,0.0,Overvoltage
+328,EV_bus_18_B,18,0.5,Overvoltage
+329,EV_bus_18_B,18,1.0,Overvoltage
+330,EV_bus_18_B,18,1.5,Power Flow nr did not converge after 100 iterations!
+331,EV_bus_18_C,18,0.0,Overvoltage
+332,EV_bus_18_C,18,0.5,Overvoltage
+333,EV_bus_18_C,18,1.0,Overvoltage
+334,EV_bus_18_C,18,1.5,Overvoltage
+335,EV_bus_18_C,18,2.0,Overvoltage
+336,EV_bus_18_C,18,2.5,Overvoltage
+337,EV_bus_18_C,18,3.0,Overvoltage
+338,EV_bus_18_C,18,3.5,Overvoltage
+339,EV_bus_18_C,18,4.0,Power Flow nr did not converge after 100 iterations!
+340,EV_bus_19_A,19,0.0,Overvoltage
+341,EV_bus_19_A,19,0.5,Overvoltage
+342,EV_bus_19_A,19,1.0,Overvoltage
+343,EV_bus_19_A,19,1.5,Overvoltage
+344,EV_bus_19_A,19,2.0,Overvoltage
+345,EV_bus_19_A,19,2.5,Overvoltage
+346,EV_bus_19_A,19,3.0,Power Flow nr did not converge after 100 iterations!
+347,EV_bus_19_B,19,0.0,Overvoltage
+348,EV_bus_19_B,19,0.5,Overvoltage
+349,EV_bus_19_B,19,1.0,Overvoltage
+350,EV_bus_19_B,19,1.5,Power Flow nr did not converge after 100 iterations!
+351,EV_bus_19_C,19,0.0,Overvoltage
+352,EV_bus_19_C,19,0.5,Overvoltage
+353,EV_bus_19_C,19,1.0,Overvoltage
+354,EV_bus_19_C,19,1.5,Overvoltage
+355,EV_bus_19_C,19,2.0,Overvoltage
+356,EV_bus_19_C,19,2.5,Overvoltage
+357,EV_bus_19_C,19,3.0,Overvoltage
+358,EV_bus_19_C,19,3.5,Overvoltage
+359,EV_bus_19_C,19,4.0,Power Flow nr did not converge after 100 iterations!
+360,EV_bus_20_A,20,0.0,Overvoltage
+361,EV_bus_20_A,20,0.5,Overvoltage
+362,EV_bus_20_A,20,1.0,Overvoltage
+363,EV_bus_20_A,20,1.5,Overvoltage
+364,EV_bus_20_A,20,2.0,Overvoltage
+365,EV_bus_20_A,20,2.5,Overvoltage
+366,EV_bus_20_A,20,3.0,Power Flow nr did not converge after 100 iterations!
+367,EV_bus_20_B,20,0.0,Overvoltage
+368,EV_bus_20_B,20,0.5,Overvoltage
+369,EV_bus_20_B,20,1.0,Overvoltage
+370,EV_bus_20_B,20,1.5,Power Flow nr did not converge after 100 iterations!
+371,EV_bus_20_C,20,0.0,Overvoltage
+372,EV_bus_20_C,20,0.5,Overvoltage
+373,EV_bus_20_C,20,1.0,Overvoltage
+374,EV_bus_20_C,20,1.5,Overvoltage
+375,EV_bus_20_C,20,2.0,Overvoltage
+376,EV_bus_20_C,20,2.5,Overvoltage
+377,EV_bus_20_C,20,3.0,Overvoltage
+378,EV_bus_20_C,20,3.5,Overvoltage
+379,EV_bus_20_C,20,4.0,Power Flow nr did not converge after 100 iterations!
+380,EV_bus_21_A,21,0.0,Overvoltage
+381,EV_bus_21_A,21,0.5,Overvoltage
+382,EV_bus_21_A,21,1.0,Overvoltage
+383,EV_bus_21_A,21,1.5,Overvoltage
+384,EV_bus_21_A,21,2.0,Overvoltage
+385,EV_bus_21_A,21,2.5,Overvoltage
+386,EV_bus_21_A,21,3.0,Power Flow nr did not converge after 100 iterations!
+387,EV_bus_21_B,21,0.0,Overvoltage
+388,EV_bus_21_B,21,0.5,Overvoltage
+389,EV_bus_21_B,21,1.0,Overvoltage
+390,EV_bus_21_B,21,1.5,Power Flow nr did not converge after 100 iterations!
+391,EV_bus_21_C,21,0.0,Overvoltage
+392,EV_bus_21_C,21,0.5,Overvoltage
+393,EV_bus_21_C,21,1.0,Overvoltage
+394,EV_bus_21_C,21,1.5,Overvoltage
+395,EV_bus_21_C,21,2.0,Overvoltage
+396,EV_bus_21_C,21,2.5,Overvoltage
+397,EV_bus_21_C,21,3.0,Overvoltage
+398,EV_bus_21_C,21,3.5,Overvoltage
+399,EV_bus_21_C,21,4.0,Power Flow nr did not converge after 100 iterations!
+400,EV_bus_22_A,22,0.0,Overvoltage
+401,EV_bus_22_A,22,0.5,Overvoltage
+402,EV_bus_22_A,22,1.0,Overvoltage
+403,EV_bus_22_A,22,1.5,Overvoltage
+404,EV_bus_22_A,22,2.0,Overvoltage
+405,EV_bus_22_A,22,2.5,Overvoltage
+406,EV_bus_22_A,22,3.0,Power Flow nr did not converge after 100 iterations!
+407,EV_bus_22_B,22,0.0,Overvoltage
+408,EV_bus_22_B,22,0.5,Overvoltage
+409,EV_bus_22_B,22,1.0,Overvoltage
+410,EV_bus_22_B,22,1.5,Power Flow nr did not converge after 100 iterations!
+411,EV_bus_22_C,22,0.0,Overvoltage
+412,EV_bus_22_C,22,0.5,Overvoltage
+413,EV_bus_22_C,22,1.0,Overvoltage
+414,EV_bus_22_C,22,1.5,Overvoltage
+415,EV_bus_22_C,22,2.0,Overvoltage
+416,EV_bus_22_C,22,2.5,Overvoltage
+417,EV_bus_22_C,22,3.0,Overvoltage
+418,EV_bus_22_C,22,3.5,Overvoltage
+419,EV_bus_22_C,22,4.0,Power Flow nr did not converge after 100 iterations!
+420,EV_bus_23_A,23,0.0,Overvoltage
+421,EV_bus_23_A,23,0.5,Overvoltage
+422,EV_bus_23_A,23,1.0,Overvoltage
+423,EV_bus_23_A,23,1.5,Overvoltage
+424,EV_bus_23_A,23,2.0,Overvoltage
+425,EV_bus_23_A,23,2.5,Overvoltage
+426,EV_bus_23_A,23,3.0,Power Flow nr did not converge after 100 iterations!
+427,EV_bus_23_B,23,0.0,Overvoltage
+428,EV_bus_23_B,23,0.5,Overvoltage
+429,EV_bus_23_B,23,1.0,Overvoltage
+430,EV_bus_23_B,23,1.5,Power Flow nr did not converge after 100 iterations!
+431,EV_bus_23_C,23,0.0,Overvoltage
+432,EV_bus_23_C,23,0.5,Overvoltage
+433,EV_bus_23_C,23,1.0,Overvoltage
+434,EV_bus_23_C,23,1.5,Overvoltage
+435,EV_bus_23_C,23,2.0,Overvoltage
+436,EV_bus_23_C,23,2.5,Overvoltage
+437,EV_bus_23_C,23,3.0,Overvoltage
+438,EV_bus_23_C,23,3.5,Overvoltage
+439,EV_bus_23_C,23,4.0,Power Flow nr did not converge after 100 iterations!
+440,EV_bus_24_A,24,0.0,Overvoltage
+441,EV_bus_24_A,24,0.5,Overvoltage
+442,EV_bus_24_A,24,1.0,Overvoltage
+443,EV_bus_24_A,24,1.5,Overvoltage
+444,EV_bus_24_A,24,2.0,Overvoltage
+445,EV_bus_24_A,24,2.5,Overvoltage
+446,EV_bus_24_A,24,3.0,Power Flow nr did not converge after 100 iterations!
+447,EV_bus_24_B,24,0.0,Overvoltage
+448,EV_bus_24_B,24,0.5,Overvoltage
+449,EV_bus_24_B,24,1.0,Overvoltage
+450,EV_bus_24_B,24,1.5,Power Flow nr did not converge after 100 iterations!
+451,EV_bus_24_C,24,0.0,Overvoltage
+452,EV_bus_24_C,24,0.5,Overvoltage
+453,EV_bus_24_C,24,1.0,Overvoltage
+454,EV_bus_24_C,24,1.5,Overvoltage
+455,EV_bus_24_C,24,2.0,Overvoltage
+456,EV_bus_24_C,24,2.5,Overvoltage
+457,EV_bus_24_C,24,3.0,Overvoltage
+458,EV_bus_24_C,24,3.5,Overvoltage
+459,EV_bus_24_C,24,4.0,Power Flow nr did not converge after 100 iterations!
+460,EV_bus_25_A,25,0.0,Overvoltage
+461,EV_bus_25_A,25,0.5,Overvoltage
+462,EV_bus_25_A,25,1.0,Overvoltage
+463,EV_bus_25_A,25,1.5,Overvoltage
+464,EV_bus_25_A,25,2.0,Overvoltage
+465,EV_bus_25_A,25,2.5,Overvoltage
+466,EV_bus_25_A,25,3.0,Power Flow nr did not converge after 100 iterations!
+467,EV_bus_25_B,25,0.0,Overvoltage
+468,EV_bus_25_B,25,0.5,Overvoltage
+469,EV_bus_25_B,25,1.0,Overvoltage
+470,EV_bus_25_B,25,1.5,Power Flow nr did not converge after 100 iterations!
+471,EV_bus_25_C,25,0.0,Overvoltage
+472,EV_bus_25_C,25,0.5,Overvoltage
+473,EV_bus_25_C,25,1.0,Overvoltage
+474,EV_bus_25_C,25,1.5,Overvoltage
+475,EV_bus_25_C,25,2.0,Overvoltage
+476,EV_bus_25_C,25,2.5,Overvoltage
+477,EV_bus_25_C,25,3.0,Overvoltage
+478,EV_bus_25_C,25,3.5,Overvoltage
+479,EV_bus_25_C,25,4.0,Power Flow nr did not converge after 100 iterations!
+480,EV_bus_26_A,26,0.0,Overvoltage
+481,EV_bus_26_A,26,0.5,Overvoltage
+482,EV_bus_26_A,26,1.0,Overvoltage
+483,EV_bus_26_A,26,1.5,Overvoltage
+484,EV_bus_26_A,26,2.0,Overvoltage
+485,EV_bus_26_A,26,2.5,Overvoltage
+486,EV_bus_26_A,26,3.0,Power Flow nr did not converge after 100 iterations!
+487,EV_bus_26_B,26,0.0,Overvoltage
+488,EV_bus_26_B,26,0.5,Overvoltage
+489,EV_bus_26_B,26,1.0,Overvoltage
+490,EV_bus_26_B,26,1.5,Power Flow nr did not converge after 100 iterations!
+491,EV_bus_26_C,26,0.0,Overvoltage
+492,EV_bus_26_C,26,0.5,Overvoltage
+493,EV_bus_26_C,26,1.0,Overvoltage
+494,EV_bus_26_C,26,1.5,Overvoltage
+495,EV_bus_26_C,26,2.0,Overvoltage
+496,EV_bus_26_C,26,2.5,Overvoltage
+497,EV_bus_26_C,26,3.0,Overvoltage
+498,EV_bus_26_C,26,3.5,Overvoltage
+499,EV_bus_26_C,26,4.0,Power Flow nr did not converge after 100 iterations!
+500,EV_bus_27_A,27,0.0,Overvoltage
+501,EV_bus_27_A,27,0.5,Overvoltage
+502,EV_bus_27_A,27,1.0,Overvoltage
+503,EV_bus_27_A,27,1.5,Overvoltage
+504,EV_bus_27_A,27,2.0,Overvoltage
+505,EV_bus_27_A,27,2.5,Overvoltage
+506,EV_bus_27_A,27,3.0,Power Flow nr did not converge after 100 iterations!
+507,EV_bus_27_B,27,0.0,Overvoltage
+508,EV_bus_27_B,27,0.5,Overvoltage
+509,EV_bus_27_B,27,1.0,Overvoltage
+510,EV_bus_27_B,27,1.5,Power Flow nr did not converge after 100 iterations!
+511,EV_bus_27_C,27,0.0,Overvoltage
+512,EV_bus_27_C,27,0.5,Overvoltage
+513,EV_bus_27_C,27,1.0,Overvoltage
+514,EV_bus_27_C,27,1.5,Overvoltage
+515,EV_bus_27_C,27,2.0,Overvoltage
+516,EV_bus_27_C,27,2.5,Overvoltage
+517,EV_bus_27_C,27,3.0,Overvoltage
+518,EV_bus_27_C,27,3.5,Overvoltage
+519,EV_bus_27_C,27,4.0,Power Flow nr did not converge after 100 iterations!
+520,EV_bus_28_A,28,0.0,Overvoltage
+521,EV_bus_28_A,28,0.5,Overvoltage
+522,EV_bus_28_A,28,1.0,Overvoltage
+523,EV_bus_28_A,28,1.5,Overvoltage
+524,EV_bus_28_A,28,2.0,Overvoltage
+525,EV_bus_28_A,28,2.5,Overvoltage
+526,EV_bus_28_A,28,3.0,Power Flow nr did not converge after 100 iterations!
+527,EV_bus_28_B,28,0.0,Overvoltage
+528,EV_bus_28_B,28,0.5,Overvoltage
+529,EV_bus_28_B,28,1.0,Overvoltage
+530,EV_bus_28_B,28,1.5,Power Flow nr did not converge after 100 iterations!
+531,EV_bus_28_C,28,0.0,Overvoltage
+532,EV_bus_28_C,28,0.5,Overvoltage
+533,EV_bus_28_C,28,1.0,Overvoltage
+534,EV_bus_28_C,28,1.5,Overvoltage
+535,EV_bus_28_C,28,2.0,Overvoltage
+536,EV_bus_28_C,28,2.5,Overvoltage
+537,EV_bus_28_C,28,3.0,Overvoltage
+538,EV_bus_28_C,28,3.5,Overvoltage
+539,EV_bus_28_C,28,4.0,Power Flow nr did not converge after 100 iterations!
+540,EV_bus_29_A,29,0.0,Overvoltage
+541,EV_bus_29_A,29,0.5,Overvoltage
+542,EV_bus_29_A,29,1.0,Overvoltage
+543,EV_bus_29_A,29,1.5,Overvoltage
+544,EV_bus_29_A,29,2.0,Overvoltage
+545,EV_bus_29_A,29,2.5,Overvoltage
+546,EV_bus_29_A,29,3.0,Power Flow nr did not converge after 100 iterations!
+547,EV_bus_29_B,29,0.0,Overvoltage
+548,EV_bus_29_B,29,0.5,Overvoltage
+549,EV_bus_29_B,29,1.0,Overvoltage
+550,EV_bus_29_B,29,1.5,Power Flow nr did not converge after 100 iterations!
+551,EV_bus_29_C,29,0.0,Overvoltage
+552,EV_bus_29_C,29,0.5,Overvoltage
+553,EV_bus_29_C,29,1.0,Overvoltage
+554,EV_bus_29_C,29,1.5,Overvoltage
+555,EV_bus_29_C,29,2.0,Overvoltage
+556,EV_bus_29_C,29,2.5,Overvoltage
+557,EV_bus_29_C,29,3.0,Overvoltage
+558,EV_bus_29_C,29,3.5,Overvoltage
+559,EV_bus_29_C,29,4.0,Power Flow nr did not converge after 100 iterations!
+560,EV_bus_30_A,30,0.0,Overvoltage
+561,EV_bus_30_A,30,0.5,Overvoltage
+562,EV_bus_30_A,30,1.0,Overvoltage
+563,EV_bus_30_A,30,1.5,Overvoltage
+564,EV_bus_30_A,30,2.0,Overvoltage
+565,EV_bus_30_A,30,2.5,Overvoltage
+566,EV_bus_30_A,30,3.0,Power Flow nr did not converge after 100 iterations!
+567,EV_bus_30_B,30,0.0,Overvoltage
+568,EV_bus_30_B,30,0.5,Overvoltage
+569,EV_bus_30_B,30,1.0,Overvoltage
+570,EV_bus_30_B,30,1.5,Power Flow nr did not converge after 100 iterations!
+571,EV_bus_30_C,30,0.0,Overvoltage
+572,EV_bus_30_C,30,0.5,Overvoltage
+573,EV_bus_30_C,30,1.0,Overvoltage
+574,EV_bus_30_C,30,1.5,Overvoltage
+575,EV_bus_30_C,30,2.0,Overvoltage
+576,EV_bus_30_C,30,2.5,Overvoltage
+577,EV_bus_30_C,30,3.0,Overvoltage
+578,EV_bus_30_C,30,3.5,Overvoltage
+579,EV_bus_30_C,30,4.0,Power Flow nr did not converge after 100 iterations!
+580,EV_bus_31_A,31,0.0,Overvoltage
+581,EV_bus_31_A,31,0.5,Overvoltage
+582,EV_bus_31_A,31,1.0,Overvoltage
+583,EV_bus_31_A,31,1.5,Overvoltage
+584,EV_bus_31_A,31,2.0,Overvoltage
+585,EV_bus_31_A,31,2.5,Overvoltage
+586,EV_bus_31_A,31,3.0,Power Flow nr did not converge after 100 iterations!
+587,EV_bus_31_B,31,0.0,Overvoltage
+588,EV_bus_31_B,31,0.5,Overvoltage
+589,EV_bus_31_B,31,1.0,Overvoltage
+590,EV_bus_31_B,31,1.5,Power Flow nr did not converge after 100 iterations!
+591,EV_bus_31_C,31,0.0,Overvoltage
+592,EV_bus_31_C,31,0.5,Overvoltage
+593,EV_bus_31_C,31,1.0,Overvoltage
+594,EV_bus_31_C,31,1.5,Overvoltage
+595,EV_bus_31_C,31,2.0,Overvoltage
+596,EV_bus_31_C,31,2.5,Overvoltage
+597,EV_bus_31_C,31,3.0,Overvoltage
+598,EV_bus_31_C,31,3.5,Overvoltage
+599,EV_bus_31_C,31,4.0,Power Flow nr did not converge after 100 iterations!
+600,EV_bus_32_A,32,0.0,Overvoltage
+601,EV_bus_32_A,32,0.5,Overvoltage
+602,EV_bus_32_A,32,1.0,Overvoltage
+603,EV_bus_32_A,32,1.5,Overvoltage
+604,EV_bus_32_A,32,2.0,Overvoltage
+605,EV_bus_32_A,32,2.5,Overvoltage
+606,EV_bus_32_A,32,3.0,Power Flow nr did not converge after 100 iterations!
+607,EV_bus_32_B,32,0.0,Overvoltage
+608,EV_bus_32_B,32,0.5,Overvoltage
+609,EV_bus_32_B,32,1.0,Overvoltage
+610,EV_bus_32_B,32,1.5,Power Flow nr did not converge after 100 iterations!
+611,EV_bus_32_C,32,0.0,Overvoltage
+612,EV_bus_32_C,32,0.5,Overvoltage
+613,EV_bus_32_C,32,1.0,Overvoltage
+614,EV_bus_32_C,32,1.5,Overvoltage
+615,EV_bus_32_C,32,2.0,Overvoltage
+616,EV_bus_32_C,32,2.5,Overvoltage
+617,EV_bus_32_C,32,3.0,Overvoltage
+618,EV_bus_32_C,32,3.5,Overvoltage
+619,EV_bus_32_C,32,4.0,Power Flow nr did not converge after 100 iterations!
+620,EV_bus_33_A,33,0.0,Overvoltage
+621,EV_bus_33_A,33,0.5,Overvoltage
+622,EV_bus_33_A,33,1.0,Overvoltage
+623,EV_bus_33_A,33,1.5,Overvoltage
+624,EV_bus_33_A,33,2.0,Overvoltage
+625,EV_bus_33_A,33,2.5,Overvoltage
+626,EV_bus_33_A,33,3.0,Power Flow nr did not converge after 100 iterations!
+627,EV_bus_33_B,33,0.0,Overvoltage
+628,EV_bus_33_B,33,0.5,Overvoltage
+629,EV_bus_33_B,33,1.0,Overvoltage
+630,EV_bus_33_B,33,1.5,Power Flow nr did not converge after 100 iterations!
+631,EV_bus_33_C,33,0.0,Overvoltage
+632,EV_bus_33_C,33,0.5,Overvoltage
+633,EV_bus_33_C,33,1.0,Overvoltage
+634,EV_bus_33_C,33,1.5,Overvoltage
+635,EV_bus_33_C,33,2.0,Overvoltage
+636,EV_bus_33_C,33,2.5,Overvoltage
+637,EV_bus_33_C,33,3.0,Overvoltage
+638,EV_bus_33_C,33,3.5,Overvoltage
+639,EV_bus_33_C,33,4.0,Power Flow nr did not converge after 100 iterations!
+640,EV_bus_34_A,34,0.0,Overvoltage
+641,EV_bus_34_A,34,0.5,Overvoltage
+642,EV_bus_34_A,34,1.0,Overvoltage
+643,EV_bus_34_A,34,1.5,Overvoltage
+644,EV_bus_34_A,34,2.0,Overvoltage
+645,EV_bus_34_A,34,2.5,Overvoltage
+646,EV_bus_34_A,34,3.0,Power Flow nr did not converge after 100 iterations!
+647,EV_bus_34_B,34,0.0,Overvoltage
+648,EV_bus_34_B,34,0.5,Overvoltage
+649,EV_bus_34_B,34,1.0,Overvoltage
+650,EV_bus_34_B,34,1.5,Power Flow nr did not converge after 100 iterations!
+651,EV_bus_34_C,34,0.0,Overvoltage
+652,EV_bus_34_C,34,0.5,Overvoltage
+653,EV_bus_34_C,34,1.0,Overvoltage
+654,EV_bus_34_C,34,1.5,Overvoltage
+655,EV_bus_34_C,34,2.0,Overvoltage
+656,EV_bus_34_C,34,2.5,Overvoltage
+657,EV_bus_34_C,34,3.0,Overvoltage
+658,EV_bus_34_C,34,3.5,Overvoltage
+659,EV_bus_34_C,34,4.0,Power Flow nr did not converge after 100 iterations!
+660,EV_bus_35_A,35,0.0,Overvoltage
+661,EV_bus_35_A,35,0.5,Overvoltage
+662,EV_bus_35_A,35,1.0,Overvoltage
+663,EV_bus_35_A,35,1.5,Overvoltage
+664,EV_bus_35_A,35,2.0,Overvoltage
+665,EV_bus_35_A,35,2.5,Overvoltage
+666,EV_bus_35_A,35,3.0,Power Flow nr did not converge after 100 iterations!
+667,EV_bus_35_B,35,0.0,Overvoltage
+668,EV_bus_35_B,35,0.5,Overvoltage
+669,EV_bus_35_B,35,1.0,Overvoltage
+670,EV_bus_35_B,35,1.5,Power Flow nr did not converge after 100 iterations!
+671,EV_bus_35_C,35,0.0,Overvoltage
+672,EV_bus_35_C,35,0.5,Overvoltage
+673,EV_bus_35_C,35,1.0,Overvoltage
+674,EV_bus_35_C,35,1.5,Overvoltage
+675,EV_bus_35_C,35,2.0,Overvoltage
+676,EV_bus_35_C,35,2.5,Overvoltage
+677,EV_bus_35_C,35,3.0,Overvoltage
+678,EV_bus_35_C,35,3.5,Overvoltage
+679,EV_bus_35_C,35,4.0,Power Flow nr did not converge after 100 iterations!
+680,EV_bus_36_A,36,0.0,Overvoltage
+681,EV_bus_36_A,36,0.5,Overvoltage
+682,EV_bus_36_A,36,1.0,Overvoltage
+683,EV_bus_36_A,36,1.5,Overvoltage
+684,EV_bus_36_A,36,2.0,Overvoltage
+685,EV_bus_36_A,36,2.5,Overvoltage
+686,EV_bus_36_A,36,3.0,Power Flow nr did not converge after 100 iterations!
+687,EV_bus_36_B,36,0.0,Overvoltage
+688,EV_bus_36_B,36,0.5,Overvoltage
+689,EV_bus_36_B,36,1.0,Overvoltage
+690,EV_bus_36_B,36,1.5,Power Flow nr did not converge after 100 iterations!
+691,EV_bus_36_C,36,0.0,Overvoltage
+692,EV_bus_36_C,36,0.5,Overvoltage
+693,EV_bus_36_C,36,1.0,Overvoltage
+694,EV_bus_36_C,36,1.5,Overvoltage
+695,EV_bus_36_C,36,2.0,Overvoltage
+696,EV_bus_36_C,36,2.5,Overvoltage
+697,EV_bus_36_C,36,3.0,Overvoltage
+698,EV_bus_36_C,36,3.5,Overvoltage
+699,EV_bus_36_C,36,4.0,Power Flow nr did not converge after 100 iterations!
+700,EV_bus_37_A,37,0.0,Overvoltage
+701,EV_bus_37_A,37,0.5,Overvoltage
+702,EV_bus_37_A,37,1.0,Overvoltage
+703,EV_bus_37_A,37,1.5,Overvoltage
+704,EV_bus_37_A,37,2.0,Overvoltage
+705,EV_bus_37_A,37,2.5,Overvoltage
+706,EV_bus_37_A,37,3.0,Power Flow nr did not converge after 100 iterations!
+707,EV_bus_37_B,37,0.0,Overvoltage
+708,EV_bus_37_B,37,0.5,Overvoltage
+709,EV_bus_37_B,37,1.0,Overvoltage
+710,EV_bus_37_B,37,1.5,Power Flow nr did not converge after 100 iterations!
+711,EV_bus_37_C,37,0.0,Overvoltage
+712,EV_bus_37_C,37,0.5,Overvoltage
+713,EV_bus_37_C,37,1.0,Overvoltage
+714,EV_bus_37_C,37,1.5,Overvoltage
+715,EV_bus_37_C,37,2.0,Overvoltage
+716,EV_bus_37_C,37,2.5,Overvoltage
+717,EV_bus_37_C,37,3.0,Overvoltage
+718,EV_bus_37_C,37,3.5,Overvoltage
+719,EV_bus_37_C,37,4.0,Power Flow nr did not converge after 100 iterations!
+720,EV_bus_38_A,38,0.0,Overvoltage
+721,EV_bus_38_A,38,0.5,Overvoltage
+722,EV_bus_38_A,38,1.0,Overvoltage
+723,EV_bus_38_A,38,1.5,Overvoltage
+724,EV_bus_38_A,38,2.0,Overvoltage
+725,EV_bus_38_A,38,2.5,Overvoltage
+726,EV_bus_38_A,38,3.0,Power Flow nr did not converge after 100 iterations!
+727,EV_bus_38_B,38,0.0,Overvoltage
+728,EV_bus_38_B,38,0.5,Overvoltage
+729,EV_bus_38_B,38,1.0,Overvoltage
+730,EV_bus_38_B,38,1.5,Power Flow nr did not converge after 100 iterations!
+731,EV_bus_38_C,38,0.0,Overvoltage
+732,EV_bus_38_C,38,0.5,Overvoltage
+733,EV_bus_38_C,38,1.0,Overvoltage
+734,EV_bus_38_C,38,1.5,Overvoltage
+735,EV_bus_38_C,38,2.0,Overvoltage
+736,EV_bus_38_C,38,2.5,Overvoltage
+737,EV_bus_38_C,38,3.0,Overvoltage
+738,EV_bus_38_C,38,3.5,Overvoltage
+739,EV_bus_38_C,38,4.0,Power Flow nr did not converge after 100 iterations!
+740,EV_bus_39_A,39,0.0,Overvoltage
+741,EV_bus_39_A,39,0.5,Overvoltage
+742,EV_bus_39_A,39,1.0,Overvoltage
+743,EV_bus_39_A,39,1.5,Overvoltage
+744,EV_bus_39_A,39,2.0,Overvoltage
+745,EV_bus_39_A,39,2.5,Overvoltage
+746,EV_bus_39_A,39,3.0,Power Flow nr did not converge after 100 iterations!
+747,EV_bus_39_B,39,0.0,Overvoltage
+748,EV_bus_39_B,39,0.5,Overvoltage
+749,EV_bus_39_B,39,1.0,Overvoltage
+750,EV_bus_39_B,39,1.5,Power Flow nr did not converge after 100 iterations!
+751,EV_bus_39_C,39,0.0,Overvoltage
+752,EV_bus_39_C,39,0.5,Overvoltage
+753,EV_bus_39_C,39,1.0,Overvoltage
+754,EV_bus_39_C,39,1.5,Overvoltage
+755,EV_bus_39_C,39,2.0,Overvoltage
+756,EV_bus_39_C,39,2.5,Overvoltage
+757,EV_bus_39_C,39,3.0,Overvoltage
+758,EV_bus_39_C,39,3.5,Overvoltage
+759,EV_bus_39_C,39,4.0,Power Flow nr did not converge after 100 iterations!
+760,EV_bus_40_A,40,0.0,Overvoltage
+761,EV_bus_40_A,40,0.5,Overvoltage
+762,EV_bus_40_A,40,1.0,Overvoltage
+763,EV_bus_40_A,40,1.5,Overvoltage
+764,EV_bus_40_A,40,2.0,Overvoltage
+765,EV_bus_40_A,40,2.5,Overvoltage
+766,EV_bus_40_A,40,3.0,Power Flow nr did not converge after 100 iterations!
+767,EV_bus_40_B,40,0.0,Overvoltage
+768,EV_bus_40_B,40,0.5,Overvoltage
+769,EV_bus_40_B,40,1.0,Overvoltage
+770,EV_bus_40_B,40,1.5,Power Flow nr did not converge after 100 iterations!
+771,EV_bus_40_C,40,0.0,Overvoltage
+772,EV_bus_40_C,40,0.5,Overvoltage
+773,EV_bus_40_C,40,1.0,Overvoltage
+774,EV_bus_40_C,40,1.5,Overvoltage
+775,EV_bus_40_C,40,2.0,Overvoltage
+776,EV_bus_40_C,40,2.5,Overvoltage
+777,EV_bus_40_C,40,3.0,Overvoltage
+778,EV_bus_40_C,40,3.5,Overvoltage
+779,EV_bus_40_C,40,4.0,Power Flow nr did not converge after 100 iterations!
+780,EV_bus_41_A,41,0.0,Overvoltage
+781,EV_bus_41_A,41,0.5,Overvoltage
+782,EV_bus_41_A,41,1.0,Overvoltage
+783,EV_bus_41_A,41,1.5,Overvoltage
+784,EV_bus_41_A,41,2.0,Overvoltage
+785,EV_bus_41_A,41,2.5,Overvoltage
+786,EV_bus_41_A,41,3.0,Power Flow nr did not converge after 100 iterations!
+787,EV_bus_41_B,41,0.0,Overvoltage
+788,EV_bus_41_B,41,0.5,Overvoltage
+789,EV_bus_41_B,41,1.0,Overvoltage
+790,EV_bus_41_B,41,1.5,Power Flow nr did not converge after 100 iterations!
+791,EV_bus_41_C,41,0.0,Overvoltage
+792,EV_bus_41_C,41,0.5,Overvoltage
+793,EV_bus_41_C,41,1.0,Overvoltage
+794,EV_bus_41_C,41,1.5,Overvoltage
+795,EV_bus_41_C,41,2.0,Overvoltage
+796,EV_bus_41_C,41,2.5,Overvoltage
+797,EV_bus_41_C,41,3.0,Overvoltage
+798,EV_bus_41_C,41,3.5,Overvoltage
+799,EV_bus_41_C,41,4.0,Power Flow nr did not converge after 100 iterations!
+800,EV_bus_42_A,42,0.0,Overvoltage
+801,EV_bus_42_A,42,0.5,Overvoltage
+802,EV_bus_42_A,42,1.0,Overvoltage
+803,EV_bus_42_A,42,1.5,Overvoltage
+804,EV_bus_42_A,42,2.0,Overvoltage
+805,EV_bus_42_A,42,2.5,Overvoltage
+806,EV_bus_42_A,42,3.0,Power Flow nr did not converge after 100 iterations!
+807,EV_bus_42_B,42,0.0,Overvoltage
+808,EV_bus_42_B,42,0.5,Overvoltage
+809,EV_bus_42_B,42,1.0,Overvoltage
+810,EV_bus_42_B,42,1.5,Power Flow nr did not converge after 100 iterations!
+811,EV_bus_42_C,42,0.0,Overvoltage
+812,EV_bus_42_C,42,0.5,Overvoltage
+813,EV_bus_42_C,42,1.0,Overvoltage
+814,EV_bus_42_C,42,1.5,Overvoltage
+815,EV_bus_42_C,42,2.0,Overvoltage
+816,EV_bus_42_C,42,2.5,Overvoltage
+817,EV_bus_42_C,42,3.0,Overvoltage
+818,EV_bus_42_C,42,3.5,Overvoltage
+819,EV_bus_42_C,42,4.0,Power Flow nr did not converge after 100 iterations!
+820,EV_bus_43_A,43,0.0,Overvoltage
+821,EV_bus_43_A,43,0.5,Overvoltage
+822,EV_bus_43_A,43,1.0,Overvoltage
+823,EV_bus_43_A,43,1.5,Overvoltage
+824,EV_bus_43_A,43,2.0,Overvoltage
+825,EV_bus_43_A,43,2.5,Overvoltage
+826,EV_bus_43_A,43,3.0,Power Flow nr did not converge after 100 iterations!
+827,EV_bus_43_B,43,0.0,Overvoltage
+828,EV_bus_43_B,43,0.5,Overvoltage
+829,EV_bus_43_B,43,1.0,Overvoltage
+830,EV_bus_43_B,43,1.5,Power Flow nr did not converge after 100 iterations!
+831,EV_bus_43_C,43,0.0,Overvoltage
+832,EV_bus_43_C,43,0.5,Overvoltage
+833,EV_bus_43_C,43,1.0,Overvoltage
+834,EV_bus_43_C,43,1.5,Overvoltage
+835,EV_bus_43_C,43,2.0,Overvoltage
+836,EV_bus_43_C,43,2.5,Overvoltage
+837,EV_bus_43_C,43,3.0,Overvoltage
+838,EV_bus_43_C,43,3.5,Overvoltage
+839,EV_bus_43_C,43,4.0,Power Flow nr did not converge after 100 iterations!
+840,EV_bus_44_A,44,0.0,Overvoltage
+841,EV_bus_44_A,44,0.5,Overvoltage
+842,EV_bus_44_A,44,1.0,Overvoltage
+843,EV_bus_44_A,44,1.5,Overvoltage
+844,EV_bus_44_A,44,2.0,Overvoltage
+845,EV_bus_44_A,44,2.5,Overvoltage
+846,EV_bus_44_A,44,3.0,Power Flow nr did not converge after 100 iterations!
+847,EV_bus_44_B,44,0.0,Overvoltage
+848,EV_bus_44_B,44,0.5,Overvoltage
+849,EV_bus_44_B,44,1.0,Overvoltage
+850,EV_bus_44_B,44,1.5,Power Flow nr did not converge after 100 iterations!
+851,EV_bus_44_C,44,0.0,Overvoltage
+852,EV_bus_44_C,44,0.5,Overvoltage
+853,EV_bus_44_C,44,1.0,Overvoltage
+854,EV_bus_44_C,44,1.5,Overvoltage
+855,EV_bus_44_C,44,2.0,Overvoltage
+856,EV_bus_44_C,44,2.5,Overvoltage
+857,EV_bus_44_C,44,3.0,Overvoltage
+858,EV_bus_44_C,44,3.5,Overvoltage
+859,EV_bus_44_C,44,4.0,Power Flow nr did not converge after 100 iterations!
+860,EV_bus_45_A,45,0.0,Overvoltage
+861,EV_bus_45_A,45,0.5,Overvoltage
+862,EV_bus_45_A,45,1.0,Overvoltage
+863,EV_bus_45_A,45,1.5,Overvoltage
+864,EV_bus_45_A,45,2.0,Overvoltage
+865,EV_bus_45_A,45,2.5,Overvoltage
+866,EV_bus_45_A,45,3.0,Power Flow nr did not converge after 100 iterations!
+867,EV_bus_45_B,45,0.0,Overvoltage
+868,EV_bus_45_B,45,0.5,Overvoltage
+869,EV_bus_45_B,45,1.0,Overvoltage
+870,EV_bus_45_B,45,1.5,Power Flow nr did not converge after 100 iterations!
+871,EV_bus_45_C,45,0.0,Overvoltage
+872,EV_bus_45_C,45,0.5,Overvoltage
+873,EV_bus_45_C,45,1.0,Overvoltage
+874,EV_bus_45_C,45,1.5,Overvoltage
+875,EV_bus_45_C,45,2.0,Overvoltage
+876,EV_bus_45_C,45,2.5,Overvoltage
+877,EV_bus_45_C,45,3.0,Overvoltage
+878,EV_bus_45_C,45,3.5,Overvoltage
+879,EV_bus_45_C,45,4.0,Power Flow nr did not converge after 100 iterations!
+880,EV_bus_46_A,46,0.0,Overvoltage
+881,EV_bus_46_A,46,0.5,Overvoltage
+882,EV_bus_46_A,46,1.0,Overvoltage
+883,EV_bus_46_A,46,1.5,Overvoltage
+884,EV_bus_46_A,46,2.0,Overvoltage
+885,EV_bus_46_A,46,2.5,Overvoltage
+886,EV_bus_46_A,46,3.0,Power Flow nr did not converge after 100 iterations!
+887,EV_bus_46_B,46,0.0,Overvoltage
+888,EV_bus_46_B,46,0.5,Overvoltage
+889,EV_bus_46_B,46,1.0,Overvoltage
+890,EV_bus_46_B,46,1.5,Power Flow nr did not converge after 100 iterations!
+891,EV_bus_46_C,46,0.0,Overvoltage
+892,EV_bus_46_C,46,0.5,Overvoltage
+893,EV_bus_46_C,46,1.0,Overvoltage
+894,EV_bus_46_C,46,1.5,Overvoltage
+895,EV_bus_46_C,46,2.0,Overvoltage
+896,EV_bus_46_C,46,2.5,Overvoltage
+897,EV_bus_46_C,46,3.0,Overvoltage
+898,EV_bus_46_C,46,3.5,Overvoltage
+899,EV_bus_46_C,46,4.0,Power Flow nr did not converge after 100 iterations!
+900,EV_bus_47_A,47,0.0,Overvoltage
+901,EV_bus_47_A,47,0.5,Overvoltage
+902,EV_bus_47_A,47,1.0,Overvoltage
+903,EV_bus_47_A,47,1.5,Overvoltage
+904,EV_bus_47_A,47,2.0,Overvoltage
+905,EV_bus_47_A,47,2.5,Overvoltage
+906,EV_bus_47_A,47,3.0,Power Flow nr did not converge after 100 iterations!
+907,EV_bus_47_B,47,0.0,Overvoltage
+908,EV_bus_47_B,47,0.5,Overvoltage
+909,EV_bus_47_B,47,1.0,Overvoltage
+910,EV_bus_47_B,47,1.5,Power Flow nr did not converge after 100 iterations!
+911,EV_bus_47_C,47,0.0,Overvoltage
+912,EV_bus_47_C,47,0.5,Overvoltage
+913,EV_bus_47_C,47,1.0,Overvoltage
+914,EV_bus_47_C,47,1.5,Overvoltage
+915,EV_bus_47_C,47,2.0,Overvoltage
+916,EV_bus_47_C,47,2.5,Overvoltage
+917,EV_bus_47_C,47,3.0,Overvoltage
+918,EV_bus_47_C,47,3.5,Overvoltage
+919,EV_bus_47_C,47,4.0,Power Flow nr did not converge after 100 iterations!
+920,EV_bus_48_A,48,0.0,Overvoltage
+921,EV_bus_48_A,48,0.5,Overvoltage
+922,EV_bus_48_A,48,1.0,Overvoltage
+923,EV_bus_48_A,48,1.5,Overvoltage
+924,EV_bus_48_A,48,2.0,Overvoltage
+925,EV_bus_48_A,48,2.5,Overvoltage
+926,EV_bus_48_A,48,3.0,Power Flow nr did not converge after 100 iterations!
+927,EV_bus_48_B,48,0.0,Overvoltage
+928,EV_bus_48_B,48,0.5,Overvoltage
+929,EV_bus_48_B,48,1.0,Overvoltage
+930,EV_bus_48_B,48,1.5,Power Flow nr did not converge after 100 iterations!
+931,EV_bus_48_C,48,0.0,Overvoltage
+932,EV_bus_48_C,48,0.5,Overvoltage
+933,EV_bus_48_C,48,1.0,Overvoltage
+934,EV_bus_48_C,48,1.5,Overvoltage
+935,EV_bus_48_C,48,2.0,Overvoltage
+936,EV_bus_48_C,48,2.5,Overvoltage
+937,EV_bus_48_C,48,3.0,Overvoltage
+938,EV_bus_48_C,48,3.5,Overvoltage
+939,EV_bus_48_C,48,4.0,Power Flow nr did not converge after 100 iterations!
+940,EV_bus_49_A,49,0.0,Overvoltage
+941,EV_bus_49_A,49,0.5,Overvoltage
+942,EV_bus_49_A,49,1.0,Overvoltage
+943,EV_bus_49_A,49,1.5,Overvoltage
+944,EV_bus_49_A,49,2.0,Overvoltage
+945,EV_bus_49_A,49,2.5,Overvoltage
+946,EV_bus_49_A,49,3.0,Power Flow nr did not converge after 100 iterations!
+947,EV_bus_49_B,49,0.0,Overvoltage
+948,EV_bus_49_B,49,0.5,Overvoltage
+949,EV_bus_49_B,49,1.0,Overvoltage
+950,EV_bus_49_B,49,1.5,Power Flow nr did not converge after 100 iterations!
+951,EV_bus_49_C,49,0.0,Overvoltage
+952,EV_bus_49_C,49,0.5,Overvoltage
+953,EV_bus_49_C,49,1.0,Overvoltage
+954,EV_bus_49_C,49,1.5,Overvoltage
+955,EV_bus_49_C,49,2.0,Overvoltage
+956,EV_bus_49_C,49,2.5,Overvoltage
+957,EV_bus_49_C,49,3.0,Overvoltage
+958,EV_bus_49_C,49,3.5,Overvoltage
+959,EV_bus_49_C,49,4.0,Power Flow nr did not converge after 100 iterations!
+960,EV_bus_50_A,50,0.0,Overvoltage
+961,EV_bus_50_A,50,0.5,Overvoltage
+962,EV_bus_50_A,50,1.0,Overvoltage
+963,EV_bus_50_A,50,1.5,Overvoltage
+964,EV_bus_50_A,50,2.0,Overvoltage
+965,EV_bus_50_A,50,2.5,Overvoltage
+966,EV_bus_50_A,50,3.0,Power Flow nr did not converge after 100 iterations!
+967,EV_bus_50_B,50,0.0,Overvoltage
+968,EV_bus_50_B,50,0.5,Overvoltage
+969,EV_bus_50_B,50,1.0,Overvoltage
+970,EV_bus_50_B,50,1.5,Power Flow nr did not converge after 100 iterations!
+971,EV_bus_50_C,50,0.0,Overvoltage
+972,EV_bus_50_C,50,0.5,Overvoltage
+973,EV_bus_50_C,50,1.0,Overvoltage
+974,EV_bus_50_C,50,1.5,Overvoltage
+975,EV_bus_50_C,50,2.0,Overvoltage
+976,EV_bus_50_C,50,2.5,Overvoltage
+977,EV_bus_50_C,50,3.0,Overvoltage
+978,EV_bus_50_C,50,3.5,Overvoltage
+979,EV_bus_50_C,50,4.0,Power Flow nr did not converge after 100 iterations!
+980,EV_bus_51_A,51,0.0,Overvoltage
+981,EV_bus_51_A,51,0.5,Overvoltage
+982,EV_bus_51_A,51,1.0,Overvoltage
+983,EV_bus_51_A,51,1.5,Overvoltage
+984,EV_bus_51_A,51,2.0,Overvoltage
+985,EV_bus_51_A,51,2.5,Overvoltage
+986,EV_bus_51_A,51,3.0,Power Flow nr did not converge after 100 iterations!
+987,EV_bus_51_B,51,0.0,Overvoltage
+988,EV_bus_51_B,51,0.5,Overvoltage
+989,EV_bus_51_B,51,1.0,Overvoltage
+990,EV_bus_51_B,51,1.5,Power Flow nr did not converge after 100 iterations!
+991,EV_bus_51_C,51,0.0,Overvoltage
+992,EV_bus_51_C,51,0.5,Overvoltage
+993,EV_bus_51_C,51,1.0,Overvoltage
+994,EV_bus_51_C,51,1.5,Overvoltage
+995,EV_bus_51_C,51,2.0,Overvoltage
+996,EV_bus_51_C,51,2.5,Overvoltage
+997,EV_bus_51_C,51,3.0,Overvoltage
+998,EV_bus_51_C,51,3.5,Overvoltage
+999,EV_bus_51_C,51,4.0,Power Flow nr did not converge after 100 iterations!
+1000,EV_bus_52_A,52,0.0,Overvoltage
+1001,EV_bus_52_A,52,0.5,Overvoltage
+1002,EV_bus_52_A,52,1.0,Overvoltage
+1003,EV_bus_52_A,52,1.5,Overvoltage
+1004,EV_bus_52_A,52,2.0,Overvoltage
+1005,EV_bus_52_A,52,2.5,Overvoltage
+1006,EV_bus_52_A,52,3.0,Power Flow nr did not converge after 100 iterations!
+1007,EV_bus_52_B,52,0.0,Overvoltage
+1008,EV_bus_52_B,52,0.5,Overvoltage
+1009,EV_bus_52_B,52,1.0,Overvoltage
+1010,EV_bus_52_B,52,1.5,Power Flow nr did not converge after 100 iterations!
+1011,EV_bus_52_C,52,0.0,Overvoltage
+1012,EV_bus_52_C,52,0.5,Overvoltage
+1013,EV_bus_52_C,52,1.0,Overvoltage
+1014,EV_bus_52_C,52,1.5,Overvoltage
+1015,EV_bus_52_C,52,2.0,Overvoltage
+1016,EV_bus_52_C,52,2.5,Overvoltage
+1017,EV_bus_52_C,52,3.0,Overvoltage
+1018,EV_bus_52_C,52,3.5,Overvoltage
+1019,EV_bus_52_C,52,4.0,Power Flow nr did not converge after 100 iterations!
+1020,EV_bus_53_A,53,0.0,Overvoltage
+1021,EV_bus_53_A,53,0.5,Overvoltage
+1022,EV_bus_53_A,53,1.0,Overvoltage
+1023,EV_bus_53_A,53,1.5,Overvoltage
+1024,EV_bus_53_A,53,2.0,Overvoltage
+1025,EV_bus_53_A,53,2.5,Overvoltage
+1026,EV_bus_53_A,53,3.0,Power Flow nr did not converge after 100 iterations!
+1027,EV_bus_53_B,53,0.0,Overvoltage
+1028,EV_bus_53_B,53,0.5,Overvoltage
+1029,EV_bus_53_B,53,1.0,Overvoltage
+1030,EV_bus_53_B,53,1.5,Power Flow nr did not converge after 100 iterations!
+1031,EV_bus_53_C,53,0.0,Overvoltage
+1032,EV_bus_53_C,53,0.5,Overvoltage
+1033,EV_bus_53_C,53,1.0,Overvoltage
+1034,EV_bus_53_C,53,1.5,Overvoltage
+1035,EV_bus_53_C,53,2.0,Overvoltage
+1036,EV_bus_53_C,53,2.5,Overvoltage
+1037,EV_bus_53_C,53,3.0,Overvoltage
+1038,EV_bus_53_C,53,3.5,Overvoltage
+1039,EV_bus_53_C,53,4.0,Power Flow nr did not converge after 100 iterations!
+1040,EV_bus_54_A,54,0.0,Overvoltage
+1041,EV_bus_54_A,54,0.5,Overvoltage
+1042,EV_bus_54_A,54,1.0,Overvoltage
+1043,EV_bus_54_A,54,1.5,Overvoltage
+1044,EV_bus_54_A,54,2.0,Overvoltage
+1045,EV_bus_54_A,54,2.5,Overvoltage
+1046,EV_bus_54_A,54,3.0,Power Flow nr did not converge after 100 iterations!
+1047,EV_bus_54_B,54,0.0,Overvoltage
+1048,EV_bus_54_B,54,0.5,Overvoltage
+1049,EV_bus_54_B,54,1.0,Overvoltage
+1050,EV_bus_54_B,54,1.5,Power Flow nr did not converge after 100 iterations!
+1051,EV_bus_54_C,54,0.0,Overvoltage
+1052,EV_bus_54_C,54,0.5,Overvoltage
+1053,EV_bus_54_C,54,1.0,Overvoltage
+1054,EV_bus_54_C,54,1.5,Overvoltage
+1055,EV_bus_54_C,54,2.0,Overvoltage
+1056,EV_bus_54_C,54,2.5,Overvoltage
+1057,EV_bus_54_C,54,3.0,Overvoltage
+1058,EV_bus_54_C,54,3.5,Overvoltage
+1059,EV_bus_54_C,54,4.0,Power Flow nr did not converge after 100 iterations!
+1060,EV_bus_55_A,55,0.0,Overvoltage
+1061,EV_bus_55_A,55,0.5,Overvoltage
+1062,EV_bus_55_A,55,1.0,Overvoltage
+1063,EV_bus_55_A,55,1.5,Overvoltage
+1064,EV_bus_55_A,55,2.0,Overvoltage
+1065,EV_bus_55_A,55,2.5,Overvoltage
+1066,EV_bus_55_A,55,3.0,Power Flow nr did not converge after 100 iterations!
+1067,EV_bus_55_B,55,0.0,Overvoltage
+1068,EV_bus_55_B,55,0.5,Overvoltage
+1069,EV_bus_55_B,55,1.0,Overvoltage
+1070,EV_bus_55_B,55,1.5,Power Flow nr did not converge after 100 iterations!
+1071,EV_bus_55_C,55,0.0,Overvoltage
+1072,EV_bus_55_C,55,0.5,Overvoltage
+1073,EV_bus_55_C,55,1.0,Overvoltage
+1074,EV_bus_55_C,55,1.5,Overvoltage
+1075,EV_bus_55_C,55,2.0,Overvoltage
+1076,EV_bus_55_C,55,2.5,Overvoltage
+1077,EV_bus_55_C,55,3.0,Overvoltage
+1078,EV_bus_55_C,55,3.5,Overvoltage
+1079,EV_bus_55_C,55,4.0,Power Flow nr did not converge after 100 iterations!
+1080,EV_bus_56_A,56,0.0,Overvoltage
+1081,EV_bus_56_A,56,0.5,Overvoltage
+1082,EV_bus_56_A,56,1.0,Overvoltage
+1083,EV_bus_56_A,56,1.5,Overvoltage
+1084,EV_bus_56_A,56,2.0,Overvoltage
+1085,EV_bus_56_A,56,2.5,Overvoltage
+1086,EV_bus_56_A,56,3.0,Power Flow nr did not converge after 100 iterations!
+1087,EV_bus_56_B,56,0.0,Overvoltage
+1088,EV_bus_56_B,56,0.5,Overvoltage
+1089,EV_bus_56_B,56,1.0,Overvoltage
+1090,EV_bus_56_B,56,1.5,Power Flow nr did not converge after 100 iterations!
+1091,EV_bus_56_C,56,0.0,Overvoltage
+1092,EV_bus_56_C,56,0.5,Overvoltage
+1093,EV_bus_56_C,56,1.0,Overvoltage
+1094,EV_bus_56_C,56,1.5,Overvoltage
+1095,EV_bus_56_C,56,2.0,Overvoltage
+1096,EV_bus_56_C,56,2.5,Overvoltage
+1097,EV_bus_56_C,56,3.0,Overvoltage
+1098,EV_bus_56_C,56,3.5,Overvoltage
+1099,EV_bus_56_C,56,4.0,Power Flow nr did not converge after 100 iterations!
+1100,EV_bus_57_A,57,0.0,Overvoltage
+1101,EV_bus_57_A,57,0.5,Overvoltage
+1102,EV_bus_57_A,57,1.0,Overvoltage
+1103,EV_bus_57_A,57,1.5,Overvoltage
+1104,EV_bus_57_A,57,2.0,Overvoltage
+1105,EV_bus_57_A,57,2.5,Overvoltage
+1106,EV_bus_57_A,57,3.0,Power Flow nr did not converge after 100 iterations!
+1107,EV_bus_57_B,57,0.0,Overvoltage
+1108,EV_bus_57_B,57,0.5,Overvoltage
+1109,EV_bus_57_B,57,1.0,Overvoltage
+1110,EV_bus_57_B,57,1.5,Power Flow nr did not converge after 100 iterations!
+1111,EV_bus_57_C,57,0.0,Overvoltage
+1112,EV_bus_57_C,57,0.5,Overvoltage
+1113,EV_bus_57_C,57,1.0,Overvoltage
+1114,EV_bus_57_C,57,1.5,Overvoltage
+1115,EV_bus_57_C,57,2.0,Overvoltage
+1116,EV_bus_57_C,57,2.5,Overvoltage
+1117,EV_bus_57_C,57,3.0,Overvoltage
+1118,EV_bus_57_C,57,3.5,Overvoltage
+1119,EV_bus_57_C,57,4.0,Power Flow nr did not converge after 100 iterations!
+1120,EV_bus_58_A,58,0.0,Overvoltage
+1121,EV_bus_58_A,58,0.5,Overvoltage
+1122,EV_bus_58_A,58,1.0,Overvoltage
+1123,EV_bus_58_A,58,1.5,Overvoltage
+1124,EV_bus_58_A,58,2.0,Overvoltage
+1125,EV_bus_58_A,58,2.5,Overvoltage
+1126,EV_bus_58_A,58,3.0,Power Flow nr did not converge after 100 iterations!
+1127,EV_bus_58_B,58,0.0,Overvoltage
+1128,EV_bus_58_B,58,0.5,Overvoltage
+1129,EV_bus_58_B,58,1.0,Overvoltage
+1130,EV_bus_58_B,58,1.5,Power Flow nr did not converge after 100 iterations!
+1131,EV_bus_58_C,58,0.0,Overvoltage
+1132,EV_bus_58_C,58,0.5,Overvoltage
+1133,EV_bus_58_C,58,1.0,Overvoltage
+1134,EV_bus_58_C,58,1.5,Overvoltage
+1135,EV_bus_58_C,58,2.0,Overvoltage
+1136,EV_bus_58_C,58,2.5,Overvoltage
+1137,EV_bus_58_C,58,3.0,Overvoltage
+1138,EV_bus_58_C,58,3.5,Overvoltage
+1139,EV_bus_58_C,58,4.0,Power Flow nr did not converge after 100 iterations!
+1140,EV_bus_59_A,59,0.0,Overvoltage
+1141,EV_bus_59_A,59,0.5,Overvoltage
+1142,EV_bus_59_A,59,1.0,Overvoltage
+1143,EV_bus_59_A,59,1.5,Overvoltage
+1144,EV_bus_59_A,59,2.0,Overvoltage
+1145,EV_bus_59_A,59,2.5,Overvoltage
+1146,EV_bus_59_A,59,3.0,Power Flow nr did not converge after 100 iterations!
+1147,EV_bus_59_B,59,0.0,Overvoltage
+1148,EV_bus_59_B,59,0.5,Overvoltage
+1149,EV_bus_59_B,59,1.0,Overvoltage
+1150,EV_bus_59_B,59,1.5,Power Flow nr did not converge after 100 iterations!
+1151,EV_bus_59_C,59,0.0,Overvoltage
+1152,EV_bus_59_C,59,0.5,Overvoltage
+1153,EV_bus_59_C,59,1.0,Overvoltage
+1154,EV_bus_59_C,59,1.5,Overvoltage
+1155,EV_bus_59_C,59,2.0,Overvoltage
+1156,EV_bus_59_C,59,2.5,Overvoltage
+1157,EV_bus_59_C,59,3.0,Overvoltage
+1158,EV_bus_59_C,59,3.5,Overvoltage
+1159,EV_bus_59_C,59,4.0,Power Flow nr did not converge after 100 iterations!
+1160,EV_bus_60_A,60,0.0,Overvoltage
+1161,EV_bus_60_A,60,0.5,Overvoltage
+1162,EV_bus_60_A,60,1.0,Overvoltage
+1163,EV_bus_60_A,60,1.5,Overvoltage
+1164,EV_bus_60_A,60,2.0,Overvoltage
+1165,EV_bus_60_A,60,2.5,Overvoltage
+1166,EV_bus_60_A,60,3.0,Power Flow nr did not converge after 100 iterations!
+1167,EV_bus_60_B,60,0.0,Overvoltage
+1168,EV_bus_60_B,60,0.5,Overvoltage
+1169,EV_bus_60_B,60,1.0,Overvoltage
+1170,EV_bus_60_B,60,1.5,Power Flow nr did not converge after 100 iterations!
+1171,EV_bus_60_C,60,0.0,Overvoltage
+1172,EV_bus_60_C,60,0.5,Overvoltage
+1173,EV_bus_60_C,60,1.0,Overvoltage
+1174,EV_bus_60_C,60,1.5,Overvoltage
+1175,EV_bus_60_C,60,2.0,Overvoltage
+1176,EV_bus_60_C,60,2.5,Overvoltage
+1177,EV_bus_60_C,60,3.0,Overvoltage
+1178,EV_bus_60_C,60,3.5,Overvoltage
+1179,EV_bus_60_C,60,4.0,Power Flow nr did not converge after 100 iterations!
+1180,EV_bus_61_A,61,0.0,Overvoltage
+1181,EV_bus_61_A,61,0.5,Overvoltage
+1182,EV_bus_61_A,61,1.0,Overvoltage
+1183,EV_bus_61_A,61,1.5,Overvoltage
+1184,EV_bus_61_A,61,2.0,Overvoltage
+1185,EV_bus_61_A,61,2.5,Overvoltage
+1186,EV_bus_61_A,61,3.0,Power Flow nr did not converge after 100 iterations!
+1187,EV_bus_61_B,61,0.0,Overvoltage
+1188,EV_bus_61_B,61,0.5,Overvoltage
+1189,EV_bus_61_B,61,1.0,Overvoltage
+1190,EV_bus_61_B,61,1.5,Power Flow nr did not converge after 100 iterations!
+1191,EV_bus_61_C,61,0.0,Overvoltage
+1192,EV_bus_61_C,61,0.5,Overvoltage
+1193,EV_bus_61_C,61,1.0,Overvoltage
+1194,EV_bus_61_C,61,1.5,Overvoltage
+1195,EV_bus_61_C,61,2.0,Overvoltage
+1196,EV_bus_61_C,61,2.5,Overvoltage
+1197,EV_bus_61_C,61,3.0,Overvoltage
+1198,EV_bus_61_C,61,3.5,Overvoltage
+1199,EV_bus_61_C,61,4.0,Power Flow nr did not converge after 100 iterations!
+1200,EV_bus_62_A,62,0.0,Overvoltage
+1201,EV_bus_62_A,62,0.5,Overvoltage
+1202,EV_bus_62_A,62,1.0,Overvoltage
+1203,EV_bus_62_A,62,1.5,Overvoltage
+1204,EV_bus_62_A,62,2.0,Overvoltage
+1205,EV_bus_62_A,62,2.5,Overvoltage
+1206,EV_bus_62_A,62,3.0,Power Flow nr did not converge after 100 iterations!
+1207,EV_bus_62_B,62,0.0,Overvoltage
+1208,EV_bus_62_B,62,0.5,Overvoltage
+1209,EV_bus_62_B,62,1.0,Overvoltage
+1210,EV_bus_62_B,62,1.5,Power Flow nr did not converge after 100 iterations!
+1211,EV_bus_62_C,62,0.0,Overvoltage
+1212,EV_bus_62_C,62,0.5,Overvoltage
+1213,EV_bus_62_C,62,1.0,Overvoltage
+1214,EV_bus_62_C,62,1.5,Overvoltage
+1215,EV_bus_62_C,62,2.0,Overvoltage
+1216,EV_bus_62_C,62,2.5,Overvoltage
+1217,EV_bus_62_C,62,3.0,Overvoltage
+1218,EV_bus_62_C,62,3.5,Overvoltage
+1219,EV_bus_62_C,62,4.0,Power Flow nr did not converge after 100 iterations!
+1220,EV_bus_63_A,63,0.0,Overvoltage
+1221,EV_bus_63_A,63,0.5,Overvoltage
+1222,EV_bus_63_A,63,1.0,Overvoltage
+1223,EV_bus_63_A,63,1.5,Overvoltage
+1224,EV_bus_63_A,63,2.0,Overvoltage
+1225,EV_bus_63_A,63,2.5,Overvoltage
+1226,EV_bus_63_A,63,3.0,Power Flow nr did not converge after 100 iterations!
+1227,EV_bus_63_B,63,0.0,Overvoltage
+1228,EV_bus_63_B,63,0.5,Overvoltage
+1229,EV_bus_63_B,63,1.0,Overvoltage
+1230,EV_bus_63_B,63,1.5,Power Flow nr did not converge after 100 iterations!
+1231,EV_bus_63_C,63,0.0,Overvoltage
+1232,EV_bus_63_C,63,0.5,Overvoltage
+1233,EV_bus_63_C,63,1.0,Overvoltage
+1234,EV_bus_63_C,63,1.5,Overvoltage
+1235,EV_bus_63_C,63,2.0,Overvoltage
+1236,EV_bus_63_C,63,2.5,Overvoltage
+1237,EV_bus_63_C,63,3.0,Overvoltage
+1238,EV_bus_63_C,63,3.5,Overvoltage
+1239,EV_bus_63_C,63,4.0,Power Flow nr did not converge after 100 iterations!
+1240,EV_bus_64_A,64,0.0,Overvoltage
+1241,EV_bus_64_A,64,0.5,Overvoltage
+1242,EV_bus_64_A,64,1.0,Overvoltage
+1243,EV_bus_64_A,64,1.5,Overvoltage
+1244,EV_bus_64_A,64,2.0,Overvoltage
+1245,EV_bus_64_A,64,2.5,Overvoltage
+1246,EV_bus_64_A,64,3.0,Power Flow nr did not converge after 100 iterations!
+1247,EV_bus_64_B,64,0.0,Overvoltage
+1248,EV_bus_64_B,64,0.5,Overvoltage
+1249,EV_bus_64_B,64,1.0,Overvoltage
+1250,EV_bus_64_B,64,1.5,Power Flow nr did not converge after 100 iterations!
+1251,EV_bus_64_C,64,0.0,Overvoltage
+1252,EV_bus_64_C,64,0.5,Overvoltage
+1253,EV_bus_64_C,64,1.0,Overvoltage
+1254,EV_bus_64_C,64,1.5,Overvoltage
+1255,EV_bus_64_C,64,2.0,Overvoltage
+1256,EV_bus_64_C,64,2.5,Overvoltage
+1257,EV_bus_64_C,64,3.0,Overvoltage
+1258,EV_bus_64_C,64,3.5,Overvoltage
+1259,EV_bus_64_C,64,4.0,Power Flow nr did not converge after 100 iterations!
+1260,EV_bus_65_A,65,0.0,Overvoltage
+1261,EV_bus_65_A,65,0.5,Overvoltage
+1262,EV_bus_65_A,65,1.0,Overvoltage
+1263,EV_bus_65_A,65,1.5,Overvoltage
+1264,EV_bus_65_A,65,2.0,Overvoltage
+1265,EV_bus_65_A,65,2.5,Overvoltage
+1266,EV_bus_65_A,65,3.0,Power Flow nr did not converge after 100 iterations!
+1267,EV_bus_65_B,65,0.0,Overvoltage
+1268,EV_bus_65_B,65,0.5,Overvoltage
+1269,EV_bus_65_B,65,1.0,Overvoltage
+1270,EV_bus_65_B,65,1.5,Power Flow nr did not converge after 100 iterations!
+1271,EV_bus_65_C,65,0.0,Overvoltage
+1272,EV_bus_65_C,65,0.5,Overvoltage
+1273,EV_bus_65_C,65,1.0,Overvoltage
+1274,EV_bus_65_C,65,1.5,Overvoltage
+1275,EV_bus_65_C,65,2.0,Overvoltage
+1276,EV_bus_65_C,65,2.5,Overvoltage
+1277,EV_bus_65_C,65,3.0,Overvoltage
+1278,EV_bus_65_C,65,3.5,Overvoltage
+1279,EV_bus_65_C,65,4.0,Power Flow nr did not converge after 100 iterations!
+1280,EV_bus_66_A,66,0.0,Overvoltage
+1281,EV_bus_66_A,66,0.5,Overvoltage
+1282,EV_bus_66_A,66,1.0,Overvoltage
+1283,EV_bus_66_A,66,1.5,Overvoltage
+1284,EV_bus_66_A,66,2.0,Overvoltage
+1285,EV_bus_66_A,66,2.5,Overvoltage
+1286,EV_bus_66_A,66,3.0,Power Flow nr did not converge after 100 iterations!
+1287,EV_bus_66_B,66,0.0,Overvoltage
+1288,EV_bus_66_B,66,0.5,Overvoltage
+1289,EV_bus_66_B,66,1.0,Overvoltage
+1290,EV_bus_66_B,66,1.5,Power Flow nr did not converge after 100 iterations!
+1291,EV_bus_66_C,66,0.0,Overvoltage
+1292,EV_bus_66_C,66,0.5,Overvoltage
+1293,EV_bus_66_C,66,1.0,Overvoltage
+1294,EV_bus_66_C,66,1.5,Overvoltage
+1295,EV_bus_66_C,66,2.0,Overvoltage
+1296,EV_bus_66_C,66,2.5,Overvoltage
+1297,EV_bus_66_C,66,3.0,Overvoltage
+1298,EV_bus_66_C,66,3.5,Overvoltage
+1299,EV_bus_66_C,66,4.0,Power Flow nr did not converge after 100 iterations!
+1300,EV_bus_67_A,67,0.0,Overvoltage
+1301,EV_bus_67_A,67,0.5,Overvoltage
+1302,EV_bus_67_A,67,1.0,Overvoltage
+1303,EV_bus_67_A,67,1.5,Overvoltage
+1304,EV_bus_67_A,67,2.0,Overvoltage
+1305,EV_bus_67_A,67,2.5,Overvoltage
+1306,EV_bus_67_A,67,3.0,Power Flow nr did not converge after 100 iterations!
+1307,EV_bus_67_B,67,0.0,Overvoltage
+1308,EV_bus_67_B,67,0.5,Overvoltage
+1309,EV_bus_67_B,67,1.0,Overvoltage
+1310,EV_bus_67_B,67,1.5,Power Flow nr did not converge after 100 iterations!
+1311,EV_bus_67_C,67,0.0,Overvoltage
+1312,EV_bus_67_C,67,0.5,Overvoltage
+1313,EV_bus_67_C,67,1.0,Overvoltage
+1314,EV_bus_67_C,67,1.5,Overvoltage
+1315,EV_bus_67_C,67,2.0,Overvoltage
+1316,EV_bus_67_C,67,2.5,Overvoltage
+1317,EV_bus_67_C,67,3.0,Overvoltage
+1318,EV_bus_67_C,67,3.5,Overvoltage
+1319,EV_bus_67_C,67,4.0,Power Flow nr did not converge after 100 iterations!
+1320,EV_bus_68_A,68,0.0,Overvoltage
+1321,EV_bus_68_A,68,0.5,Overvoltage
+1322,EV_bus_68_A,68,1.0,Overvoltage
+1323,EV_bus_68_A,68,1.5,Overvoltage
+1324,EV_bus_68_A,68,2.0,Overvoltage
+1325,EV_bus_68_A,68,2.5,Overvoltage
+1326,EV_bus_68_A,68,3.0,Power Flow nr did not converge after 100 iterations!
+1327,EV_bus_68_B,68,0.0,Overvoltage
+1328,EV_bus_68_B,68,0.5,Overvoltage
+1329,EV_bus_68_B,68,1.0,Overvoltage
+1330,EV_bus_68_B,68,1.5,Power Flow nr did not converge after 100 iterations!
+1331,EV_bus_68_C,68,0.0,Overvoltage
+1332,EV_bus_68_C,68,0.5,Overvoltage
+1333,EV_bus_68_C,68,1.0,Overvoltage
+1334,EV_bus_68_C,68,1.5,Overvoltage
+1335,EV_bus_68_C,68,2.0,Overvoltage
+1336,EV_bus_68_C,68,2.5,Overvoltage
+1337,EV_bus_68_C,68,3.0,Overvoltage
+1338,EV_bus_68_C,68,3.5,Overvoltage
+1339,EV_bus_68_C,68,4.0,Power Flow nr did not converge after 100 iterations!
+1340,EV_bus_69_A,69,0.0,Overvoltage
+1341,EV_bus_69_A,69,0.5,Overvoltage
+1342,EV_bus_69_A,69,1.0,Overvoltage
+1343,EV_bus_69_A,69,1.5,Overvoltage
+1344,EV_bus_69_A,69,2.0,Overvoltage
+1345,EV_bus_69_A,69,2.5,Overvoltage
+1346,EV_bus_69_A,69,3.0,Power Flow nr did not converge after 100 iterations!
+1347,EV_bus_69_B,69,0.0,Overvoltage
+1348,EV_bus_69_B,69,0.5,Overvoltage
+1349,EV_bus_69_B,69,1.0,Overvoltage
+1350,EV_bus_69_B,69,1.5,Power Flow nr did not converge after 100 iterations!
+1351,EV_bus_69_C,69,0.0,Overvoltage
+1352,EV_bus_69_C,69,0.5,Overvoltage
+1353,EV_bus_69_C,69,1.0,Overvoltage
+1354,EV_bus_69_C,69,1.5,Overvoltage
+1355,EV_bus_69_C,69,2.0,Overvoltage
+1356,EV_bus_69_C,69,2.5,Overvoltage
+1357,EV_bus_69_C,69,3.0,Overvoltage
+1358,EV_bus_69_C,69,3.5,Overvoltage
+1359,EV_bus_69_C,69,4.0,Power Flow nr did not converge after 100 iterations!
+1360,EV_bus_70_A,70,0.0,Overvoltage
+1361,EV_bus_70_A,70,0.5,Overvoltage
+1362,EV_bus_70_A,70,1.0,Overvoltage
+1363,EV_bus_70_A,70,1.5,Overvoltage
+1364,EV_bus_70_A,70,2.0,Overvoltage
+1365,EV_bus_70_A,70,2.5,Overvoltage
+1366,EV_bus_70_A,70,3.0,Power Flow nr did not converge after 100 iterations!
+1367,EV_bus_70_B,70,0.0,Overvoltage
+1368,EV_bus_70_B,70,0.5,Overvoltage
+1369,EV_bus_70_B,70,1.0,Overvoltage
+1370,EV_bus_70_B,70,1.5,Power Flow nr did not converge after 100 iterations!
+1371,EV_bus_70_C,70,0.0,Overvoltage
+1372,EV_bus_70_C,70,0.5,Overvoltage
+1373,EV_bus_70_C,70,1.0,Overvoltage
+1374,EV_bus_70_C,70,1.5,Overvoltage
+1375,EV_bus_70_C,70,2.0,Overvoltage
+1376,EV_bus_70_C,70,2.5,Overvoltage
+1377,EV_bus_70_C,70,3.0,Overvoltage
+1378,EV_bus_70_C,70,3.5,Overvoltage
+1379,EV_bus_70_C,70,4.0,Power Flow nr did not converge after 100 iterations!
+1380,EV_bus_71_A,71,0.0,Overvoltage
+1381,EV_bus_71_A,71,0.5,Overvoltage
+1382,EV_bus_71_A,71,1.0,Overvoltage
+1383,EV_bus_71_A,71,1.5,Overvoltage
+1384,EV_bus_71_A,71,2.0,Overvoltage
+1385,EV_bus_71_A,71,2.5,Overvoltage
+1386,EV_bus_71_A,71,3.0,Power Flow nr did not converge after 100 iterations!
+1387,EV_bus_71_B,71,0.0,Overvoltage
+1388,EV_bus_71_B,71,0.5,Overvoltage
+1389,EV_bus_71_B,71,1.0,Overvoltage
+1390,EV_bus_71_B,71,1.5,Power Flow nr did not converge after 100 iterations!
+1391,EV_bus_71_C,71,0.0,Overvoltage
+1392,EV_bus_71_C,71,0.5,Overvoltage
+1393,EV_bus_71_C,71,1.0,Overvoltage
+1394,EV_bus_71_C,71,1.5,Overvoltage
+1395,EV_bus_71_C,71,2.0,Overvoltage
+1396,EV_bus_71_C,71,2.5,Overvoltage
+1397,EV_bus_71_C,71,3.0,Overvoltage
+1398,EV_bus_71_C,71,3.5,Overvoltage
+1399,EV_bus_71_C,71,4.0,Power Flow nr did not converge after 100 iterations!
+1400,EV_bus_72_A,72,0.0,Overvoltage
+1401,EV_bus_72_A,72,0.5,Overvoltage
+1402,EV_bus_72_A,72,1.0,Overvoltage
+1403,EV_bus_72_A,72,1.5,Overvoltage
+1404,EV_bus_72_A,72,2.0,Overvoltage
+1405,EV_bus_72_A,72,2.5,Overvoltage
+1406,EV_bus_72_A,72,3.0,Power Flow nr did not converge after 100 iterations!
+1407,EV_bus_72_B,72,0.0,Overvoltage
+1408,EV_bus_72_B,72,0.5,Overvoltage
+1409,EV_bus_72_B,72,1.0,Overvoltage
+1410,EV_bus_72_B,72,1.5,Power Flow nr did not converge after 100 iterations!
+1411,EV_bus_72_C,72,0.0,Overvoltage
+1412,EV_bus_72_C,72,0.5,Overvoltage
+1413,EV_bus_72_C,72,1.0,Overvoltage
+1414,EV_bus_72_C,72,1.5,Overvoltage
+1415,EV_bus_72_C,72,2.0,Overvoltage
+1416,EV_bus_72_C,72,2.5,Overvoltage
+1417,EV_bus_72_C,72,3.0,Overvoltage
+1418,EV_bus_72_C,72,3.5,Overvoltage
+1419,EV_bus_72_C,72,4.0,Power Flow nr did not converge after 100 iterations!
+1420,EV_bus_73_A,73,0.0,Overvoltage
+1421,EV_bus_73_A,73,0.5,Overvoltage
+1422,EV_bus_73_A,73,1.0,Overvoltage
+1423,EV_bus_73_A,73,1.5,Overvoltage
+1424,EV_bus_73_A,73,2.0,Overvoltage
+1425,EV_bus_73_A,73,2.5,Overvoltage
+1426,EV_bus_73_A,73,3.0,Power Flow nr did not converge after 100 iterations!
+1427,EV_bus_73_B,73,0.0,Overvoltage
+1428,EV_bus_73_B,73,0.5,Overvoltage
+1429,EV_bus_73_B,73,1.0,Overvoltage
+1430,EV_bus_73_B,73,1.5,Power Flow nr did not converge after 100 iterations!
+1431,EV_bus_73_C,73,0.0,Overvoltage
+1432,EV_bus_73_C,73,0.5,Overvoltage
+1433,EV_bus_73_C,73,1.0,Overvoltage
+1434,EV_bus_73_C,73,1.5,Overvoltage
+1435,EV_bus_73_C,73,2.0,Overvoltage
+1436,EV_bus_73_C,73,2.5,Overvoltage
+1437,EV_bus_73_C,73,3.0,Overvoltage
+1438,EV_bus_73_C,73,3.5,Overvoltage
+1439,EV_bus_73_C,73,4.0,Power Flow nr did not converge after 100 iterations!
+1440,EV_bus_74_A,74,0.0,Overvoltage
+1441,EV_bus_74_A,74,0.5,Overvoltage
+1442,EV_bus_74_A,74,1.0,Overvoltage
+1443,EV_bus_74_A,74,1.5,Overvoltage
+1444,EV_bus_74_A,74,2.0,Overvoltage
+1445,EV_bus_74_A,74,2.5,Overvoltage
+1446,EV_bus_74_A,74,3.0,Power Flow nr did not converge after 100 iterations!
+1447,EV_bus_74_B,74,0.0,Overvoltage
+1448,EV_bus_74_B,74,0.5,Overvoltage
+1449,EV_bus_74_B,74,1.0,Overvoltage
+1450,EV_bus_74_B,74,1.5,Power Flow nr did not converge after 100 iterations!
+1451,EV_bus_74_C,74,0.0,Overvoltage
+1452,EV_bus_74_C,74,0.5,Overvoltage
+1453,EV_bus_74_C,74,1.0,Overvoltage
+1454,EV_bus_74_C,74,1.5,Overvoltage
+1455,EV_bus_74_C,74,2.0,Overvoltage
+1456,EV_bus_74_C,74,2.5,Overvoltage
+1457,EV_bus_74_C,74,3.0,Overvoltage
+1458,EV_bus_74_C,74,3.5,Overvoltage
+1459,EV_bus_74_C,74,4.0,Power Flow nr did not converge after 100 iterations!
+1460,EV_bus_75_A,75,0.0,Overvoltage
+1461,EV_bus_75_A,75,0.5,Overvoltage
+1462,EV_bus_75_A,75,1.0,Overvoltage
+1463,EV_bus_75_A,75,1.5,Overvoltage
+1464,EV_bus_75_A,75,2.0,Overvoltage
+1465,EV_bus_75_A,75,2.5,Overvoltage
+1466,EV_bus_75_A,75,3.0,Power Flow nr did not converge after 100 iterations!
+1467,EV_bus_75_B,75,0.0,Overvoltage
+1468,EV_bus_75_B,75,0.5,Overvoltage
+1469,EV_bus_75_B,75,1.0,Overvoltage
+1470,EV_bus_75_B,75,1.5,Power Flow nr did not converge after 100 iterations!
+1471,EV_bus_75_C,75,0.0,Overvoltage
+1472,EV_bus_75_C,75,0.5,Overvoltage
+1473,EV_bus_75_C,75,1.0,Overvoltage
+1474,EV_bus_75_C,75,1.5,Overvoltage
+1475,EV_bus_75_C,75,2.0,Overvoltage
+1476,EV_bus_75_C,75,2.5,Overvoltage
+1477,EV_bus_75_C,75,3.0,Overvoltage
+1478,EV_bus_75_C,75,3.5,Overvoltage
+1479,EV_bus_75_C,75,4.0,Power Flow nr did not converge after 100 iterations!
+1480,EV_bus_76_A,76,0.0,Overvoltage
+1481,EV_bus_76_A,76,0.5,Overvoltage
+1482,EV_bus_76_A,76,1.0,Overvoltage
+1483,EV_bus_76_A,76,1.5,Overvoltage
+1484,EV_bus_76_A,76,2.0,Overvoltage
+1485,EV_bus_76_A,76,2.5,Overvoltage
+1486,EV_bus_76_A,76,3.0,Power Flow nr did not converge after 100 iterations!
+1487,EV_bus_76_B,76,0.0,Overvoltage
+1488,EV_bus_76_B,76,0.5,Overvoltage
+1489,EV_bus_76_B,76,1.0,Overvoltage
+1490,EV_bus_76_B,76,1.5,Power Flow nr did not converge after 100 iterations!
+1491,EV_bus_76_C,76,0.0,Overvoltage
+1492,EV_bus_76_C,76,0.5,Overvoltage
+1493,EV_bus_76_C,76,1.0,Overvoltage
+1494,EV_bus_76_C,76,1.5,Overvoltage
+1495,EV_bus_76_C,76,2.0,Overvoltage
+1496,EV_bus_76_C,76,2.5,Overvoltage
+1497,EV_bus_76_C,76,3.0,Overvoltage
+1498,EV_bus_76_C,76,3.5,Overvoltage
+1499,EV_bus_76_C,76,4.0,Power Flow nr did not converge after 100 iterations!
+1500,EV_bus_77_A,77,0.0,Overvoltage
+1501,EV_bus_77_A,77,0.5,Overvoltage
+1502,EV_bus_77_A,77,1.0,Overvoltage
+1503,EV_bus_77_A,77,1.5,Overvoltage
+1504,EV_bus_77_A,77,2.0,Overvoltage
+1505,EV_bus_77_A,77,2.5,Overvoltage
+1506,EV_bus_77_A,77,3.0,Power Flow nr did not converge after 100 iterations!
+1507,EV_bus_77_B,77,0.0,Overvoltage
+1508,EV_bus_77_B,77,0.5,Overvoltage
+1509,EV_bus_77_B,77,1.0,Overvoltage
+1510,EV_bus_77_B,77,1.5,Power Flow nr did not converge after 100 iterations!
+1511,EV_bus_77_C,77,0.0,Overvoltage
+1512,EV_bus_77_C,77,0.5,Overvoltage
+1513,EV_bus_77_C,77,1.0,Overvoltage
+1514,EV_bus_77_C,77,1.5,Overvoltage
+1515,EV_bus_77_C,77,2.0,Overvoltage
+1516,EV_bus_77_C,77,2.5,Overvoltage
+1517,EV_bus_77_C,77,3.0,Overvoltage
+1518,EV_bus_77_C,77,3.5,Overvoltage
+1519,EV_bus_77_C,77,4.0,Power Flow nr did not converge after 100 iterations!
+1520,EV_bus_78_A,78,0.0,Overvoltage
+1521,EV_bus_78_A,78,0.5,Overvoltage
+1522,EV_bus_78_A,78,1.0,Overvoltage
+1523,EV_bus_78_A,78,1.5,Overvoltage
+1524,EV_bus_78_A,78,2.0,Overvoltage
+1525,EV_bus_78_A,78,2.5,Overvoltage
+1526,EV_bus_78_A,78,3.0,Power Flow nr did not converge after 100 iterations!
+1527,EV_bus_78_B,78,0.0,Overvoltage
+1528,EV_bus_78_B,78,0.5,Overvoltage
+1529,EV_bus_78_B,78,1.0,Overvoltage
+1530,EV_bus_78_B,78,1.5,Power Flow nr did not converge after 100 iterations!
+1531,EV_bus_78_C,78,0.0,Overvoltage
+1532,EV_bus_78_C,78,0.5,Overvoltage
+1533,EV_bus_78_C,78,1.0,Overvoltage
+1534,EV_bus_78_C,78,1.5,Overvoltage
+1535,EV_bus_78_C,78,2.0,Overvoltage
+1536,EV_bus_78_C,78,2.5,Overvoltage
+1537,EV_bus_78_C,78,3.0,Overvoltage
+1538,EV_bus_78_C,78,3.5,Overvoltage
+1539,EV_bus_78_C,78,4.0,Power Flow nr did not converge after 100 iterations!
+1540,EV_bus_79_A,79,0.0,Overvoltage
+1541,EV_bus_79_A,79,0.5,Overvoltage
+1542,EV_bus_79_A,79,1.0,Overvoltage
+1543,EV_bus_79_A,79,1.5,Overvoltage
+1544,EV_bus_79_A,79,2.0,Overvoltage
+1545,EV_bus_79_A,79,2.5,Overvoltage
+1546,EV_bus_79_A,79,3.0,Power Flow nr did not converge after 100 iterations!
+1547,EV_bus_79_B,79,0.0,Overvoltage
+1548,EV_bus_79_B,79,0.5,Overvoltage
+1549,EV_bus_79_B,79,1.0,Overvoltage
+1550,EV_bus_79_B,79,1.5,Power Flow nr did not converge after 100 iterations!
+1551,EV_bus_79_C,79,0.0,Overvoltage
+1552,EV_bus_79_C,79,0.5,Overvoltage
+1553,EV_bus_79_C,79,1.0,Overvoltage
+1554,EV_bus_79_C,79,1.5,Overvoltage
+1555,EV_bus_79_C,79,2.0,Overvoltage
+1556,EV_bus_79_C,79,2.5,Overvoltage
+1557,EV_bus_79_C,79,3.0,Overvoltage
+1558,EV_bus_79_C,79,3.5,Overvoltage
+1559,EV_bus_79_C,79,4.0,Power Flow nr did not converge after 100 iterations!
+1560,EV_bus_80_A,80,0.0,Overvoltage
+1561,EV_bus_80_A,80,0.5,Overvoltage
+1562,EV_bus_80_A,80,1.0,Overvoltage
+1563,EV_bus_80_A,80,1.5,Overvoltage
+1564,EV_bus_80_A,80,2.0,Overvoltage
+1565,EV_bus_80_A,80,2.5,Overvoltage
+1566,EV_bus_80_A,80,3.0,Power Flow nr did not converge after 100 iterations!
+1567,EV_bus_80_B,80,0.0,Overvoltage
+1568,EV_bus_80_B,80,0.5,Overvoltage
+1569,EV_bus_80_B,80,1.0,Overvoltage
+1570,EV_bus_80_B,80,1.5,Power Flow nr did not converge after 100 iterations!
+1571,EV_bus_80_C,80,0.0,Overvoltage
+1572,EV_bus_80_C,80,0.5,Overvoltage
+1573,EV_bus_80_C,80,1.0,Overvoltage
+1574,EV_bus_80_C,80,1.5,Overvoltage
+1575,EV_bus_80_C,80,2.0,Overvoltage
+1576,EV_bus_80_C,80,2.5,Overvoltage
+1577,EV_bus_80_C,80,3.0,Overvoltage
+1578,EV_bus_80_C,80,3.5,Overvoltage
+1579,EV_bus_80_C,80,4.0,Power Flow nr did not converge after 100 iterations!
+1580,EV_bus_81_A,81,0.0,Overvoltage
+1581,EV_bus_81_A,81,0.5,Overvoltage
+1582,EV_bus_81_A,81,1.0,Overvoltage
+1583,EV_bus_81_A,81,1.5,Overvoltage
+1584,EV_bus_81_A,81,2.0,Overvoltage
+1585,EV_bus_81_A,81,2.5,Overvoltage
+1586,EV_bus_81_A,81,3.0,Power Flow nr did not converge after 100 iterations!
+1587,EV_bus_81_B,81,0.0,Overvoltage
+1588,EV_bus_81_B,81,0.5,Overvoltage
+1589,EV_bus_81_B,81,1.0,Overvoltage
+1590,EV_bus_81_B,81,1.5,Power Flow nr did not converge after 100 iterations!
+1591,EV_bus_81_C,81,0.0,Overvoltage
+1592,EV_bus_81_C,81,0.5,Overvoltage
+1593,EV_bus_81_C,81,1.0,Overvoltage
+1594,EV_bus_81_C,81,1.5,Overvoltage
+1595,EV_bus_81_C,81,2.0,Overvoltage
+1596,EV_bus_81_C,81,2.5,Overvoltage
+1597,EV_bus_81_C,81,3.0,Overvoltage
+1598,EV_bus_81_C,81,3.5,Overvoltage
+1599,EV_bus_81_C,81,4.0,Power Flow nr did not converge after 100 iterations!
+1600,EV_bus_82_A,82,0.0,Overvoltage
+1601,EV_bus_82_A,82,0.5,Overvoltage
+1602,EV_bus_82_A,82,1.0,Overvoltage
+1603,EV_bus_82_A,82,1.5,Overvoltage
+1604,EV_bus_82_A,82,2.0,Overvoltage
+1605,EV_bus_82_A,82,2.5,Overvoltage
+1606,EV_bus_82_A,82,3.0,Power Flow nr did not converge after 100 iterations!
+1607,EV_bus_82_B,82,0.0,Overvoltage
+1608,EV_bus_82_B,82,0.5,Overvoltage
+1609,EV_bus_82_B,82,1.0,Overvoltage
+1610,EV_bus_82_B,82,1.5,Power Flow nr did not converge after 100 iterations!
+1611,EV_bus_82_C,82,0.0,Overvoltage
+1612,EV_bus_82_C,82,0.5,Overvoltage
+1613,EV_bus_82_C,82,1.0,Overvoltage
+1614,EV_bus_82_C,82,1.5,Overvoltage
+1615,EV_bus_82_C,82,2.0,Overvoltage
+1616,EV_bus_82_C,82,2.5,Overvoltage
+1617,EV_bus_82_C,82,3.0,Overvoltage
+1618,EV_bus_82_C,82,3.5,Overvoltage
+1619,EV_bus_82_C,82,4.0,Power Flow nr did not converge after 100 iterations!
+1620,EV_bus_83_A,83,0.0,Overvoltage
+1621,EV_bus_83_A,83,0.5,Overvoltage
+1622,EV_bus_83_A,83,1.0,Overvoltage
+1623,EV_bus_83_A,83,1.5,Overvoltage
+1624,EV_bus_83_A,83,2.0,Overvoltage
+1625,EV_bus_83_A,83,2.5,Overvoltage
+1626,EV_bus_83_A,83,3.0,Power Flow nr did not converge after 100 iterations!
+1627,EV_bus_83_B,83,0.0,Overvoltage
+1628,EV_bus_83_B,83,0.5,Overvoltage
+1629,EV_bus_83_B,83,1.0,Overvoltage
+1630,EV_bus_83_B,83,1.5,Power Flow nr did not converge after 100 iterations!
+1631,EV_bus_83_C,83,0.0,Overvoltage
+1632,EV_bus_83_C,83,0.5,Overvoltage
+1633,EV_bus_83_C,83,1.0,Overvoltage
+1634,EV_bus_83_C,83,1.5,Overvoltage
+1635,EV_bus_83_C,83,2.0,Overvoltage
+1636,EV_bus_83_C,83,2.5,Overvoltage
+1637,EV_bus_83_C,83,3.0,Overvoltage
+1638,EV_bus_83_C,83,3.5,Overvoltage
+1639,EV_bus_83_C,83,4.0,Power Flow nr did not converge after 100 iterations!
+1640,EV_bus_84_A,84,0.0,Overvoltage
+1641,EV_bus_84_A,84,0.5,Overvoltage
+1642,EV_bus_84_A,84,1.0,Overvoltage
+1643,EV_bus_84_A,84,1.5,Overvoltage
+1644,EV_bus_84_A,84,2.0,Overvoltage
+1645,EV_bus_84_A,84,2.5,Overvoltage
+1646,EV_bus_84_A,84,3.0,Power Flow nr did not converge after 100 iterations!
+1647,EV_bus_84_B,84,0.0,Overvoltage
+1648,EV_bus_84_B,84,0.5,Overvoltage
+1649,EV_bus_84_B,84,1.0,Overvoltage
+1650,EV_bus_84_B,84,1.5,Power Flow nr did not converge after 100 iterations!
+1651,EV_bus_84_C,84,0.0,Overvoltage
+1652,EV_bus_84_C,84,0.5,Overvoltage
+1653,EV_bus_84_C,84,1.0,Overvoltage
+1654,EV_bus_84_C,84,1.5,Overvoltage
+1655,EV_bus_84_C,84,2.0,Overvoltage
+1656,EV_bus_84_C,84,2.5,Overvoltage
+1657,EV_bus_84_C,84,3.0,Overvoltage
+1658,EV_bus_84_C,84,3.5,Overvoltage
+1659,EV_bus_84_C,84,4.0,Power Flow nr did not converge after 100 iterations!
+1660,EV_bus_85_A,85,0.0,Overvoltage
+1661,EV_bus_85_A,85,0.5,Overvoltage
+1662,EV_bus_85_A,85,1.0,Overvoltage
+1663,EV_bus_85_A,85,1.5,Overvoltage
+1664,EV_bus_85_A,85,2.0,Overvoltage
+1665,EV_bus_85_A,85,2.5,Overvoltage
+1666,EV_bus_85_A,85,3.0,Power Flow nr did not converge after 100 iterations!
+1667,EV_bus_85_B,85,0.0,Overvoltage
+1668,EV_bus_85_B,85,0.5,Overvoltage
+1669,EV_bus_85_B,85,1.0,Overvoltage
+1670,EV_bus_85_B,85,1.5,Power Flow nr did not converge after 100 iterations!
+1671,EV_bus_85_C,85,0.0,Overvoltage
+1672,EV_bus_85_C,85,0.5,Overvoltage
+1673,EV_bus_85_C,85,1.0,Overvoltage
+1674,EV_bus_85_C,85,1.5,Overvoltage
+1675,EV_bus_85_C,85,2.0,Overvoltage
+1676,EV_bus_85_C,85,2.5,Overvoltage
+1677,EV_bus_85_C,85,3.0,Overvoltage
+1678,EV_bus_85_C,85,3.5,Overvoltage
+1679,EV_bus_85_C,85,4.0,Power Flow nr did not converge after 100 iterations!
+1680,EV_bus_86_A,86,0.0,Overvoltage
+1681,EV_bus_86_A,86,0.5,Overvoltage
+1682,EV_bus_86_A,86,1.0,Overvoltage
+1683,EV_bus_86_A,86,1.5,Overvoltage
+1684,EV_bus_86_A,86,2.0,Overvoltage
+1685,EV_bus_86_A,86,2.5,Overvoltage
+1686,EV_bus_86_A,86,3.0,Power Flow nr did not converge after 100 iterations!
+1687,EV_bus_86_B,86,0.0,Overvoltage
+1688,EV_bus_86_B,86,0.5,Overvoltage
+1689,EV_bus_86_B,86,1.0,Overvoltage
+1690,EV_bus_86_B,86,1.5,Power Flow nr did not converge after 100 iterations!
+1691,EV_bus_86_C,86,0.0,Overvoltage
+1692,EV_bus_86_C,86,0.5,Overvoltage
+1693,EV_bus_86_C,86,1.0,Overvoltage
+1694,EV_bus_86_C,86,1.5,Overvoltage
+1695,EV_bus_86_C,86,2.0,Overvoltage
+1696,EV_bus_86_C,86,2.5,Overvoltage
+1697,EV_bus_86_C,86,3.0,Overvoltage
+1698,EV_bus_86_C,86,3.5,Overvoltage
+1699,EV_bus_86_C,86,4.0,Power Flow nr did not converge after 100 iterations!
+1700,EV_bus_87_A,87,0.0,Overvoltage
+1701,EV_bus_87_A,87,0.5,Overvoltage
+1702,EV_bus_87_A,87,1.0,Overvoltage
+1703,EV_bus_87_A,87,1.5,Overvoltage
+1704,EV_bus_87_A,87,2.0,Overvoltage
+1705,EV_bus_87_A,87,2.5,Overvoltage
+1706,EV_bus_87_A,87,3.0,Power Flow nr did not converge after 100 iterations!
+1707,EV_bus_87_B,87,0.0,Overvoltage
+1708,EV_bus_87_B,87,0.5,Overvoltage
+1709,EV_bus_87_B,87,1.0,Overvoltage
+1710,EV_bus_87_B,87,1.5,Power Flow nr did not converge after 100 iterations!
+1711,EV_bus_87_C,87,0.0,Overvoltage
+1712,EV_bus_87_C,87,0.5,Overvoltage
+1713,EV_bus_87_C,87,1.0,Overvoltage
+1714,EV_bus_87_C,87,1.5,Overvoltage
+1715,EV_bus_87_C,87,2.0,Overvoltage
+1716,EV_bus_87_C,87,2.5,Overvoltage
+1717,EV_bus_87_C,87,3.0,Overvoltage
+1718,EV_bus_87_C,87,3.5,Overvoltage
+1719,EV_bus_87_C,87,4.0,Power Flow nr did not converge after 100 iterations!
+1720,EV_bus_88_A,88,0.0,Overvoltage
+1721,EV_bus_88_A,88,0.5,Overvoltage
+1722,EV_bus_88_A,88,1.0,Overvoltage
+1723,EV_bus_88_A,88,1.5,Overvoltage
+1724,EV_bus_88_A,88,2.0,Overvoltage
+1725,EV_bus_88_A,88,2.5,Overvoltage
+1726,EV_bus_88_A,88,3.0,Power Flow nr did not converge after 100 iterations!
+1727,EV_bus_88_B,88,0.0,Overvoltage
+1728,EV_bus_88_B,88,0.5,Overvoltage
+1729,EV_bus_88_B,88,1.0,Overvoltage
+1730,EV_bus_88_B,88,1.5,Power Flow nr did not converge after 100 iterations!
+1731,EV_bus_88_C,88,0.0,Overvoltage
+1732,EV_bus_88_C,88,0.5,Overvoltage
+1733,EV_bus_88_C,88,1.0,Overvoltage
+1734,EV_bus_88_C,88,1.5,Overvoltage
+1735,EV_bus_88_C,88,2.0,Overvoltage
+1736,EV_bus_88_C,88,2.5,Overvoltage
+1737,EV_bus_88_C,88,3.0,Overvoltage
+1738,EV_bus_88_C,88,3.5,Overvoltage
+1739,EV_bus_88_C,88,4.0,Power Flow nr did not converge after 100 iterations!
+1740,EV_bus_89_A,89,0.0,Overvoltage
+1741,EV_bus_89_A,89,0.5,Overvoltage
+1742,EV_bus_89_A,89,1.0,Overvoltage
+1743,EV_bus_89_A,89,1.5,Overvoltage
+1744,EV_bus_89_A,89,2.0,Overvoltage
+1745,EV_bus_89_A,89,2.5,Overvoltage
+1746,EV_bus_89_A,89,3.0,Power Flow nr did not converge after 100 iterations!
+1747,EV_bus_89_B,89,0.0,Overvoltage
+1748,EV_bus_89_B,89,0.5,Overvoltage
+1749,EV_bus_89_B,89,1.0,Overvoltage
+1750,EV_bus_89_B,89,1.5,Power Flow nr did not converge after 100 iterations!
+1751,EV_bus_89_C,89,0.0,Overvoltage
+1752,EV_bus_89_C,89,0.5,Overvoltage
+1753,EV_bus_89_C,89,1.0,Overvoltage
+1754,EV_bus_89_C,89,1.5,Overvoltage
+1755,EV_bus_89_C,89,2.0,Overvoltage
+1756,EV_bus_89_C,89,2.5,Overvoltage
+1757,EV_bus_89_C,89,3.0,Overvoltage
+1758,EV_bus_89_C,89,3.5,Overvoltage
+1759,EV_bus_89_C,89,4.0,Power Flow nr did not converge after 100 iterations!
+1760,EV_bus_90_A,90,0.0,Overvoltage
+1761,EV_bus_90_A,90,0.5,Overvoltage
+1762,EV_bus_90_A,90,1.0,Overvoltage
+1763,EV_bus_90_A,90,1.5,Overvoltage
+1764,EV_bus_90_A,90,2.0,Overvoltage
+1765,EV_bus_90_A,90,2.5,Overvoltage
+1766,EV_bus_90_A,90,3.0,Power Flow nr did not converge after 100 iterations!
+1767,EV_bus_90_B,90,0.0,Overvoltage
+1768,EV_bus_90_B,90,0.5,Overvoltage
+1769,EV_bus_90_B,90,1.0,Overvoltage
+1770,EV_bus_90_B,90,1.5,Power Flow nr did not converge after 100 iterations!
+1771,EV_bus_90_C,90,0.0,Overvoltage
+1772,EV_bus_90_C,90,0.5,Overvoltage
+1773,EV_bus_90_C,90,1.0,Overvoltage
+1774,EV_bus_90_C,90,1.5,Overvoltage
+1775,EV_bus_90_C,90,2.0,Overvoltage
+1776,EV_bus_90_C,90,2.5,Overvoltage
+1777,EV_bus_90_C,90,3.0,Overvoltage
+1778,EV_bus_90_C,90,3.5,Overvoltage
+1779,EV_bus_90_C,90,4.0,Power Flow nr did not converge after 100 iterations!
+1780,EV_bus_91_A,91,0.0,Overvoltage
+1781,EV_bus_91_A,91,0.5,Overvoltage
+1782,EV_bus_91_A,91,1.0,Overvoltage
+1783,EV_bus_91_A,91,1.5,Overvoltage
+1784,EV_bus_91_A,91,2.0,Overvoltage
+1785,EV_bus_91_A,91,2.5,Overvoltage
+1786,EV_bus_91_A,91,3.0,Power Flow nr did not converge after 100 iterations!
+1787,EV_bus_91_B,91,0.0,Overvoltage
+1788,EV_bus_91_B,91,0.5,Overvoltage
+1789,EV_bus_91_B,91,1.0,Overvoltage
+1790,EV_bus_91_B,91,1.5,Power Flow nr did not converge after 100 iterations!
+1791,EV_bus_91_C,91,0.0,Overvoltage
+1792,EV_bus_91_C,91,0.5,Overvoltage
+1793,EV_bus_91_C,91,1.0,Overvoltage
+1794,EV_bus_91_C,91,1.5,Overvoltage
+1795,EV_bus_91_C,91,2.0,Overvoltage
+1796,EV_bus_91_C,91,2.5,Overvoltage
+1797,EV_bus_91_C,91,3.0,Overvoltage
+1798,EV_bus_91_C,91,3.5,Overvoltage
+1799,EV_bus_91_C,91,4.0,Power Flow nr did not converge after 100 iterations!
+1800,EV_bus_92_A,92,0.0,Overvoltage
+1801,EV_bus_92_A,92,0.5,Overvoltage
+1802,EV_bus_92_A,92,1.0,Overvoltage
+1803,EV_bus_92_A,92,1.5,Overvoltage
+1804,EV_bus_92_A,92,2.0,Overvoltage
+1805,EV_bus_92_A,92,2.5,Overvoltage
+1806,EV_bus_92_A,92,3.0,Power Flow nr did not converge after 100 iterations!
+1807,EV_bus_92_B,92,0.0,Overvoltage
+1808,EV_bus_92_B,92,0.5,Overvoltage
+1809,EV_bus_92_B,92,1.0,Overvoltage
+1810,EV_bus_92_B,92,1.5,Power Flow nr did not converge after 100 iterations!
+1811,EV_bus_92_C,92,0.0,Overvoltage
+1812,EV_bus_92_C,92,0.5,Overvoltage
+1813,EV_bus_92_C,92,1.0,Overvoltage
+1814,EV_bus_92_C,92,1.5,Overvoltage
+1815,EV_bus_92_C,92,2.0,Overvoltage
+1816,EV_bus_92_C,92,2.5,Overvoltage
+1817,EV_bus_92_C,92,3.0,Overvoltage
+1818,EV_bus_92_C,92,3.5,Overvoltage
+1819,EV_bus_92_C,92,4.0,Power Flow nr did not converge after 100 iterations!
+1820,EV_bus_93_A,93,0.0,Overvoltage
+1821,EV_bus_93_A,93,0.5,Overvoltage
+1822,EV_bus_93_A,93,1.0,Overvoltage
+1823,EV_bus_93_A,93,1.5,Overvoltage
+1824,EV_bus_93_A,93,2.0,Overvoltage
+1825,EV_bus_93_A,93,2.5,Overvoltage
+1826,EV_bus_93_A,93,3.0,Power Flow nr did not converge after 100 iterations!
+1827,EV_bus_93_B,93,0.0,Overvoltage
+1828,EV_bus_93_B,93,0.5,Overvoltage
+1829,EV_bus_93_B,93,1.0,Overvoltage
+1830,EV_bus_93_B,93,1.5,Power Flow nr did not converge after 100 iterations!
+1831,EV_bus_93_C,93,0.0,Overvoltage
+1832,EV_bus_93_C,93,0.5,Overvoltage
+1833,EV_bus_93_C,93,1.0,Overvoltage
+1834,EV_bus_93_C,93,1.5,Overvoltage
+1835,EV_bus_93_C,93,2.0,Overvoltage
+1836,EV_bus_93_C,93,2.5,Overvoltage
+1837,EV_bus_93_C,93,3.0,Overvoltage
+1838,EV_bus_93_C,93,3.5,Overvoltage
+1839,EV_bus_93_C,93,4.0,Power Flow nr did not converge after 100 iterations!
+1840,EV_bus_94_A,94,0.0,Overvoltage
+1841,EV_bus_94_A,94,0.5,Overvoltage
+1842,EV_bus_94_A,94,1.0,Overvoltage
+1843,EV_bus_94_A,94,1.5,Overvoltage
+1844,EV_bus_94_A,94,2.0,Overvoltage
+1845,EV_bus_94_A,94,2.5,Overvoltage
+1846,EV_bus_94_A,94,3.0,Power Flow nr did not converge after 100 iterations!
+1847,EV_bus_94_B,94,0.0,Overvoltage
+1848,EV_bus_94_B,94,0.5,Overvoltage
+1849,EV_bus_94_B,94,1.0,Overvoltage
+1850,EV_bus_94_B,94,1.5,Power Flow nr did not converge after 100 iterations!
+1851,EV_bus_94_C,94,0.0,Overvoltage
+1852,EV_bus_94_C,94,0.5,Overvoltage
+1853,EV_bus_94_C,94,1.0,Overvoltage
+1854,EV_bus_94_C,94,1.5,Overvoltage
+1855,EV_bus_94_C,94,2.0,Overvoltage
+1856,EV_bus_94_C,94,2.5,Overvoltage
+1857,EV_bus_94_C,94,3.0,Overvoltage
+1858,EV_bus_94_C,94,3.5,Overvoltage
+1859,EV_bus_94_C,94,4.0,Power Flow nr did not converge after 100 iterations!
+1860,EV_bus_95_A,95,0.0,Overvoltage
+1861,EV_bus_95_A,95,0.5,Overvoltage
+1862,EV_bus_95_A,95,1.0,Overvoltage
+1863,EV_bus_95_A,95,1.5,Overvoltage
+1864,EV_bus_95_A,95,2.0,Overvoltage
+1865,EV_bus_95_A,95,2.5,Overvoltage
+1866,EV_bus_95_A,95,3.0,Power Flow nr did not converge after 100 iterations!
+1867,EV_bus_95_B,95,0.0,Overvoltage
+1868,EV_bus_95_B,95,0.5,Overvoltage
+1869,EV_bus_95_B,95,1.0,Overvoltage
+1870,EV_bus_95_B,95,1.5,Power Flow nr did not converge after 100 iterations!
+1871,EV_bus_95_C,95,0.0,Overvoltage
+1872,EV_bus_95_C,95,0.5,Overvoltage
+1873,EV_bus_95_C,95,1.0,Overvoltage
+1874,EV_bus_95_C,95,1.5,Overvoltage
+1875,EV_bus_95_C,95,2.0,Overvoltage
+1876,EV_bus_95_C,95,2.5,Overvoltage
+1877,EV_bus_95_C,95,3.0,Overvoltage
+1878,EV_bus_95_C,95,3.5,Overvoltage
+1879,EV_bus_95_C,95,4.0,Power Flow nr did not converge after 100 iterations!
+1880,EV_bus_96_A,96,0.0,Overvoltage
+1881,EV_bus_96_A,96,0.5,Overvoltage
+1882,EV_bus_96_A,96,1.0,Overvoltage
+1883,EV_bus_96_A,96,1.5,Overvoltage
+1884,EV_bus_96_A,96,2.0,Overvoltage
+1885,EV_bus_96_A,96,2.5,Overvoltage
+1886,EV_bus_96_A,96,3.0,Power Flow nr did not converge after 100 iterations!
+1887,EV_bus_96_B,96,0.0,Overvoltage
+1888,EV_bus_96_B,96,0.5,Overvoltage
+1889,EV_bus_96_B,96,1.0,Overvoltage
+1890,EV_bus_96_B,96,1.5,Power Flow nr did not converge after 100 iterations!
+1891,EV_bus_96_C,96,0.0,Overvoltage
+1892,EV_bus_96_C,96,0.5,Overvoltage
+1893,EV_bus_96_C,96,1.0,Overvoltage
+1894,EV_bus_96_C,96,1.5,Overvoltage
+1895,EV_bus_96_C,96,2.0,Overvoltage
+1896,EV_bus_96_C,96,2.5,Overvoltage
+1897,EV_bus_96_C,96,3.0,Overvoltage
+1898,EV_bus_96_C,96,3.5,Overvoltage
+1899,EV_bus_96_C,96,4.0,Power Flow nr did not converge after 100 iterations!
+1900,EV_bus_97_A,97,0.0,Overvoltage
+1901,EV_bus_97_A,97,0.5,Overvoltage
+1902,EV_bus_97_A,97,1.0,Overvoltage
+1903,EV_bus_97_A,97,1.5,Overvoltage
+1904,EV_bus_97_A,97,2.0,Overvoltage
+1905,EV_bus_97_A,97,2.5,Overvoltage
+1906,EV_bus_97_A,97,3.0,Power Flow nr did not converge after 100 iterations!
+1907,EV_bus_97_B,97,0.0,Overvoltage
+1908,EV_bus_97_B,97,0.5,Overvoltage
+1909,EV_bus_97_B,97,1.0,Overvoltage
+1910,EV_bus_97_B,97,1.5,Power Flow nr did not converge after 100 iterations!
+1911,EV_bus_97_C,97,0.0,Overvoltage
+1912,EV_bus_97_C,97,0.5,Overvoltage
+1913,EV_bus_97_C,97,1.0,Overvoltage
+1914,EV_bus_97_C,97,1.5,Overvoltage
+1915,EV_bus_97_C,97,2.0,Overvoltage
+1916,EV_bus_97_C,97,2.5,Overvoltage
+1917,EV_bus_97_C,97,3.0,Overvoltage
+1918,EV_bus_97_C,97,3.5,Overvoltage
+1919,EV_bus_97_C,97,4.0,Power Flow nr did not converge after 100 iterations!
+1920,EV_bus_98_A,98,0.0,Overvoltage
+1921,EV_bus_98_A,98,0.5,Overvoltage
+1922,EV_bus_98_A,98,1.0,Overvoltage
+1923,EV_bus_98_A,98,1.5,Overvoltage
+1924,EV_bus_98_A,98,2.0,Overvoltage
+1925,EV_bus_98_A,98,2.5,Overvoltage
+1926,EV_bus_98_A,98,3.0,Power Flow nr did not converge after 100 iterations!
+1927,EV_bus_98_B,98,0.0,Overvoltage
+1928,EV_bus_98_B,98,0.5,Overvoltage
+1929,EV_bus_98_B,98,1.0,Overvoltage
+1930,EV_bus_98_B,98,1.5,Power Flow nr did not converge after 100 iterations!
+1931,EV_bus_98_C,98,0.0,Overvoltage
+1932,EV_bus_98_C,98,0.5,Overvoltage
+1933,EV_bus_98_C,98,1.0,Overvoltage
+1934,EV_bus_98_C,98,1.5,Overvoltage
+1935,EV_bus_98_C,98,2.0,Overvoltage
+1936,EV_bus_98_C,98,2.5,Overvoltage
+1937,EV_bus_98_C,98,3.0,Overvoltage
+1938,EV_bus_98_C,98,3.5,Overvoltage
+1939,EV_bus_98_C,98,4.0,Power Flow nr did not converge after 100 iterations!
+1940,EV_bus_99_A,99,0.0,Overvoltage
+1941,EV_bus_99_A,99,0.5,Overvoltage
+1942,EV_bus_99_A,99,1.0,Overvoltage
+1943,EV_bus_99_A,99,1.5,Overvoltage
+1944,EV_bus_99_A,99,2.0,Overvoltage
+1945,EV_bus_99_A,99,2.5,Overvoltage
+1946,EV_bus_99_A,99,3.0,Power Flow nr did not converge after 100 iterations!
+1947,EV_bus_99_B,99,0.0,Overvoltage
+1948,EV_bus_99_B,99,0.5,Overvoltage
+1949,EV_bus_99_B,99,1.0,Overvoltage
+1950,EV_bus_99_B,99,1.5,Power Flow nr did not converge after 100 iterations!
+1951,EV_bus_99_C,99,0.0,Overvoltage
+1952,EV_bus_99_C,99,0.5,Overvoltage
+1953,EV_bus_99_C,99,1.0,Overvoltage
+1954,EV_bus_99_C,99,1.5,Overvoltage
+1955,EV_bus_99_C,99,2.0,Overvoltage
+1956,EV_bus_99_C,99,2.5,Overvoltage
+1957,EV_bus_99_C,99,3.0,Overvoltage
+1958,EV_bus_99_C,99,3.5,Overvoltage
+1959,EV_bus_99_C,99,4.0,Power Flow nr did not converge after 100 iterations!
+1960,EV_bus_100_A,100,0.0,Overvoltage
+1961,EV_bus_100_A,100,0.5,Overvoltage
+1962,EV_bus_100_A,100,1.0,Overvoltage
+1963,EV_bus_100_A,100,1.5,Overvoltage
+1964,EV_bus_100_A,100,2.0,Overvoltage
+1965,EV_bus_100_A,100,2.5,Overvoltage
+1966,EV_bus_100_A,100,3.0,Power Flow nr did not converge after 100 iterations!
+1967,EV_bus_100_B,100,0.0,Overvoltage
+1968,EV_bus_100_B,100,0.5,Overvoltage
+1969,EV_bus_100_B,100,1.0,Overvoltage
+1970,EV_bus_100_B,100,1.5,Power Flow nr did not converge after 100 iterations!
+1971,EV_bus_100_C,100,0.0,Overvoltage
+1972,EV_bus_100_C,100,0.5,Overvoltage
+1973,EV_bus_100_C,100,1.0,Overvoltage
+1974,EV_bus_100_C,100,1.5,Overvoltage
+1975,EV_bus_100_C,100,2.0,Overvoltage
+1976,EV_bus_100_C,100,2.5,Overvoltage
+1977,EV_bus_100_C,100,3.0,Overvoltage
+1978,EV_bus_100_C,100,3.5,Overvoltage
+1979,EV_bus_100_C,100,4.0,Power Flow nr did not converge after 100 iterations!
+1980,EV_bus_101_A,101,0.0,Overvoltage
+1981,EV_bus_101_A,101,0.5,Overvoltage
+1982,EV_bus_101_A,101,1.0,Overvoltage
+1983,EV_bus_101_A,101,1.5,Overvoltage
+1984,EV_bus_101_A,101,2.0,Overvoltage
+1985,EV_bus_101_A,101,2.5,Overvoltage
+1986,EV_bus_101_A,101,3.0,Power Flow nr did not converge after 100 iterations!
+1987,EV_bus_101_B,101,0.0,Overvoltage
+1988,EV_bus_101_B,101,0.5,Overvoltage
+1989,EV_bus_101_B,101,1.0,Overvoltage
+1990,EV_bus_101_B,101,1.5,Power Flow nr did not converge after 100 iterations!
+1991,EV_bus_101_C,101,0.0,Overvoltage
+1992,EV_bus_101_C,101,0.5,Overvoltage
+1993,EV_bus_101_C,101,1.0,Overvoltage
+1994,EV_bus_101_C,101,1.5,Overvoltage
+1995,EV_bus_101_C,101,2.0,Overvoltage
+1996,EV_bus_101_C,101,2.5,Overvoltage
+1997,EV_bus_101_C,101,3.0,Overvoltage
+1998,EV_bus_101_C,101,3.5,Overvoltage
+1999,EV_bus_101_C,101,4.0,Power Flow nr did not converge after 100 iterations!
+2000,EV_bus_102_A,102,0.0,Overvoltage
+2001,EV_bus_102_A,102,0.5,Overvoltage
+2002,EV_bus_102_A,102,1.0,Overvoltage
+2003,EV_bus_102_A,102,1.5,Overvoltage
+2004,EV_bus_102_A,102,2.0,Overvoltage
+2005,EV_bus_102_A,102,2.5,Overvoltage
+2006,EV_bus_102_A,102,3.0,Power Flow nr did not converge after 100 iterations!
+2007,EV_bus_102_B,102,0.0,Overvoltage
+2008,EV_bus_102_B,102,0.5,Overvoltage
+2009,EV_bus_102_B,102,1.0,Overvoltage
+2010,EV_bus_102_B,102,1.5,Power Flow nr did not converge after 100 iterations!
+2011,EV_bus_102_C,102,0.0,Overvoltage
+2012,EV_bus_102_C,102,0.5,Overvoltage
+2013,EV_bus_102_C,102,1.0,Overvoltage
+2014,EV_bus_102_C,102,1.5,Overvoltage
+2015,EV_bus_102_C,102,2.0,Overvoltage
+2016,EV_bus_102_C,102,2.5,Overvoltage
+2017,EV_bus_102_C,102,3.0,Overvoltage
+2018,EV_bus_102_C,102,3.5,Overvoltage
+2019,EV_bus_102_C,102,4.0,Power Flow nr did not converge after 100 iterations!
+2020,EV_bus_103_A,103,0.0,Overvoltage
+2021,EV_bus_103_A,103,0.5,Overvoltage
+2022,EV_bus_103_A,103,1.0,Overvoltage
+2023,EV_bus_103_A,103,1.5,Overvoltage
+2024,EV_bus_103_A,103,2.0,Overvoltage
+2025,EV_bus_103_A,103,2.5,Overvoltage
+2026,EV_bus_103_A,103,3.0,Power Flow nr did not converge after 100 iterations!
+2027,EV_bus_103_B,103,0.0,Overvoltage
+2028,EV_bus_103_B,103,0.5,Overvoltage
+2029,EV_bus_103_B,103,1.0,Overvoltage
+2030,EV_bus_103_B,103,1.5,Power Flow nr did not converge after 100 iterations!
+2031,EV_bus_103_C,103,0.0,Overvoltage
+2032,EV_bus_103_C,103,0.5,Overvoltage
+2033,EV_bus_103_C,103,1.0,Overvoltage
+2034,EV_bus_103_C,103,1.5,Overvoltage
+2035,EV_bus_103_C,103,2.0,Overvoltage
+2036,EV_bus_103_C,103,2.5,Overvoltage
+2037,EV_bus_103_C,103,3.0,Overvoltage
+2038,EV_bus_103_C,103,3.5,Overvoltage
+2039,EV_bus_103_C,103,4.0,Power Flow nr did not converge after 100 iterations!
+2040,EV_bus_104_A,104,0.0,Overvoltage
+2041,EV_bus_104_A,104,0.5,Overvoltage
+2042,EV_bus_104_A,104,1.0,Overvoltage
+2043,EV_bus_104_A,104,1.5,Overvoltage
+2044,EV_bus_104_A,104,2.0,Overvoltage
+2045,EV_bus_104_A,104,2.5,Overvoltage
+2046,EV_bus_104_A,104,3.0,Power Flow nr did not converge after 100 iterations!
+2047,EV_bus_104_B,104,0.0,Overvoltage
+2048,EV_bus_104_B,104,0.5,Overvoltage
+2049,EV_bus_104_B,104,1.0,Overvoltage
+2050,EV_bus_104_B,104,1.5,Power Flow nr did not converge after 100 iterations!
+2051,EV_bus_104_C,104,0.0,Overvoltage
+2052,EV_bus_104_C,104,0.5,Overvoltage
+2053,EV_bus_104_C,104,1.0,Overvoltage
+2054,EV_bus_104_C,104,1.5,Overvoltage
+2055,EV_bus_104_C,104,2.0,Overvoltage
+2056,EV_bus_104_C,104,2.5,Overvoltage
+2057,EV_bus_104_C,104,3.0,Overvoltage
+2058,EV_bus_104_C,104,3.5,Overvoltage
+2059,EV_bus_104_C,104,4.0,Power Flow nr did not converge after 100 iterations!
+2060,EV_bus_105_A,105,0.0,Overvoltage
+2061,EV_bus_105_A,105,0.5,Overvoltage
+2062,EV_bus_105_A,105,1.0,Overvoltage
+2063,EV_bus_105_A,105,1.5,Overvoltage
+2064,EV_bus_105_A,105,2.0,Overvoltage
+2065,EV_bus_105_A,105,2.5,Overvoltage
+2066,EV_bus_105_A,105,3.0,Power Flow nr did not converge after 100 iterations!
+2067,EV_bus_105_B,105,0.0,Overvoltage
+2068,EV_bus_105_B,105,0.5,Overvoltage
+2069,EV_bus_105_B,105,1.0,Overvoltage
+2070,EV_bus_105_B,105,1.5,Power Flow nr did not converge after 100 iterations!
+2071,EV_bus_105_C,105,0.0,Overvoltage
+2072,EV_bus_105_C,105,0.5,Overvoltage
+2073,EV_bus_105_C,105,1.0,Overvoltage
+2074,EV_bus_105_C,105,1.5,Overvoltage
+2075,EV_bus_105_C,105,2.0,Overvoltage
+2076,EV_bus_105_C,105,2.5,Overvoltage
+2077,EV_bus_105_C,105,3.0,Overvoltage
+2078,EV_bus_105_C,105,3.5,Overvoltage
+2079,EV_bus_105_C,105,4.0,Power Flow nr did not converge after 100 iterations!
+2080,EV_bus_106_A,106,0.0,Overvoltage
+2081,EV_bus_106_A,106,0.5,Overvoltage
+2082,EV_bus_106_A,106,1.0,Overvoltage
+2083,EV_bus_106_A,106,1.5,Overvoltage
+2084,EV_bus_106_A,106,2.0,Overvoltage
+2085,EV_bus_106_A,106,2.5,Overvoltage
+2086,EV_bus_106_A,106,3.0,Power Flow nr did not converge after 100 iterations!
+2087,EV_bus_106_B,106,0.0,Overvoltage
+2088,EV_bus_106_B,106,0.5,Overvoltage
+2089,EV_bus_106_B,106,1.0,Overvoltage
+2090,EV_bus_106_B,106,1.5,Power Flow nr did not converge after 100 iterations!
+2091,EV_bus_106_C,106,0.0,Overvoltage
+2092,EV_bus_106_C,106,0.5,Overvoltage
+2093,EV_bus_106_C,106,1.0,Overvoltage
+2094,EV_bus_106_C,106,1.5,Overvoltage
+2095,EV_bus_106_C,106,2.0,Overvoltage
+2096,EV_bus_106_C,106,2.5,Overvoltage
+2097,EV_bus_106_C,106,3.0,Overvoltage
+2098,EV_bus_106_C,106,3.5,Overvoltage
+2099,EV_bus_106_C,106,4.0,Power Flow nr did not converge after 100 iterations!
+2100,EV_bus_107_A,107,0.0,Overvoltage
+2101,EV_bus_107_A,107,0.5,Overvoltage
+2102,EV_bus_107_A,107,1.0,Overvoltage
+2103,EV_bus_107_A,107,1.5,Overvoltage
+2104,EV_bus_107_A,107,2.0,Overvoltage
+2105,EV_bus_107_A,107,2.5,Overvoltage
+2106,EV_bus_107_A,107,3.0,Power Flow nr did not converge after 100 iterations!
+2107,EV_bus_107_B,107,0.0,Overvoltage
+2108,EV_bus_107_B,107,0.5,Overvoltage
+2109,EV_bus_107_B,107,1.0,Overvoltage
+2110,EV_bus_107_B,107,1.5,Power Flow nr did not converge after 100 iterations!
+2111,EV_bus_107_C,107,0.0,Overvoltage
+2112,EV_bus_107_C,107,0.5,Overvoltage
+2113,EV_bus_107_C,107,1.0,Overvoltage
+2114,EV_bus_107_C,107,1.5,Overvoltage
+2115,EV_bus_107_C,107,2.0,Overvoltage
+2116,EV_bus_107_C,107,2.5,Overvoltage
+2117,EV_bus_107_C,107,3.0,Overvoltage
+2118,EV_bus_107_C,107,3.5,Overvoltage
+2119,EV_bus_107_C,107,4.0,Power Flow nr did not converge after 100 iterations!
+2120,EV_bus_108_A,108,0.0,Overvoltage
+2121,EV_bus_108_A,108,0.5,Overvoltage
+2122,EV_bus_108_A,108,1.0,Overvoltage
+2123,EV_bus_108_A,108,1.5,Overvoltage
+2124,EV_bus_108_A,108,2.0,Overvoltage
+2125,EV_bus_108_A,108,2.5,Overvoltage
+2126,EV_bus_108_A,108,3.0,Power Flow nr did not converge after 100 iterations!
+2127,EV_bus_108_B,108,0.0,Overvoltage
+2128,EV_bus_108_B,108,0.5,Overvoltage
+2129,EV_bus_108_B,108,1.0,Overvoltage
+2130,EV_bus_108_B,108,1.5,Power Flow nr did not converge after 100 iterations!
+2131,EV_bus_108_C,108,0.0,Overvoltage
+2132,EV_bus_108_C,108,0.5,Overvoltage
+2133,EV_bus_108_C,108,1.0,Overvoltage
+2134,EV_bus_108_C,108,1.5,Overvoltage
+2135,EV_bus_108_C,108,2.0,Overvoltage
+2136,EV_bus_108_C,108,2.5,Overvoltage
+2137,EV_bus_108_C,108,3.0,Overvoltage
+2138,EV_bus_108_C,108,3.5,Overvoltage
+2139,EV_bus_108_C,108,4.0,Power Flow nr did not converge after 100 iterations!
+2140,EV_bus_109_A,109,0.0,Overvoltage
+2141,EV_bus_109_A,109,0.5,Overvoltage
+2142,EV_bus_109_A,109,1.0,Overvoltage
+2143,EV_bus_109_A,109,1.5,Overvoltage
+2144,EV_bus_109_A,109,2.0,Overvoltage
+2145,EV_bus_109_A,109,2.5,Overvoltage
+2146,EV_bus_109_A,109,3.0,Power Flow nr did not converge after 100 iterations!
+2147,EV_bus_109_B,109,0.0,Overvoltage
+2148,EV_bus_109_B,109,0.5,Overvoltage
+2149,EV_bus_109_B,109,1.0,Overvoltage
+2150,EV_bus_109_B,109,1.5,Power Flow nr did not converge after 100 iterations!
+2151,EV_bus_109_C,109,0.0,Overvoltage
+2152,EV_bus_109_C,109,0.5,Overvoltage
+2153,EV_bus_109_C,109,1.0,Overvoltage
+2154,EV_bus_109_C,109,1.5,Overvoltage
+2155,EV_bus_109_C,109,2.0,Overvoltage
+2156,EV_bus_109_C,109,2.5,Overvoltage
+2157,EV_bus_109_C,109,3.0,Overvoltage
+2158,EV_bus_109_C,109,3.5,Overvoltage
+2159,EV_bus_109_C,109,4.0,Power Flow nr did not converge after 100 iterations!
+2160,EV_bus_110_A,110,0.0,Overvoltage
+2161,EV_bus_110_A,110,0.5,Overvoltage
+2162,EV_bus_110_A,110,1.0,Overvoltage
+2163,EV_bus_110_A,110,1.5,Overvoltage
+2164,EV_bus_110_A,110,2.0,Overvoltage
+2165,EV_bus_110_A,110,2.5,Overvoltage
+2166,EV_bus_110_A,110,3.0,Power Flow nr did not converge after 100 iterations!
+2167,EV_bus_110_B,110,0.0,Overvoltage
+2168,EV_bus_110_B,110,0.5,Overvoltage
+2169,EV_bus_110_B,110,1.0,Overvoltage
+2170,EV_bus_110_B,110,1.5,Power Flow nr did not converge after 100 iterations!
+2171,EV_bus_110_C,110,0.0,Overvoltage
+2172,EV_bus_110_C,110,0.5,Overvoltage
+2173,EV_bus_110_C,110,1.0,Overvoltage
+2174,EV_bus_110_C,110,1.5,Overvoltage
+2175,EV_bus_110_C,110,2.0,Overvoltage
+2176,EV_bus_110_C,110,2.5,Overvoltage
+2177,EV_bus_110_C,110,3.0,Overvoltage
+2178,EV_bus_110_C,110,3.5,Overvoltage
+2179,EV_bus_110_C,110,4.0,Power Flow nr did not converge after 100 iterations!
+2180,EV_bus_111_A,111,0.0,Overvoltage
+2181,EV_bus_111_A,111,0.5,Overvoltage
+2182,EV_bus_111_A,111,1.0,Overvoltage
+2183,EV_bus_111_A,111,1.5,Overvoltage
+2184,EV_bus_111_A,111,2.0,Overvoltage
+2185,EV_bus_111_A,111,2.5,Overvoltage
+2186,EV_bus_111_A,111,3.0,Power Flow nr did not converge after 100 iterations!
+2187,EV_bus_111_B,111,0.0,Overvoltage
+2188,EV_bus_111_B,111,0.5,Overvoltage
+2189,EV_bus_111_B,111,1.0,Overvoltage
+2190,EV_bus_111_B,111,1.5,Power Flow nr did not converge after 100 iterations!
+2191,EV_bus_111_C,111,0.0,Overvoltage
+2192,EV_bus_111_C,111,0.5,Overvoltage
+2193,EV_bus_111_C,111,1.0,Overvoltage
+2194,EV_bus_111_C,111,1.5,Overvoltage
+2195,EV_bus_111_C,111,2.0,Overvoltage
+2196,EV_bus_111_C,111,2.5,Overvoltage
+2197,EV_bus_111_C,111,3.0,Overvoltage
+2198,EV_bus_111_C,111,3.5,Overvoltage
+2199,EV_bus_111_C,111,4.0,Power Flow nr did not converge after 100 iterations!
+2200,EV_bus_112_A,112,0.0,Overvoltage
+2201,EV_bus_112_A,112,0.5,Overvoltage
+2202,EV_bus_112_A,112,1.0,Overvoltage
+2203,EV_bus_112_A,112,1.5,Overvoltage
+2204,EV_bus_112_A,112,2.0,Overvoltage
+2205,EV_bus_112_A,112,2.5,Overvoltage
+2206,EV_bus_112_A,112,3.0,Power Flow nr did not converge after 100 iterations!
+2207,EV_bus_112_B,112,0.0,Overvoltage
+2208,EV_bus_112_B,112,0.5,Overvoltage
+2209,EV_bus_112_B,112,1.0,Overvoltage
+2210,EV_bus_112_B,112,1.5,Power Flow nr did not converge after 100 iterations!
+2211,EV_bus_112_C,112,0.0,Overvoltage
+2212,EV_bus_112_C,112,0.5,Overvoltage
+2213,EV_bus_112_C,112,1.0,Overvoltage
+2214,EV_bus_112_C,112,1.5,Overvoltage
+2215,EV_bus_112_C,112,2.0,Overvoltage
+2216,EV_bus_112_C,112,2.5,Overvoltage
+2217,EV_bus_112_C,112,3.0,Overvoltage
+2218,EV_bus_112_C,112,3.5,Overvoltage
+2219,EV_bus_112_C,112,4.0,Power Flow nr did not converge after 100 iterations!
+2220,EV_bus_113_A,113,0.0,Overvoltage
+2221,EV_bus_113_A,113,0.5,Overvoltage
+2222,EV_bus_113_A,113,1.0,Overvoltage
+2223,EV_bus_113_A,113,1.5,Overvoltage
+2224,EV_bus_113_A,113,2.0,Overvoltage
+2225,EV_bus_113_A,113,2.5,Overvoltage
+2226,EV_bus_113_A,113,3.0,Power Flow nr did not converge after 100 iterations!
+2227,EV_bus_113_B,113,0.0,Overvoltage
+2228,EV_bus_113_B,113,0.5,Overvoltage
+2229,EV_bus_113_B,113,1.0,Overvoltage
+2230,EV_bus_113_B,113,1.5,Power Flow nr did not converge after 100 iterations!
+2231,EV_bus_113_C,113,0.0,Overvoltage
+2232,EV_bus_113_C,113,0.5,Overvoltage
+2233,EV_bus_113_C,113,1.0,Overvoltage
+2234,EV_bus_113_C,113,1.5,Overvoltage
+2235,EV_bus_113_C,113,2.0,Overvoltage
+2236,EV_bus_113_C,113,2.5,Overvoltage
+2237,EV_bus_113_C,113,3.0,Overvoltage
+2238,EV_bus_113_C,113,3.5,Overvoltage
+2239,EV_bus_113_C,113,4.0,Power Flow nr did not converge after 100 iterations!
+2240,EV_bus_114_A,114,0.0,Overvoltage
+2241,EV_bus_114_A,114,0.5,Overvoltage
+2242,EV_bus_114_A,114,1.0,Overvoltage
+2243,EV_bus_114_A,114,1.5,Overvoltage
+2244,EV_bus_114_A,114,2.0,Overvoltage
+2245,EV_bus_114_A,114,2.5,Overvoltage
+2246,EV_bus_114_A,114,3.0,Power Flow nr did not converge after 100 iterations!
+2247,EV_bus_114_B,114,0.0,Overvoltage
+2248,EV_bus_114_B,114,0.5,Overvoltage
+2249,EV_bus_114_B,114,1.0,Overvoltage
+2250,EV_bus_114_B,114,1.5,Power Flow nr did not converge after 100 iterations!
+2251,EV_bus_114_C,114,0.0,Overvoltage
+2252,EV_bus_114_C,114,0.5,Overvoltage
+2253,EV_bus_114_C,114,1.0,Overvoltage
+2254,EV_bus_114_C,114,1.5,Overvoltage
+2255,EV_bus_114_C,114,2.0,Overvoltage
+2256,EV_bus_114_C,114,2.5,Overvoltage
+2257,EV_bus_114_C,114,3.0,Overvoltage
+2258,EV_bus_114_C,114,3.5,Overvoltage
+2259,EV_bus_114_C,114,4.0,Power Flow nr did not converge after 100 iterations!
+2260,EV_bus_115_A,115,0.0,Overvoltage
+2261,EV_bus_115_A,115,0.5,Overvoltage
+2262,EV_bus_115_A,115,1.0,Overvoltage
+2263,EV_bus_115_A,115,1.5,Overvoltage
+2264,EV_bus_115_A,115,2.0,Overvoltage
+2265,EV_bus_115_A,115,2.5,Overvoltage
+2266,EV_bus_115_A,115,3.0,Power Flow nr did not converge after 100 iterations!
+2267,EV_bus_115_B,115,0.0,Overvoltage
+2268,EV_bus_115_B,115,0.5,Overvoltage
+2269,EV_bus_115_B,115,1.0,Overvoltage
+2270,EV_bus_115_B,115,1.5,Power Flow nr did not converge after 100 iterations!
+2271,EV_bus_115_C,115,0.0,Overvoltage
+2272,EV_bus_115_C,115,0.5,Overvoltage
+2273,EV_bus_115_C,115,1.0,Overvoltage
+2274,EV_bus_115_C,115,1.5,Overvoltage
+2275,EV_bus_115_C,115,2.0,Overvoltage
+2276,EV_bus_115_C,115,2.5,Overvoltage
+2277,EV_bus_115_C,115,3.0,Overvoltage
+2278,EV_bus_115_C,115,3.5,Overvoltage
+2279,EV_bus_115_C,115,4.0,Power Flow nr did not converge after 100 iterations!
+2280,EV_bus_116_A,116,0.0,Overvoltage
+2281,EV_bus_116_A,116,0.5,Overvoltage
+2282,EV_bus_116_A,116,1.0,Overvoltage
+2283,EV_bus_116_A,116,1.5,Overvoltage
+2284,EV_bus_116_A,116,2.0,Overvoltage
+2285,EV_bus_116_A,116,2.5,Overvoltage
+2286,EV_bus_116_A,116,3.0,Power Flow nr did not converge after 100 iterations!
+2287,EV_bus_116_B,116,0.0,Overvoltage
+2288,EV_bus_116_B,116,0.5,Overvoltage
+2289,EV_bus_116_B,116,1.0,Overvoltage
+2290,EV_bus_116_B,116,1.5,Power Flow nr did not converge after 100 iterations!
+2291,EV_bus_116_C,116,0.0,Overvoltage
+2292,EV_bus_116_C,116,0.5,Overvoltage
+2293,EV_bus_116_C,116,1.0,Overvoltage
+2294,EV_bus_116_C,116,1.5,Overvoltage
+2295,EV_bus_116_C,116,2.0,Overvoltage
+2296,EV_bus_116_C,116,2.5,Overvoltage
+2297,EV_bus_116_C,116,3.0,Overvoltage
+2298,EV_bus_116_C,116,3.5,Overvoltage
+2299,EV_bus_116_C,116,4.0,Power Flow nr did not converge after 100 iterations!
