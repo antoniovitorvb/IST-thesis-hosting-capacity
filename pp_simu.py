@@ -371,7 +371,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                         'scenario': f"{''.join(elements)}_bus_{bus_idx}_iter_{i}",
                         'bus_idx': bus_idx,
                         'phase': phase,
-                        'installed_kW': rand_kw,
+                        'installed_kW': total_kw,
                         'violation': violation_type
                     }
                     temp_summary_results.to_csv(os.path.join(output_path, f"{''.join(elements)}_summaryResults_BUS{bus_idx}.csv"))
