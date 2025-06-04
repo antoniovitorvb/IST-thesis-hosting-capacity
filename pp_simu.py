@@ -290,8 +290,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
     hc_results = pd.DataFrame(index=net.bus.index)
     hc_results['bus_name'] = net.bus['name'].values
     summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
-    temp_summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
-    temp_summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
+    temp_summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'phase', 'installed_kW', 'violation'])
 
     indices = kwargs.get('ow_index', net.bus.index[2:])
     bus_indices = net.bus[net.bus.name.isin(indices)].index
@@ -318,9 +317,12 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                     if der_type == 'PV':
                         pv_rand_kw = uniform(add_kw, add_kw * 5)
                         addPV(net_copy, bus_idx, phase, kw=pv_rand_kw, ctrl=True, data_source=data_source)
-                    elif der_type == 'EV':
+                    if der_type == 'EV':
                         ev_rand_kw = uniform(add_kw, add_kw * 5)
                         addEV(net_copy, bus_idx, phase, kw=ev_rand_kw, ctrl=True, data_source=data_source)
+                    
+                    total_kw += pv_rand_kw + ev_rand_kw
+
                 except Exception as err:
                     print(err)
 
@@ -353,7 +355,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                         }
                         break
                     else:
-                        total_kw += pv_rand_kw + ev_rand_kw
+                        pass
                         # print(f"Bus {bus_idx} - ite {i} Deu bom! Total: {total_kw} kW")
 
                 except Exception as err:
