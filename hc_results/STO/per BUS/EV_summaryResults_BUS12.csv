@@ -199,3 +199,7 @@
 197,EV_bus_11_iter_47,11,B,4.0950883009810894,Overvoltage
 198,EV_bus_11_iter_48,11,A,1.097552046145852,Overvoltage
 199,EV_bus_11_iter_49,11,A,3.839938591317503,Overvoltage
+200,EV_bus_12_iter_0,12,B,2.944893659576884,Overvoltage
+201,EV_bus_12_iter_1,12,A,2.367061370590157,Overvoltage
+202,EV_bus_12_iter_2,12,B,1.1981277349398325,Overvoltage
+203,EV_bus_12_iter_3,12,A,1.0170545048734003,Overvoltage
