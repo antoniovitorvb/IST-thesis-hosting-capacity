@@ -1,0 +1,16 @@
+,scenario,bus_idx,phase,installed_kW,num_injections,violation
+0,EV_bus_60_iter_0,60,A,1.7378029927156549,1,Overvoltage
+1,EV_bus_60_iter_1,60,A,1.0235851247854817,1,Overvoltage
+2,EV_bus_60_iter_2,60,B,3.4201305418358503,1,Overvoltage
+3,EV_bus_60_iter_3,60,A,1.259416805954762,1,Overvoltage
+4,EV_bus_60_iter_4,60,C,1.9099966246075355,1,Overvoltage
+5,EV_bus_60_iter_5,60,C,4.8431559230844865,1,Overvoltage
+6,EV_bus_60_iter_6,60,C,4.05525445449466,1,Overvoltage
+7,EV_bus_60_iter_7,60,C,3.4943242152647347,1,Overvoltage
+8,EV_bus_60_iter_8,60,A,3.8475568770242097,1,Overvoltage
+9,EV_bus_60_iter_9,60,C,1.0049790677768766,1,Overvoltage
+10,EV_bus_60_iter_10,60,C,4.2856492071821215,1,Overvoltage
+11,EV_bus_60_iter_11,60,C,3.3909461841194672,1,Overvoltage
+12,EV_bus_60_iter_12,60,B,1.0900620981035791,1,Overvoltage
+13,EV_bus_60_iter_13,60,C,4.667974450115889,1,Overvoltage
+14,EV_bus_60_iter_14,60,A,1.5907837325506362,1,Overvoltage

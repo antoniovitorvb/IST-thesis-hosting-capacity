@@ -290,7 +290,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
     hc_results = pd.DataFrame(index=net.bus.index)
     hc_results['bus_name'] = net.bus['name'].values
     summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'installed_kW', 'violation'])
-    temp_summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'phase', 'installed_kW', 'violation'])
+    temp_summary_results = pd.DataFrame(columns=['scenario', 'bus_idx', 'phase', 'installed_kW', 'num_injections', 'violation'])
 
     indices = kwargs.get('ow_index', net.bus.index[2:])
     bus_indices = net.bus[net.bus.name.isin(indices)].index
@@ -307,6 +307,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
             create_load_controllers(net_copy, data_source)
             
             total_kw = 0.0
+            num_injections = 0
             while total_kw <= max_kw:
                 try:
                     phase = choice(phases)
@@ -321,6 +322,7 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                         ev_rand_kw = uniform(add_kw, add_kw * 5)
                         addEV(net_copy, bus_idx, phase, kw=ev_rand_kw, ctrl=True, data_source=data_source)
                     
+                    num_injections += 1
                     total_kw += pv_rand_kw + ev_rand_kw
 
                 except Exception as err:
@@ -374,12 +376,13 @@ def hc_montecarlo(net, data_source, output_path, max_iteration=1000, add_kw=1.0,
                         'bus_idx': bus_idx,
                         'phase': phase,
                         'installed_kW': total_kw,
+                        'num_injections': num_injections,
                         'violation': violation_type
                     }
                     temp_summary_results.to_csv(os.path.join(output_path, f"{''.join(elements)}_summaryResults_BUS{bus_idx}.csv"))
 
             for element in elements:
-                hc_results.at[bus_idx, f"{element}_total"] += total_kw / max_iteration
+                hc_results.at[bus_idx, f"{element}_total"] += total_kw
     summary_results.to_csv(os.path.join(output_path, f"{''.join(elements)}_summaryResults.csv"))
     hc_results.to_csv(os.path.join(output_path, f"{''.join(elements)}_HCResults.csv"))
     return hc_results, summary_results
