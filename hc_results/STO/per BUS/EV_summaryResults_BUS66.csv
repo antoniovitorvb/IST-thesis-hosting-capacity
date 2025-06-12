@@ -49,3 +49,5 @@
 47,EV_bus_64_iter_47,64,A,4.967276224023983,1,Overvoltage
 48,EV_bus_64_iter_48,64,B,2.5904016508002434,1,Overvoltage
 49,EV_bus_64_iter_49,64,B,4.073379720145683,1,Overvoltage
+50,EV_bus_66_iter_0,66,A,1.0603368700099685,1,Overvoltage
+51,EV_bus_66_iter_1,66,B,1.1019631073909069,1,Overvoltage
