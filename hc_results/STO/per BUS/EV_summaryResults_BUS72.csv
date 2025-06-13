@@ -149,3 +149,6 @@
 147,EV_bus_67_iter_47,67,A,4.325217201905788,1,Overvoltage
 148,EV_bus_67_iter_48,67,B,2.6563890579523535,1,Overvoltage
 149,EV_bus_67_iter_49,67,C,1.0874604167510782,1,Overvoltage
+150,EV_bus_72_iter_0,72,B,1.7938863653182362,1,Overvoltage
+151,EV_bus_72_iter_1,72,A,1.0831299646818948,1,Overvoltage
+152,EV_bus_72_iter_2,72,A,3.776424475857326,1,Overvoltage
