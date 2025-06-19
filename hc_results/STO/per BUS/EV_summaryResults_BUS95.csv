@@ -699,3 +699,17 @@
 697,EV_bus_93_iter_47,93,C,3.3277360318728006,1,Overvoltage
 698,EV_bus_93_iter_48,93,A,2.878055220660118,1,Overvoltage
 699,EV_bus_93_iter_49,93,C,2.0880901746410436,1,Overvoltage
+700,EV_bus_95_iter_0,95,B,3.572419960085897,1,Overvoltage
+701,EV_bus_95_iter_1,95,C,1.6491958534876412,1,Overvoltage
+702,EV_bus_95_iter_2,95,B,3.479765254186772,1,Overvoltage
+703,EV_bus_95_iter_3,95,B,3.5100135438564326,1,Overvoltage
+704,EV_bus_95_iter_4,95,B,2.7701623603593237,1,Overvoltage
+705,EV_bus_95_iter_5,95,B,3.348286727762038,1,Overvoltage
+706,EV_bus_95_iter_6,95,C,3.0016554189192752,1,Overvoltage
+707,EV_bus_95_iter_7,95,A,4.822687494659011,1,Overvoltage
+708,EV_bus_95_iter_8,95,B,1.2971919057388788,1,Overvoltage
+709,EV_bus_95_iter_9,95,C,2.6821810428395105,1,Overvoltage
+710,EV_bus_95_iter_10,95,B,2.700738059286917,1,Overvoltage
+711,EV_bus_95_iter_11,95,A,2.4683855351954063,1,Overvoltage
+712,EV_bus_95_iter_12,95,A,3.8876211488948798,1,Overvoltage
+713,EV_bus_95_iter_13,95,B,4.5538150664193555,1,Overvoltage
